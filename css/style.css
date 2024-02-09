@@ -8,7 +8,6 @@ nav {
   background-color: #004877;
   padding: 10px 15px;
   border-radius: 5px;
-  font-weight: bold;
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -38,7 +37,8 @@ a:hover {
 }
 
 section {
-  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 #bio {
@@ -51,6 +51,14 @@ section {
 .bio-container {
   display: flex;
   align-items: center;
+}
+
+.profile-section,
+#profile,
+#education,
+#work,
+#projects {
+  text-align: center;
 }
 
 img {
@@ -81,12 +89,12 @@ img {
   font-size: 34px;
   font-weight: normal;
   padding: 0;
-  margin: 0; 
+  margin: 0;
 }
 
 #name-line {
   width: 100%;
-  border-bottom: 2px solid #004877; 
+  border-bottom: 2px solid #004877;
   margin: 10px 0;
 }
 
@@ -110,4 +118,21 @@ img {
 
 .profile-section {
   max-width: 600px;
+}
+
+footer {
+  background-color: #004877;
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
 }
