@@ -144,7 +144,8 @@ footer {
 
 /* Horizontal Separator Lines */
 section#bio::after,
-section#education::after {
+section#education::after,
+section#work::after {
   content: '';
   display: block;
   width: 100%;
