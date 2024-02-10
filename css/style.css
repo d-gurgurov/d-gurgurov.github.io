@@ -111,11 +111,11 @@ img {
   filter: brightness(1.2); 
 }
 
-
 .profile-section {
   max-width: 600px;
 }
 
+/* footer section */
 footer {
   background-color: darkgray;
   color: white;
@@ -132,7 +132,7 @@ footer {
   justify-content: center;
 }
 
-/* Add the following styles for the education section */
+/* education section */
 #education {
   margin-top: 40px;
 }
@@ -144,48 +144,42 @@ footer {
 }
 
 .timespan {
-  grid-column: span 2;
-  font-size: 14px;
-  text-align: center;
-  padding-right: 5px;
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .year {
   font-size: 18px;
-  font-weight: bold;
+  margin-left: 100px;
 }
 
 .lines {
   position: absolute;
   top: 0;
-  left: 10%;
+  left: 20%;
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
   background-color: darkgray;
 }
 
-.entry-dot {
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 10px;
-  height: 10px; 
-  border-radius: 10px;
-  background-color: #cfcfcf;
-  border: 2px solid white;
-}
-
 .entry {
   flex-grow: 1;
-  padding-left: 20px;
+  padding-left: 300px;
+  margin-bottom: 10px;
 }
 
 .entry h3 {
   margin-bottom: 5px;
+  margin: 0;
 }
 
 .entry p {
-  margin: 5px 0;
+  margin: 5px;
+}
+
+.entry img {
+  max-width: 150px; /* Adjust this width as needed */
+  margin-right: 20px; /* Adjust this margin as needed */
+  right: 20%;
 }
