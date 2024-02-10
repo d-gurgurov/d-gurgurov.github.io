@@ -1,9 +1,11 @@
+/* Reset and Base Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Navigation Styles */
 nav {
   background-color: darkgray;
   padding: 10px 15px;
@@ -36,16 +38,24 @@ a:hover {
   font-size: 18px;
 }
 
+/* Main Content Styles */
 section {
   max-width: 800px;
   margin: 0 auto;
 }
 
+#bio, #profile, #education, #work, #projects {
+  text-align: center;
+}
+
+/* Bio Section Styles */
 #bio {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .bio-container {
@@ -88,12 +98,6 @@ img {
   margin: 0;
 }
 
-#name-line {
-  width: 100%;
-  border-bottom: 2px solid darkgray;
-  margin: 10px 0;
-}
-
 .social-icons {
   margin-top: 20px;
 }
@@ -115,7 +119,7 @@ img {
   max-width: 600px;
 }
 
-/* footer section */
+/* Footer Section Styles */
 footer {
   background-color: darkgray;
   color: white;
@@ -132,9 +136,25 @@ footer {
   justify-content: center;
 }
 
-/* education section */
+/* Horizontal Separator Lines */
+section#bio::after,
+section#education::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc; 
+  margin: 10px 0; 
+}
+
+/* Education Section Styles */
 #education {
-  margin-top: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.education-section {
+  padding: 20px; 
 }
 
 .education-entry {
@@ -176,9 +196,22 @@ footer {
 
 .entry p {
   margin: 5px;
+  font-style: italic;
 }
 
 .timespan img {
-  max-width: 150px; /* Adjust this width as needed */
-  margin-left: 40px; /* Adjust this margin as needed */
+  max-width: 150px; 
+  margin-left: 40px; 
+}
+
+/* Work Section Styles */
+#work {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.work-entry {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
 }
