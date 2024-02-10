@@ -54,7 +54,7 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -73,13 +73,19 @@ section {
 
 img {
   border-radius: 160px;
-  max-width: 200px;
+  max-width: 180px;
   margin-top: 20px;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 .bio-content {
   max-width: 400px;
+}
+
+.nn-gif {
+  width: 100%; /* Set the width to 100% to make it fill the container */
+  max-width: 300px; /* Set a maximum width if needed */
+  height: auto; 
 }
 
 #bio h2 {
