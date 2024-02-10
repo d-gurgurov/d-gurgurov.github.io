@@ -165,8 +165,8 @@ footer {
 
 .entry {
   flex-grow: 1;
-  padding-left: 300px;
-  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-top: 50px;
 }
 
 .entry h3 {
@@ -178,8 +178,7 @@ footer {
   margin: 5px;
 }
 
-.entry img {
+.timespan img {
   max-width: 150px; /* Adjust this width as needed */
-  margin-right: 20px; /* Adjust this margin as needed */
-  right: 20%;
+  margin-left: 40px; /* Adjust this margin as needed */
 }
