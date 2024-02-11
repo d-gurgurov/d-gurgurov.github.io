@@ -224,7 +224,7 @@ section#education::after {
 
 #education .entry a {
   color: inherit; 
-  text-decoration: none; 
+  text-decoration: underline dotted; 
 }
 
 #education .entry a:hover {
@@ -250,7 +250,7 @@ section#education::after {
 
 #work .entry a {
   color: inherit; 
-  text-decoration: none; 
+  text-decoration: underline dotted; 
 }
 
 #work .entry a:hover {
@@ -269,20 +269,16 @@ section#education::after {
   position: relative;
 }
 
-#projects .entry a {
+#projects .entry {
   margin: 5px;
   font-style: italic;
   text-decoration: none;
   color: inherit;
 }
 
-#projects .entry a:hover {
-  font-size: inherit;
-}
-
 #projects .entry h3 a {
   color: inherit; 
-  text-decoration: none; 
+  text-decoration: underline dotted; 
 }
 
 #projects .entry h3 a:hover {
@@ -314,7 +310,7 @@ section#education::after {
 
 #awards .entry a {
   color: inherit; 
-  text-decoration: none; 
+  text-decoration: underline dotted; 
 }
 
 #awards .entry a:hover {
