@@ -232,6 +232,11 @@ section#projects::after {
 }
 
 /* Projects Section Styles */
+#projects {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 #projects .project-entry {
   display: flex;
   margin-bottom: 20px;
