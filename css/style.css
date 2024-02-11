@@ -67,12 +67,19 @@ section {
 #profile,
 #education,
 #work,
-#projects {
+#projects,
+#awards {
   text-align: center;
 }
 
-img {
+#bio img {
   border-radius: 160px;
+  max-width: 180px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+img {
   max-width: 180px;
   margin-top: 20px;
   margin-right: 10px;
@@ -145,7 +152,8 @@ footer {
 /* Horizontal Separator Lines */
 section#bio::after,
 section#education::after,
-section#work::after {
+section#work::after,
+section#projects::after {
   content: '';
   display: block;
   width: 100%;
@@ -221,4 +229,63 @@ section#work::after {
   display: flex;
   margin-bottom: 20px;
   position: relative;
+}
+
+/* Projects Section Styles */
+#projects .project-entry {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#projects .entry a {
+  margin: 5px;
+  font-style: italic;
+  text-decoration: none;
+  color: inherit;
+}
+
+#projects .entry a:hover {
+  font-size: inherit;
+}
+
+#projects .entry h3 a {
+  color: inherit; 
+  text-decoration: none; 
+}
+
+#projects .entry h3 a:hover {
+  font-size: inherit;
+}
+
+/* Awards Section Styles */
+#awards {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#awards .award-entry {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#awards .entry a {
+  margin: 5px;
+  font-style: italic;
+  text-decoration: none;
+  color: inherit;
+}
+
+#awards .entry a:hover {
+  font-size: inherit;
+}
+
+#awards .entry h3 a {
+  color: inherit; 
+  text-decoration: none; 
+}
+
+#awards .entry h3 a:hover {
+  font-size: inherit;
 }

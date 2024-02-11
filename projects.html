@@ -52,48 +52,62 @@
   </section>
 
 
-  <!-- Education Section -->
-  <section id="education">
+  <!-- Projects Section -->
+  <section id="projects">
 
-    <div class="education-entry">
+    <div class="project-entry">
       <div class="timespan">
         <span class="year">2024</span>
         <span class="lines"></span>
-        <img src="assets/imgs/saar_logo.png" alt="University Logo">
+        <img src="assets/imgs/embs.svg" alt="Embeddings Logo">
       </div>
       <div class="entry">
-        <h3>Saarland University</h3>
-        <p>Language Technology, M.Sc.</p>
+        <h3><a href="https://github.com/d-gurgurov/Conceptnet-Embeddings">Multilingual ConceptNet Embeddings</a></h3>
+        <p>This application focuses on extracting data from <a href="https://conceptnet.io/">ConceptNet</a> for a specific language, saving the data into a JSON file, building <a href="https://github.com/commonsense/conceptnet-numberbatch">PPMI embeddings</a> from this data, and retrofitting additional <a href="https://nlp.stanford.edu/projects/glove/">GloVe embeddings</a> (if provided) using the ConceptNet PPMI embeddings.</p>
       </div>
     </div>
 
-    <div class="education-entry">
+    <div class="project-entry">
+      <div class="timespan">
+        <span class="year">2023</span>
+        <span class="lines"></span>
+        <img src="assets/imgs/mental.png" alt="Mental Health Logo">
+      </div>
+      <div class="entry">
+        <h3><a href="https://github.com/d-gurgurov/Mental-Health-in-Literature-Analysis">Mental Health in Literature Analysis</a></h3>
+        <p>In this project, we tried to diagnose literary characters with mental disorders according to International Classification of Diseases (<a href="https://icd.who.int/en">ICD</a>).
+          Try out our HuggingFace Spaces based </a href="https://huggingface.co/spaces/NursNurs/detect_mental_disorder">mini-app</a> where you can diagnose any other literary character, or even yourself, based on provided description (please, note this can't be used for diagnostics and can be used for entertainment only).</p>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="timespan">
+        <span class="year">2023</span>
+        <span class="lines"></span>
+        <img src="assets/imgs/space.webp" alt="Vector Space Logo">
+      </div>
+      <div class="entry">
+        <h3><a href="https://github.com/d-gurgurov/Vector-Space-Retrieval-Model">Vector Space Retrieval Model</a></h3>
+        <p>This program is a search engine that searches for relevant documents in a given collection based on a query.
+          The search engine uses the vector space retrieval model for specifying how to rank the documents. The collection of documents is stored in an XML file, which is preprocessed and indexed using TF-IDF scores. The core of the search engine is an index that weights terms according to the tf.idf weighting scheme.</p>
+      </div>
+    </div>
+
+    <div class="project-entry">
       <div class="timespan">
         <span class="year">2022</span>
         <span class="lines"></span>
-        <img src="assets/imgs/pgu-2.jpeg" alt="University Logo">
+        <img src="assets/imgs/mensa.png" alt="Mensa Logo">
       </div>
       <div class="entry">
-        <h3>Transnistrian State University</h3>
-        <p>Linguistics & Pedagogy, B.A.</p>
-      </div>
-    </div>
-
-    <div class="education-entry">
-      <div class="timespan">
-        <span class="year">2019</span>
-        <span class="lines"></span>
-        <img src="assets/imgs/mur.png" alt="University Logo">
-      </div>
-      <div class="entry">
-        <h3>Murray State University</h3>
-        <p>Linguistics, Exchange Semester</p>
+        <h3><a href="https://github.com/d-gurgurov/Mensa-Bot">Mensa Telegram Bot</a></h3>
+        <p>This project is a Python script that utilizes web scraping and the Telegram Bot API to provide translated cafeteria menus. It uses BeautifulSoup for web scraping, the googletrans library for translation, and telegram.ext for creating a Telegram bot.</p>
       </div>
     </div>
 
   </section>
 
-
+  <!-- #TODO: Place each section on a different html-->>
   <!-- Footer Section -->
   <footer>
     <div class="footer-content">
