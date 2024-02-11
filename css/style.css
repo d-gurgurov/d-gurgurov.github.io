@@ -323,6 +323,6 @@ section#education::after {
 }
 
 #awards .awards-image:hover {
-  transform: scale(2.2) translateY(-40px);
+  transform: scale(3.0) translateY(-60px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
