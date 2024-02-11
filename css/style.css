@@ -312,11 +312,11 @@ section#education::after {
   font-size: inherit;
 }
 
-#awards .entry h3 a {
+#awards .entry a {
   color: inherit; 
   text-decoration: none; 
 }
 
-#awards .entry h3 a:hover {
+#awards .entry a:hover {
   font-size: inherit;
 }
