@@ -27,14 +27,14 @@ li {
   margin-right: 20px;
 }
 
-a {
+nav a {
   text-decoration: none;
   color: white;
   font-size: 16px;
   transition: font-size 0.3s;
 }
 
-a:hover {
+nav a:hover {
   font-size: 18px;
 }
 
@@ -276,12 +276,12 @@ section#education::after {
   color: inherit;
 }
 
-#projects .entry h3 a {
+#projects a {
   color: inherit; 
   text-decoration: underline dotted; 
 }
 
-#projects .entry h3 a:hover {
+#projects a:hover {
   font-size: inherit;
 }
 
