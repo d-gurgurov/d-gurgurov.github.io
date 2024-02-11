@@ -156,9 +156,7 @@ footer {
 
 /* Horizontal Separator Lines */
 section#bio::after,
-section#education::after,
-section#work::after,
-section#projects::after {
+section#education::after {
   content: '';
   display: block;
   width: 100%;
@@ -224,6 +222,15 @@ section#projects::after {
   font-style: italic;
 }
 
+#education .entry a {
+  color: inherit; 
+  text-decoration: none; 
+}
+
+#education .entry a:hover {
+  font-size: inherit;
+}
+
 .timespan img {
   max-width: 150px; 
   margin-left: 40px; 
@@ -239,6 +246,15 @@ section#projects::after {
   display: flex;
   margin-bottom: 20px;
   position: relative;
+}
+
+#work .entry a {
+  color: inherit; 
+  text-decoration: none; 
+}
+
+#work .entry a:hover {
+  font-size: inherit;
 }
 
 /* Projects Section Styles */
