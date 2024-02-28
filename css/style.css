@@ -133,6 +133,17 @@ img {
   filter: brightness(1.2); 
 }
 
+.huggingface-logo {
+  width: auto;
+  height: 20px;
+  margin-top: 20px; 
+}
+
+.huggingface-logo:hover {
+  transform: scale(1.1); 
+  filter: brightness(1.2); 
+}
+
 .profile-section {
   max-width: 600px;
 }
