@@ -1,4 +1,31 @@
 /* Reset and Base Styles */
+/* Add a media query for small screens */
+@media only screen and (max-width: 767px) {
+  .bio-container {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%; /* Make images responsive within their containers */
+    margin-top: 1.25em; /* 20px */
+    margin-right: 0; /* Remove right margin for better spacing */
+  }
+
+  .bio-content {
+    max-width: 100%; /* Make text content responsive within its container */
+    margin-top: 1.25em; /* Add some spacing between image and text on smaller screens */
+  }
+
+  #bio h2 {
+    margin-bottom: 0; /* Adjust margin to control spacing */
+  }
+
+  #bio h1 {
+    margin-top: 0.5em; /* Add some spacing between text and social icons */
+  }
+}
+
 
 @media only screen and (min-width: 320px) {
     body {
@@ -16,7 +43,7 @@
       font-size: 1em; /* 16px */
       display: flex;
       justify-content: center;
-      margin: 0 0.9375em; /* 0 15px */
+      margin: 0 0; /* 0 15px */
     }
   
     ul {
@@ -56,14 +83,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      max-width: 62.5em; /* 1000px */
-      margin: 0 auto;
+      max-width: auto; /* 1000px */
+      margin: auto auto;
     }
   
     .bio-container {
       display: flex;
+      max-width: auto;
       align-items: center;
+      text-align: center;
+      margin: auto auto;
     }
   
     .profile-section,
@@ -79,7 +108,8 @@
       border-radius: 10em; /* 160px */
       max-width: 11.25em; /* 180px */
       margin-top: 1.25em; /* 20px */
-      margin-right: 0.625em; /* 5px */
+      margin-right: 0em; /* 5px */
+      margin-left: 0em;
     }
   
     img {
@@ -89,7 +119,9 @@
     }
   
     .bio-content {
-      max-width: 25em; /* 400px */
+      max-width: auto; /* 400px */
+      margin: auto auto;
+      
     }
   
     #bio .nn-gif {
