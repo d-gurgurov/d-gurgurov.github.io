@@ -1,6 +1,6 @@
 /* Reset and Base Styles */
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 481px) {
 body {
   margin: 0;
   padding: 0;
