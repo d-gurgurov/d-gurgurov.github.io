@@ -1,0 +1,376 @@
+/* Reset and Base Styles */
+
+@media only screen and (min-width: 320px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Navigation Styles */
+  nav {
+    background-color: darkgray;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    margin: 0 15px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-right: 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: font-size 0.3s;
+  }
+
+  nav a:hover {
+    font-size: 18px;
+  }
+
+  /* Main Content Styles */
+  section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #bio, #profile, #education, #work, #projects {
+    text-align: center;
+  }
+
+  /* Bio Section Styles */
+  #bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .bio-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-section,
+  #profile,
+  #education,
+  #work,
+  #projects,
+  #awards {
+    text-align: center;
+  }
+
+  #bio img {
+    border-radius: 160px;
+    max-width: 180px;
+    margin-top: 20px;
+    margin-right: 5px;
+  }
+
+  img {
+    max-width: 180px;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+
+  .bio-content {
+    max-width: 400px;
+  }
+
+  #bio .nn-gif { 
+    max-width: 200px; 
+    height: auto; 
+  }
+
+  #bio h4 {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+  }
+
+  #bio h2 {
+    font-weight: normal;
+    font-style: italic;
+    color: #999;
+    font-size: 18px;
+    padding: 0;
+    margin: 5px 0 10px 0;
+  }
+
+  #bio h1 {
+    font-size: 34px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #343a40;
+    font-size: 24px;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.3); 
+    filter: brightness(1.2); 
+  }
+
+  .huggingface-logo {
+    width: auto;
+    height: 20px;
+    margin-top: 20px; 
+  }
+
+  .huggingface-logo:hover {
+    transform: scale(1.1); 
+    filter: brightness(1.2); 
+  }
+
+  .profile-section {
+    max-width: 600px;
+  }
+
+  /* Footer Section Styles */
+  footer {
+    background-color: darkgray;
+    color: white;
+    text-align: center;
+    padding: 2px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Horizontal Separator Lines */
+  section#bio::after,
+  section#education::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc; 
+    margin: 10px 0; 
+  }
+
+  /* About Section Styles*/
+  #about {
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+
+  #about .entry h3 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #about .entry h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  #about .entry a {
+    color: inherit; 
+    text-decoration: underline dotted; 
+  }
+
+  #about .entry a:hover {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  /* Education Section Styles */
+  #education {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .education-section {
+    padding: 20px; 
+  }
+
+  .education-entry {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .timespan {
+    display: flex;
+    align-items: center;
+  }
+
+  .year {
+    font-size: 18px;
+    margin-left: 100px;
+  }
+
+  .lines {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: darkgray;
+  }
+
+  .entry {
+    flex-grow: 1;
+    padding-left: 20px;
+    padding-top: 50px;
+  }
+
+  .entry h3 {
+    margin-bottom: 5px;
+    margin: 0;
+  }
+
+  .entry h4 {
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  .entry p {
+    margin: 10px;
+    font-style: italic;
+  }
+
+  #education .entry a {
+    color: inherit; 
+    text-decoration: underline dotted; 
+  }
+
+  #education .entry a:hover {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  .timespan img {
+    max-width: 150px; 
+    margin-left: 40px; 
+  }
+
+  /* Work Section Styles */
+  #work {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .work-entry {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  #work .entry a {
+    color: inherit; 
+    text-decoration: underline dotted; 
+  }
+
+  #work .entry a:hover {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  /* Projects Section Styles */
+  #projects {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #projects .project-entry {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  #projects .entry {
+    margin: 5px;
+    font-style: italic;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #projects a {
+    color: inherit; 
+    text-decoration: underline dotted; 
+  }
+
+  #projects a:hover {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  /* Awards Section Styles */
+  #awards {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #awards .award-entry {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  #awards .entry {
+    margin: 5px;
+    font-style: italic;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #awards .entry {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  #awards a {
+    color: inherit; 
+    text-decoration: underline dotted; 
+  }
+
+  #awards a:hover {
+    text-decoration: none;
+    font-size: inherit;
+  }
+
+  #awards .awards-image {
+    transition: transform 0.3s, translateY 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  #awards .awards-image:hover {
+    transform: scale(3.0) translateY(-60px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+
+}
