@@ -1,4 +1,6 @@
 /* Reset and Base Styles */
+
+@media only screen and (min-width: 320px) {
 body {
   margin: 0;
   padding: 0;
@@ -341,4 +343,6 @@ section#education::after {
 #awards .awards-image:hover {
   transform: scale(3.0) translateY(-60px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
 }
