@@ -2,18 +2,18 @@
 /* Add a media query for small screens */
 @media only screen and (max-width: 767px) {
   .bio-container {
-    flex-direction: column; /* Stack elements vertically on smaller screens */
+    flex-direction: column;
     text-align: center;
   }
 
   img {
-    max-width: 100%; /* Make images responsive within their containers */
-    margin-top: 1.25em; /* 20px */
-    margin-right: 0; /* Remove right margin for better spacing */
+    max-width: 100%; 
+    margin-top: 1.25em;
+    margin-right: 0; 
   }
 
   .bio-content {
-    max-width: 100%; /* Make text content responsive within its container */
+    max-width: 100%; 
     margin-top: 1.25em; /* Add some spacing between image and text on smaller screens */
   }
 
@@ -24,6 +24,83 @@
   #bio h1 {
     margin-top: 0.5em; /* Add some spacing between text and social icons */
   }
+
+  #education {
+    margin-top: 0.3125em; /* 5px */
+    margin-bottom: 0.3125em; /* 5px */
+  }
+
+  .education-section {
+    padding: 1.25em; /* 20px */
+  }
+
+  .education-entry {
+    display: flex;
+    flex-direction: column; /* Stack entries vertically on smaller screens */
+    margin-bottom: 1.25em; /* 20px */
+    position: relative;
+  }
+
+  .timespan {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow flexibility for smaller screens */
+  }
+
+  .year {
+    font-size: 1.125em; /* 18px */
+    margin-left: 0; /* Reset left margin for better spacing */
+    margin-bottom: 0.625em; /* 10px */
+  }
+
+  .lines {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Center lines */
+    transform: translateX(-50%);
+    width: 0.125em; /* 2px */
+    height: 100%;
+    background-color: darkgray;
+    margin-left: 0; /* Reset left margin for better spacing */
+  }
+
+  .entry {
+    flex-grow: 1;
+    padding-left: 1.25em; /* 20px */
+    padding-top: 0; /* Reset top padding for better spacing */
+  }
+
+  .entry h3 {
+    margin-bottom: 0.3125em; /* 5px */
+    margin: 0;
+  }
+
+  .entry h4 {
+    margin-bottom: 0.625em; /* 10px */
+    font-weight: normal;
+  }
+
+  .entry p {
+    margin: 0.625em 0; /* 10px 0 */
+    font-style: italic;
+  }
+
+  #education .entry a {
+    color: inherit;
+    text-decoration: underline dotted;
+  }
+
+  #education .entry a:hover {
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  .timespan img {
+    max-width: 100%; /* Make images responsive within their containers */
+    margin-left: 0; /* Reset left margin for better spacing */
+    margin-top: 0.625em; /* 10px */
+  }
+  
 }
 
 
