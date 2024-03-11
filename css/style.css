@@ -178,6 +178,34 @@ section#education::after {
   margin: 10px 0; 
 }
 
+/* About Section Styles*/
+#about {
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+#about .entry h3 {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#about .entry h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+#about .entry a {
+  color: inherit; 
+  text-decoration: underline dotted; 
+}
+
+#about .entry a:hover {
+  font-size: inherit;
+  text-decoration: none;
+}
+
 /* Education Section Styles */
 #education {
   margin-top: 5px;
