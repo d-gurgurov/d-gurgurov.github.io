@@ -448,10 +448,11 @@
     }
   
     #awards .award-entry {
-      display: flex;
+      display: block;
       margin-bottom: 1.25em; /* 20px */
       position: relative;
-    }
+      width: 100%;
+  }
   
     #awards .entry {
       margin: 0.3125em; /* 5px */
