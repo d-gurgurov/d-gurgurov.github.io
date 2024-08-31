@@ -500,7 +500,7 @@
     }
   
     #awards .awards-image:hover {
-      transform: scale(3.0) translateY(-1.875em); /* 60px */
+      transform: scale(2.0) translateY(-1.5em); /* 60px */
       box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.8); /* 10px */
     }
 
