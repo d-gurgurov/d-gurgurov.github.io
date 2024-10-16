@@ -130,7 +130,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Courier New', monospace;;
+      font-family: 'Courier New', monospace;
       font-size: 1em; /* Base font size */
       min-height: 100vh; /* Full height of viewport */
       height: 100%;
@@ -512,13 +512,31 @@
       box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.8); /* 10px */
     }
 
-    body.dark-mode {
-      background-color: #121212;
-      color: #ffffff;
+    #dark-mode-toggle {
+      background-color: darkgray;
+      color: white;
+      border: none;
+      padding: 0.625em 0.9375em; /* Same padding as other nav items */
+      font-size: 1em; /* Same font size as the links */
+      border-radius: 0.3125em; /* Same border-radius as the navigation bar */
+      cursor: pointer;
+      margin: 0 0;
+    }
+
+    #dark-mode-toggle:hover {
+      background-color: #505050; /* Darker shade on hover */
+      color: #e0e0e0; /* Lighter color on hover */
+    }
+
+    li button {
+      font-family: 'Courier New', monospace;
+      margin: 0;
     }
     
-    .dark-mode nav ul li a {
-      color: #ffffff;
+    /* Align button with nav items */
+    nav ul li {
+      display: flex;
+      align-items: center; /* Centers the button vertically */
     }
     
     .dark-mode .bio-container {
