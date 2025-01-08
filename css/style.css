@@ -111,11 +111,11 @@
   }
   
   .dark-mode nav ul li a {
-    color: #ffffff;
+    color: #1a1a1a;
   }
   
-  .dark-mode .bio-container {
-    border-color: #ffffff;
+  .dark-mode {
+    border-color: #1a1a1a;
   }
   
   .dark-mode footer {
@@ -539,8 +539,17 @@
       align-items: center; /* Centers the button vertically */
     }
     
-    .dark-mode .bio-container {
-      border-color: #ffffff;
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    
+    .dark-mode nav ul li a {
+      color: #1a1a1a;
+    }
+    
+    .dark-mode {
+      border-color: #1a1a1a;
     }
     
     .dark-mode footer {
