@@ -57,14 +57,14 @@ nav a:hover {
     color: #555;
     text-decoration: none;
     transition: all 0.3s ease;
-    background-color: rgba(0,0,0,0.02); /* Very subtle highlight by default */
+    background-color: rgba(0,0,0,0.04); /* Very subtle highlight by default */
     padding: 0 2px; /* Small padding to make the highlight more visible */
     border-radius: 2px; /* Slightly rounded corners for the highlight */
 }
 
 .content a:hover {
     color: #333; /* Slightly highlighted text */
-    background-color: rgba(0,0,0,0.05); /* Slightly stronger highlight on hover */
+    background-color: rgba(0,0,0,0.08); /* Slightly stronger highlight on hover */
 }
 
 .about-section {
