@@ -26,6 +26,14 @@
     <div class="content">
         <h2>reading</h2>
         <ul class="reading-list">
+            <!-- Entry 3 -->
+            <li class="reading-entry" onclick="toggleEntry(this)">
+                <span class="reading-title">How do Large Language Models Handle Multilingualism?</span>
+                <span class="expand-button">+</span>
+                <div class="reading-content">
+                    <p><a href="https://arxiv.org/pdf/2402.18815" target="_blank">A paper by Zhao et al. (2024)</a> hypothesizes that mutilingual models go through three stages when prompted with non-English queries - (1) LLMs understand a prompt by converting linguistic features into a unified representation, (2) they reason in English (with self-attention) and incorporate multilingual knowledge to get factual information (with feed-forward networks), and (3) generate responses in the language of the initial prompt. They further propose Parallel Language-specific Neuron Detection that, unlike other methods, works with unlabeled data and then fine-tune language-specific neurons on the target language.</p>
+                </div>
+            </li>
             <!-- Entry 2 -->
             <li class="reading-entry" onclick="toggleEntry(this)">
                 <span class="reading-title">Do Multilingual LLMs Think in English?</span>
