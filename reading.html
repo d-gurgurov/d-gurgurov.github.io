@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daniil gurgurov</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext&#038;display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/imgs/icon.ico" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">daniil gurgurov</a>
+            <div>
+                <a href="writing.html">writing</a>
+                <a href="index.html">about</a>
+                <a href="reading.html">reading</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>what i read</h2>
+        <ul class="reading-list">
+            <!-- Entry 1 -->
+            <li class="reading-entry" onclick="toggleEntry(this)">
+                <span class="reading-title">the right philosophy for our times</span>
+                <span class="expand-button">+</span>
+                <div class="reading-content">
+                    <p><a href="https://medium.com/curious/the-right-philosophy-for-our-times-356b723b6ae4" target="_blank">An essay on transcendentalism</a>, a philosophical movement placing an emphasis on self-reliance and individuality. Nurturing these elements can "build mental resilience at the individual level of our society and increase the strength of our network".</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <script>
+        function toggleEntry(entry) {
+            let content = entry.querySelector('.reading-content');
+            let button = entry.querySelector('.expand-button');
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.textContent = "+";
+            } else {
+                content.style.display = "block";
+                button.textContent = "-";
+            }
+        }
+        
+    </script>
+</body>
+</html>

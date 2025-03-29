@@ -1,0 +1,123 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fefcf0; /* Light background */
+    line-height: 1.6;
+}
+
+header {
+    background-color: #fefcf0;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-weight: 600; /* Changed to slightly bold */
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #000; /* Brighten on hover */
+    text-decoration: none; /* No underline */
+}
+
+.content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content h2 {
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.content p {
+    color: #555;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.content a {
+    color: #555;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: rgba(0,0,0,0.02); /* Very subtle highlight by default */
+    padding: 0 2px; /* Small padding to make the highlight more visible */
+    border-radius: 2px; /* Slightly rounded corners for the highlight */
+}
+
+.content a:hover {
+    color: #333; /* Slightly highlighted text */
+    background-color: rgba(0,0,0,0.05); /* Slightly stronger highlight on hover */
+}
+
+.about-section {
+    margin-bottom: 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Reading list styles */
+.reading-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reading-entry {
+    background: #fefcf0;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    cursor: pointer;
+    display: flex; /* Flexbox for the title and button */
+    flex-direction: column; /* Stack the title and content vertically */
+    border: 1px solid #ddd;
+}
+
+.reading-title {
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.expand-button {
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #007BFF;
+    display: inline-block; /* Keep it next to title */
+    margin-left: auto; /* Move the button to the far right */
+    margin-top: -30px; /* Pull the button up to align with the title */
+}
+
+
+.reading-content {
+    display: none;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
