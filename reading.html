@@ -25,6 +25,7 @@
 
     <div class="content">
         <h2>reading</h2>
+
         <ul class="reading-list">
             <!-- Entry 7 -->
             <li class="reading-entry" onclick="toggleEntry(this)">
@@ -83,6 +84,11 @@
                 </div>
             </li>
 
+            <!-- View Counter Widget -->
+        <div class="view-counter">
+            <p>Page views: <span id="viewCount">0</span></p>
+        </div>
+
         </ul>
     </div>
 
@@ -99,6 +105,32 @@
                 button.textContent = "-";
             }
         }
+        
+            // View counter logic
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check if localStorage is supported
+                if (typeof(Storage) !== "undefined") {
+                    // Try to get the current count
+                    let pageKey = 'pageViews_' + window.location.pathname;
+                    let count = localStorage.getItem(pageKey);
+                    
+                    // If no previous count exists, initialize to 1, otherwise increment
+                    if (count === null) {
+                        count = 1;
+                    } else {
+                        count = parseInt(count) + 1;
+                    }
+                    
+                    // Save the updated count
+                    localStorage.setItem(pageKey, count);
+                    
+                    // Update the display
+                    document.getElementById('viewCount').textContent = count;
+                } else {
+                    // If localStorage is not supported
+                    document.getElementById('viewCount').textContent = "Not available";
+                }
+            });
         
     </script>
 </body>
