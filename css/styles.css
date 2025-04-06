@@ -114,7 +114,6 @@ footer {
     margin-top: -30px; /* Pull the button up to align with the title */
 }
 
-
 .reading-content {
     display: none;
     padding-top: 10px;
@@ -136,7 +135,6 @@ footer {
     border-radius: 12px;
     background: #fefcf0;
     border: 1px solid #e0e0e0;
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 
