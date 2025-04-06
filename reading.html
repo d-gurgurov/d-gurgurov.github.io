@@ -83,13 +83,14 @@
                     <p><a href="https://medium.com/curious/the-right-philosophy-for-our-times-356b723b6ae4" target="_blank">An essay (by Adam Dhalla) on transcendentalism</a>, a philosophical movement placing an emphasis on self-reliance and individuality. Nurturing these elements can "build mental resilience at the individual level of our society and increase the strength of our network".</p>
                 </div>
             </li>
-
-            <!-- View Counter Widget -->
-        <div class="view-counter">
-            <p>Page views: <span id="viewCount">0</span></p>
-        </div>
-
         </ul>
+
+        <!-- Fancy View Counter in Footer -->
+        <div class="footer-counter">
+            <span class="view-count">
+                <span id="viewCount" class="view-count-number">0</span> views
+            </span>
+        </div>
     </div>
 
     <script>
@@ -106,31 +107,50 @@
             }
         }
         
-            // View counter logic
-            document.addEventListener('DOMContentLoaded', function() {
-                // Check if localStorage is supported
-                if (typeof(Storage) !== "undefined") {
-                    // Try to get the current count
-                    let pageKey = 'pageViews_' + window.location.pathname;
-                    let count = localStorage.getItem(pageKey);
-                    
-                    // If no previous count exists, initialize to 1, otherwise increment
-                    if (count === null) {
-                        count = 1;
-                    } else {
-                        count = parseInt(count) + 1;
-                    }
-                    
-                    // Save the updated count
-                    localStorage.setItem(pageKey, count);
-                    
-                    // Update the display
-                    document.getElementById('viewCount').textContent = count;
+        // View counter logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if localStorage is supported
+            if (typeof(Storage) !== "undefined") {
+                // Try to get the current count
+                let pageKey = 'pageViews_' + window.location.pathname;
+                let count = localStorage.getItem(pageKey);
+                
+                // If no previous count exists, initialize to 1, otherwise increment
+                if (count === null) {
+                    count = 1;
                 } else {
-                    // If localStorage is not supported
-                    document.getElementById('viewCount').textContent = "Not available";
+                    count = parseInt(count) + 1;
                 }
-            });
+                
+                // Save the updated count
+                localStorage.setItem(pageKey, count);
+                
+                // Update the display with animation
+                const viewCount = document.getElementById('viewCount');
+                viewCount.textContent = "0";
+                
+                // Simple count-up animation
+                let currentCount = 0;
+                const targetCount = count;
+                const duration = 1000; // 1 second animation
+                const interval = 50; // Update every 50ms
+                const steps = duration / interval;
+                const increment = targetCount / steps;
+                
+                const counter = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= targetCount) {
+                        clearInterval(counter);
+                        viewCount.textContent = targetCount;
+                    } else {
+                        viewCount.textContent = Math.floor(currentCount);
+                    }
+                }, interval);
+            } else {
+                // If localStorage is not supported
+                document.getElementById('viewCount').textContent = "N/A";
+            }
+        });
         
     </script>
 </body>
