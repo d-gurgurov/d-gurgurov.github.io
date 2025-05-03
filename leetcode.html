@@ -41,5 +41,21 @@
 
     </div>
 
+    <script>
+        function toggleEntry(entry) {
+            let content = entry.querySelector('.reading-content');
+            let button = entry.querySelector('.expand-button');
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.textContent = "+";
+            } else {
+                content.style.display = "block";
+                button.textContent = "-";
+            }
+        }
+
+    </script>
+
 </body>
 </html>
