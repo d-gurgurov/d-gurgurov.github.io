@@ -28,6 +28,14 @@
         <h2>leetcode</h2>
 
         <ul class="reading-list">
+            <!-- LeetCode 2 -->
+            <li class="reading-entry" onclick="toggleEntry(this)">
+                <span class="reading-title">Best Time to Buy and Sell Stock</span>
+                <span class="expand-button">+</span>
+                <div class="reading-content">
+                    <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">Best Time to Buy and Sell Stock</a>: either use a brute force solution (computing the profit between every pair of days), which results in quadratic complexity, or use two pointers to track the minimum price and the potential selling price; update the profit whenever a higher value is found (linear complexity).</p>
+                </div>
+            </li>
             <!-- LeetCode 1 -->
             <li class="reading-entry" onclick="toggleEntry(this)">
                 <span class="reading-title">Two Sum</span>
@@ -37,7 +45,6 @@
                     <div id="two-sum-vis" class="leetcode-visual"></div>
                     <script src="assets/visuals/twosum.js"></script>
                 </div>
-                
             </li>
             
         </ul>
