@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
             stepRow.style.gap = "10px";
             stepRow.innerHTML = `
                 <div style="padding: 6px 10px; border: 2px solid #333; border-radius: 5px;">${current}</div>
-                <div style="padding: 6px 10px; border: 2px solid #333; border-radius: 5px;">Quotient: ${quotient}</div>
-                <div style="padding: 6px 10px; border: 2px solid #333; border-radius: 5px; background:#ffeb3b;">Remainder (Bit): ${remainder}</div>
+                <div style="padding: 6px 10px; border: 2px solid #333; border-radius: 5px;">Int.: ${quotient}</div>
+                <div style="padding: 6px 10px; border: 2px solid #333; border-radius: 5px; background:#ffeb3b;">Rem.: ${remainder}</div>
             `;
 
             divisionSteps.appendChild(stepRow);

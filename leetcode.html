@@ -34,7 +34,7 @@
                 <span class="expand-button">+</span>
                 <div class="reading-content">
                     <p><a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank">Number of 1 Bits</a>: use the division technique - divide the initial number by 2, keep the resulting integer and remainder. The remainder will be either 0 or 1, that is the associated bit. Divide the resulting integer and repeat the previous steps until this integer is equal to 0. Collect the bits - they represent the binary for the number.</p>
-                    <div id="number-of-1-bits-vis" class="leetcode-visual"></div>
+                    <div id="number-of-1-bits-vis" class="leetcode-visual" data-script="assets/visuals/number-1-bits.js"></div>
                     <script src="assets/visuals/number-1-bits.js"></script>
                 </div>
             </li>
@@ -44,17 +44,17 @@
                 <span class="expand-button">+</span>
                 <div class="reading-content">
                     <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">Best Time to Buy and Sell Stock</a>: either use a brute force solution (computing the profit between every pair of days), which results in quadratic complexity, or use two pointers to track the minimum price and the potential selling price; update the profit whenever a higher value is found (linear complexity).</p>
-                    <div id="best-stock-vis" class="leetcode-visual"></div>
+                    <div id="best-stock-vis" class="leetcode-visual" data-script="assets/visuals/best-stock.js"></div>
                     <script src="assets/visuals/best-stock.js"></script>
                 </div>
             </li>
             <!-- LeetCode 1 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
+            <li class="reading-entry" onclick="toggleEntry(this)" data-script="assets/visuals/twosum.js">
                 <span class="reading-title">Two Sum</span>
                 <span class="expand-button">+</span>
                 <div class="reading-content">
                     <p><a href="https://leetcode.com/problems/two-sum/description/" target="_blank">Two Sum</a>: either use a brute force solution (ensuring that the two numbers are not the same), which results in quadratic complexity, or use a hashmap (a dictionary in Python) to store the numbers and their indices, and check if the difference between the current value and the target value is already in the dictionary (linear complexity).</p>
-                    <div id="two-sum-vis" class="leetcode-visual"></div>
+                    <div id="two-sum-vis" class="leetcode-visual" data-script="assets/visuals/twosum.js"></div>
                     <script src="assets/visuals/twosum.js"></script>
                 </div>
             </li>
@@ -65,19 +65,37 @@
 
     <script>
         function toggleEntry(entry) {
-            let content = entry.querySelector('.reading-content');
-            let button = entry.querySelector('.expand-button');
-
+            const content = entry.querySelector('.reading-content');
+            const button = entry.querySelector('.expand-button');
+    
             if (content.style.display === "block") {
                 content.style.display = "none";
                 button.textContent = "+";
             } else {
                 content.style.display = "block";
                 button.textContent = "-";
+    
+                const visContainer = content.querySelector('.leetcode-visual');
+    
+                if (visContainer && !visContainer.dataset.scriptLoaded) {
+                    const scriptPath = visContainer.dataset.script;
+    
+                    if (scriptPath) {
+                        const script = document.createElement('script');
+                        script.src = scriptPath;
+                        script.onload = () => {
+                            visContainer.dataset.scriptLoaded = "true";
+                        };
+                        document.body.appendChild(script);
+                    } else {
+                        console.warn("No data-script attribute found on visualization container.");
+                    }
+                }
             }
         }
-
     </script>
+    
+    
 
 </body>
 </html>
