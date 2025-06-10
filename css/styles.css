@@ -142,3 +142,31 @@ footer {
     color: #555;
     font-weight: 800;
 }
+
+.magnetLines-container {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            margin: 2rem auto;
+        }
+
+.magnetLines-container span {
+    display: block;
+    transform-origin: center;
+    will-change: transform;
+    transform: rotate(var(--rotate));
+    transition: transform 0.1s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .magnetLines-container {
+        width: 80vmin !important;
+        height: 80vmin !important;
+    }
+    
+    .magnetLines-container span {
+        width: 1.2vmin !important;
+        height: 4vmin !important;
+    }
+}
