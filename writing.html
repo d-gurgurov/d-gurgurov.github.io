@@ -27,6 +27,216 @@
     <div class="content">
         <h2>writing</h2>
         <p>coming soon...</p>
+        <div class="game-of-life-container">
+            <canvas id="gameCanvas" class="game-canvas" width="300" height="200"></canvas>
+            <div class="game-controls">
+                <button id="playBtn" class="game-btn">Play</button>
+                <button id="pauseBtn" class="game-btn" disabled>Pause</button>
+                <button id="clearBtn" class="game-btn">Clear</button>
+                <button id="randomBtn" class="game-btn">Random</button>
+            </div>
+            <div class="speed-control">
+                <label>Speed:</label>
+                <input type="range" id="speedSlider" class="speed-slider" min="1" max="20" value="10">
+            </div>
+            <div class="game-info">
+                Click cells to toggle • Generation: <span id="generation">0</span>
+            </div>
+        </div>
     </div>
+
+    <script>
+        class GameOfLife {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.cellSize = 5;
+                this.cols = Math.floor(canvas.width / this.cellSize);
+                this.rows = Math.floor(canvas.height / this.cellSize);
+                
+                this.grid = this.createGrid();
+                this.isRunning = false;
+                this.generation = 0;
+                this.speed = 100; // ms between generations
+                
+                this.setupEventListeners();
+                this.draw();
+            }
+            
+            createGrid() {
+                return Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+            }
+            
+            setupEventListeners() {
+                this.canvas.addEventListener('click', (e) => {
+                    if (!this.isRunning) {
+                        const rect = this.canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const col = Math.floor(x / this.cellSize);
+                        const row = Math.floor(y / this.cellSize);
+                        
+                        if (row >= 0 && row < this.rows && col >= 0 && col < this.cols) {
+                            this.grid[row][col] = !this.grid[row][col];
+                            this.draw();
+                        }
+                    }
+                });
+            }
+            
+            countNeighbors(row, col) {
+                let count = 0;
+                for (let i = -1; i <= 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        if (i === 0 && j === 0) continue;
+                        const newRow = row + i;
+                        const newCol = col + j;
+                        if (newRow >= 0 && newRow < this.rows && newCol >= 0 && newCol < this.cols) {
+                            if (this.grid[newRow][newCol]) count++;
+                        }
+                    }
+                }
+                return count;
+            }
+            
+            nextGeneration() {
+                const newGrid = this.createGrid();
+                
+                for (let row = 0; row < this.rows; row++) {
+                    for (let col = 0; col < this.cols; col++) {
+                        const neighbors = this.countNeighbors(row, col);
+                        const isAlive = this.grid[row][col];
+                        
+                        if (isAlive && (neighbors === 2 || neighbors === 3)) {
+                            newGrid[row][col] = true;
+                        } else if (!isAlive && neighbors === 3) {
+                            newGrid[row][col] = true;
+                        }
+                    }
+                }
+                
+                this.grid = newGrid;
+                this.generation++;
+                document.getElementById('generation').textContent = this.generation;
+                this.draw();
+            }
+            
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Draw grid
+                this.ctx.strokeStyle = '#e0e0e0';
+                this.ctx.lineWidth = 0.5;
+                
+                for (let i = 0; i <= this.cols; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(i * this.cellSize, 0);
+                    this.ctx.lineTo(i * this.cellSize, this.canvas.height);
+                    this.ctx.stroke();
+                }
+                
+                for (let i = 0; i <= this.rows; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, i * this.cellSize);
+                    this.ctx.lineTo(this.canvas.width, i * this.cellSize);
+                    this.ctx.stroke();
+                }
+                
+                // Draw living cells
+                this.ctx.fillStyle = '#333';
+                for (let row = 0; row < this.rows; row++) {
+                    for (let col = 0; col < this.cols; col++) {
+                        if (this.grid[row][col]) {
+                            this.ctx.fillRect(
+                                col * this.cellSize + 1,
+                                row * this.cellSize + 1,
+                                this.cellSize - 2,
+                                this.cellSize - 2
+                            );
+                        }
+                    }
+                }
+            }
+            
+            play() {
+                this.isRunning = true;
+                this.animate();
+            }
+            
+            pause() {
+                this.isRunning = false;
+            }
+            
+            clear() {
+                this.grid = this.createGrid();
+                this.generation = 0;
+                document.getElementById('generation').textContent = this.generation;
+                this.draw();
+            }
+            
+            randomize() {
+                for (let row = 0; row < this.rows; row++) {
+                    for (let col = 0; col < this.cols; col++) {
+                        this.grid[row][col] = Math.random() < 0.3;
+                    }
+                }
+                this.generation = 0;
+                document.getElementById('generation').textContent = this.generation;
+                this.draw();
+            }
+            
+            animate() {
+                if (this.isRunning) {
+                    this.nextGeneration();
+                    setTimeout(() => this.animate(), this.speed);
+                }
+            }
+            
+            setSpeed(speed) {
+                this.speed = 110 - speed * 5; // Convert 1-20 to 105-10ms
+            }
+        }
+        
+        // Initialize the game
+        const canvas = document.getElementById('gameCanvas');
+        const game = new GameOfLife(canvas);
+        
+        // Control buttons
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        
+        playBtn.addEventListener('click', () => {
+            game.play();
+            playBtn.disabled = true;
+            pauseBtn.disabled = false;
+        });
+        
+        pauseBtn.addEventListener('click', () => {
+            game.pause();
+            playBtn.disabled = false;
+            pauseBtn.disabled = true;
+        });
+        
+        clearBtn.addEventListener('click', () => {
+            game.pause();
+            game.clear();
+            playBtn.disabled = false;
+            pauseBtn.disabled = true;
+        });
+        
+        randomBtn.addEventListener('click', () => {
+            game.randomize();
+        });
+        
+        speedSlider.addEventListener('input', (e) => {
+            game.setSpeed(parseInt(e.target.value));
+        });
+        
+        // Start with a random pattern
+        game.randomize();
+    </script>
 </body>
 </html>
