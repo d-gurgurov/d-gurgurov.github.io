@@ -277,74 +277,7 @@
                 </div>
             </li>
         </ul>
-
-        <!-- View Counter -->
-        <div class="footer-counter">
-            <span class="view-count">
-                <span id="viewCount" class="view-count-number">0</span> views
-            </span>
-        </div>
     </div>
 
-    <script>
-        function toggleEntry(entry) {
-            let content = entry.querySelector('.reading-content');
-            let button = entry.querySelector('.expand-button');
-
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                button.textContent = "+";
-            } else {
-                content.style.display = "block";
-                button.textContent = "-";
-            }
-        }
-        
-        // View counter logic
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if localStorage is supported
-            if (typeof(Storage) !== "undefined") {
-                // Try to get the current count
-                let pageKey = 'pageViews_' + window.location.pathname;
-                let count = localStorage.getItem(pageKey);
-                
-                // If no previous count exists, initialize to 1, otherwise increment
-                if (count === null) {
-                    count = 1;
-                } else {
-                    count = parseInt(count) + 1;
-                }
-                
-                // Save the updated count
-                localStorage.setItem(pageKey, count);
-                
-                // Update the display with animation
-                const viewCount = document.getElementById('viewCount');
-                viewCount.textContent = "0";
-                
-                // Simple count-up animation
-                let currentCount = 0;
-                const targetCount = count;
-                const duration = 1000; // 1 second animation
-                const interval = 50; // Update every 50ms
-                const steps = duration / interval;
-                const increment = targetCount / steps;
-                
-                const counter = setInterval(() => {
-                    currentCount += increment;
-                    if (currentCount >= targetCount) {
-                        clearInterval(counter);
-                        viewCount.textContent = targetCount;
-                    } else {
-                        viewCount.textContent = Math.floor(currentCount);
-                    }
-                }, interval);
-            } else {
-                // If localStorage is not supported
-                document.getElementById('viewCount').textContent = "N/A";
-            }
-        });
-        
-    </script>
 </body>
 </html>
