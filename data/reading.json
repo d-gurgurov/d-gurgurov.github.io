@@ -1,0 +1,188 @@
+[
+  {
+    "title": "Language Models Model Language",
+    "url": "https://arxiv.org/pdf/2510.12766",
+    "linkText": "An opinion paper",
+    "description": "on how Chomsky's critique of LLMs is being unproductive and how we should be moving from the need for the model to have \"deep structure\" of the language (which we ourselves only speculate about) towards something else. An alternative is the Manczakian view that \"frequency of use of language elements is a primary force shaping language\"."
+  },
+  {
+    "title": "Information Theory: A Tutorial Introduction",
+    "url": "https://arxiv.org/pdf/1802.05968",
+    "linkText": "A tutorial introduction",
+    "description": "on the most important notions in information theory by James Stone."
+  },
+  {
+    "title": "What Philosophy Is Good For",
+    "url": "https://jessylin.com/2019/11/17/what-philosophy-is-good-for/?curius=574",
+    "linkText": "An essay",
+    "description": "by Jessy Lin on the similarities between mathematics and philosophy. Philosophy helps make everyday concepts more rigorous."
+  },
+  {
+    "title": "Language-Specific Neurons: The Key to Multilingual Capabilities in LLMs",
+    "url": "https://arxiv.org/pdf/2402.16438",
+    "linkText": "A paper",
+    "description": "by Tang et al. (2024) propose language activation probability entropy to identify language neurons and demonstrate the effects of ablating those neurons."
+  },
+  {
+    "title": "Emergent Abilities of LLMs under Continued Pretraining for Language Adaptation",
+    "url": "https://arxiv.org/pdf/2506.00288",
+    "linkText": "A paper",
+    "description": "by Elhady et al. (2025) demonstrate that when adapting a model to a new language using continued pre-training including English in the training data does not improve the performance, but it does contribute to the embergence of the downstream capabilities in the target language (likely due to the distribution shift)."
+  },
+  {
+    "title": "The Way of Code",
+    "url": "https://www.thewayofcode.com/",
+    "linkText": "On vibe coding",
+    "description": "by Anthropic with the words based on Rick Rubin."
+  },
+  {
+    "title": "Unveiling Language-Specific Features in Large Language Models",
+    "url": "https://arxiv.org/pdf/2505.05111",
+    "linkText": "A paper",
+    "description": "by Deng et al. (2025) introduce a new metric to assess the monolinguality of features obtained from SAEs. They further use these features to enhance steering vectors, which allows for full control over the generation language."
+  },
+  {
+    "title": "YaRN: Efficient Context Window Extension of LLMs",
+    "url": "https://arxiv.org/pdf/2309.00071",
+    "linkText": "A paper",
+    "description": "by Peng et al. (2023) proposes an effective way of mathematically stretching existing position encodings to handle longer sequences (instead of training the whole model). It requires only a small fraction of original training data (10x) and training steps (2.5x) than previous methods."
+  },
+  {
+    "title": "Language Models Solve Math with a Bag of Heuristics",
+    "url": "https://arxiv.org/pdf/2410.21272",
+    "linkText": "A paper",
+    "description": "by Nikankin et al. (2024) discovers a sparse set of neurons that implement simple heuristics, which identify an input pattern and outputs the appropriate answer."
+  },
+  {
+    "title": "Good vs Great Animations",
+    "url": "https://emilkowal.ski/ui/good-vs-great-animations",
+    "linkText": "A \"guide\"",
+    "description": "by Emil Kowalski on how to make your websites stand out with great animations."
+  },
+  {
+    "title": "70% Size, 100% Accuracy: Lossless LLM Compression",
+    "url": "https://arxiv.org/pdf/2504.11651",
+    "linkText": "A paper",
+    "description": "by Zhang et al. (2025) introduces DFloat11 that compresses any BFloat16 model to 70% of its size while keeping 100% performance on any task."
+  },
+  {
+    "title": "DCAD-2000: Data Cleaning as Anomaly Detection",
+    "url": "https://arxiv.org/pdf/2502.11546",
+    "linkText": "A paper",
+    "description": "by Shen et al. (2025) compiles a new dataset for 2282 languages. They get various statistical features (landuage identification score, word repetition, perplexity score, and special character ratio) from each document to assess quality and then use anomoly detection (language-agnostic) methods to identify and remove outliers that deviate from typical document quality metrics."
+  },
+  {
+    "title": "Intro to RLHF and Post-Training",
+    "url": "https://rlhfbook.com/c/04-optimization.html",
+    "linkText": "A book",
+    "description": "by Nathan Lambert on the reinforcement learning from human feedback and post-training in the context of language models."
+  },
+  {
+    "title": "Latents",
+    "url": "https://sander.ai/2025/04/15/latents.html",
+    "linkText": "A blog post",
+    "description": "by Sander Dieleman on the latent representations learned through representation learning and reconstruction. \"Three main aspects to consider when designing latent spaces are capacity (how many bits of information are encoded in the latents), curation (which bits from the input signals are retained) and shape (how this information is presented)\"."
+  },
+  {
+    "title": "The Second Half",
+    "url": "https://ysymyth.github.io/The-Second-Half/?utm_source=tldrnewsletter",
+    "linkText": "Shunyu Yao",
+    "description": "argues that we now have the proper RL priors (language pre-training) and RL environment (language reasoning), and as a consequence we can use basic RL algorithms for building strong AI. He argues that it is \"the second half\" for AI currently, where we should be focusing on developing novel evaluations that will reflect real world utility."
+  },
+  {
+    "title": "When Is Multilinguality a Curse?",
+    "url": "https://aclanthology.org/2024.emnlp-main.236.pdf",
+    "linkText": "Chang et al. (2025)",
+    "description": "show that adding multilingual data, as dataset sizes increase, starts to hurt performance both for low-resource and high-resource languages and suggest that more targeted models can be more beneficial. Related languages can help low-resource languages only if syntactically similar."
+  },
+  {
+    "title": "Does BERT Rediscover the Classical NLP Pipeline?",
+    "url": "https://aclanthology.org/P19-1452.pdf",
+    "linkText": "Niu et al. (2022)",
+    "description": "introduce a novel probe method, GridLoc, and show that layer-depth is not the best way to explain the inner workings of BERT."
+  },
+  {
+    "title": "BERT Rediscovers the Classical NLP Pipeline",
+    "url": "https://aclanthology.org/P19-1452.pdf",
+    "linkText": "Tenney et al. (2019)",
+    "description": "show that BERT represents the steps of the classical NLP pipeline; layers responsible for each step appear to be in the expected order (POS tagging, parsing, NER, semantic roles, coreference)."
+  },
+  {
+    "title": "The BELEBELE Benchmark",
+    "url": "https://arxiv.org/pdf/2308.16884",
+    "linkText": "Bandarkar et al. (2024)",
+    "description": "build a multilingual multiple-choice machine reading comprehension dataset for 122 language variants based on FLORES-200."
+  },
+  {
+    "title": "SliceGPT: Compress Large Language Models by Deleting Rows and Columns",
+    "url": "https://arxiv.org/pdf/2401.15024",
+    "linkText": "Ashkboos et al. (2024)",
+    "description": "introduce a novel post-training sparcification method that applies orthogonal transformations to transformer layers (which leave the model unchanged) and then \"slice off\" lest important rows and columns."
+  },
+  {
+    "title": "SuperBPE: Space Travel for Language Models",
+    "url": "https://arxiv.org/pdf/2503.13423",
+    "linkText": "Liu et al. (2025)",
+    "description": "introduce SuperBPE that learns both subwords and superwords, which uses up to 33% less tokens than a regular BPE tokenizer and provides a better performance on 30 downstream tasks. SuperBPE captures comon multi-word expressions that function as a single unit."
+  },
+  {
+    "title": "Compression Laws for Large Language Models",
+    "url": "https://arxiv.org/pdf/2504.04342",
+    "linkText": "Sengupta et al. (2025)",
+    "description": "show that \"the test cross-entropy loss increases quadratically with the compression ratio, whereas performance on downstream tasks declines only linearly.\" They apply calibration-free and calibration-based structured prunning to Qwen and Llama ranging from 0.5B to 14B."
+  },
+  {
+    "title": "Transformer Models without Positional Encodings Still Learn Positional Information",
+    "url": "https://arxiv.org/pdf/2203.16634",
+    "linkText": "Haviv et al. (2022)",
+    "description": "show that decoder-only LMs without posititional encoding still seem to learn the positional information (possbily from causal attention). This does not hold for decoder-only models."
+  },
+  {
+    "title": "Transformer Feed-Forward Layers Are Key-Value Memories",
+    "url": "https://arxiv.org/pdf/2012.14913",
+    "linkText": "Geva et al. (2021)",
+    "description": "demonstrate that MLP layers resemble key-value memories, where keys detect specific input patterns and values provide a distribution over possible next words that commonly follow the detected pattern."
+  },
+  {
+    "title": "Interpreting Reasoning Features in Large Language Models via Sparse Autoencoders",
+    "url": "https://arxiv.org/pdf/2503.18878",
+    "linkText": "Galichin et al. (2025)",
+    "description": "use SAEs to find the features responsible for \"reasoning\" in the distilled Deepseek-R1-based Llama model. They show that implifying these features makes the thinking process longer and improves performance on reasoning related tasks."
+  },
+  {
+    "title": "From System 1 to System 2: A Survey of Reasoning Large Language Models",
+    "url": "https://arxiv.org/pdf/2502.17419",
+    "linkText": "Li et al. (2025)",
+    "description": "talk about reasoning and non-reasoning models as System 1 (fast decision making) and System 2 (logical reasoning with more accurate judgements) immitators."
+  },
+  {
+    "title": "Language-specific Neurons Do Not Facilitate Cross-Lingual Transfer",
+    "url": "https://arxiv.org/pdf/2503.17456",
+    "linkText": "Mondal et al. (2025)",
+    "description": "identify language-specific neurons and perform test-time interventions on those neurons (fine-tuning only language-specific neurons and other variations). They demonstrate that this approach is not effective in cross-lingual knowledge transfer on XNLI and XQuAD. Finally, they hypothesize that language-specific neurons lack independence due to their polysemantic nature."
+  },
+  {
+    "title": "How to Test Generation Capabilities of LLMs?",
+    "url": "https://github.com/EleutherAI/lm-evaluation-harness",
+    "linkText": "lm_evaluation_harness package",
+    "description": "by EleutherAI. 60 standard academic benchmarks and all HuggingFace models supported."
+  },
+  {
+    "title": "How do Large Language Models Handle Multilingualism?",
+    "url": "https://arxiv.org/pdf/2402.18815",
+    "linkText": "A paper by Zhao et al. (2024)",
+    "description": "hypothesizes that mutilingual models go through three stages when prompted with non-English queries - (1) LLMs understand a prompt by converting linguistic features into a unified representation, (2) they reason in English (with self-attention) and incorporate multilingual knowledge to get factual information (with feed-forward networks), and (3) generate responses in the language of the initial prompt. They further propose Parallel Language-specific Neuron Detection that, unlike other methods, works with unlabeled data and then fine-tune language-specific neurons on the target language."
+  },
+  {
+    "title": "Do Multilingual LLMs Think in English?",
+    "url": "https://arxiv.org/pdf/2502.15603",
+    "linkText": "A paper by Schut et al. (2025)",
+    "description": "suggests that LLMs make decision concerning semantically-loaded words in the intermediate layers in English whereas other types of words are routed through non-English language representations."
+  },
+  {
+    "title": "The Right Philosophy for Our Times",
+    "url": "https://medium.com/curious/the-right-philosophy-for-our-times-356b723b6ae4",
+    "linkText": "An essay (by Adam Dhalla) on transcendentalism",
+    "description": "a philosophical movement placing an emphasis on self-reliance and individuality. Nurturing these elements can \"build mental resilience at the individual level of our society and increase the strength of our network\"."
+  }
+]

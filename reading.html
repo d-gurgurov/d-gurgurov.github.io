@@ -19,14 +19,13 @@
                 <a href="writing.html">writing</a>
                 <a href="index.html">about</a>
                 <a href="reading.html">reading</a>
-                <!--<a href="leetcode.html">leetcode</a> -->
             </div>
         </nav>
     </header>
 
     <div class="content">
-        <h2>reading</h2> 
-
+        <h2>reading</h2>
+        
         <div class="search-container">
             <input type="text" 
                    class="search-box" 
@@ -35,263 +34,53 @@
             <div class="search-results-info" id="resultsInfo"></div>
         </div>
 
-        <ul class="reading-list" id="readingList">
-            <!-- Entry 31 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Language Models Model Language</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2510.12766" target="_blank">An opinion paper</a> on how Chomsky’s critique of LLMs is being unproductive and how we should be moving from the need for the model to have “deep structure” of the language (which we ourselves only speculate about) towards something else. An alternative is the Manczakian view that "frequency of use of language elements is a primary force shaping language".</p>
-                </div>
-            </li>
-            <!-- Entry 30 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Information Theory: A Tutorial Introduction</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/1802.05968" target="_blank">A tutorial introduction</a> on the most important notions in information theory by James Stone.</p>
-                </div>
-            </li>
-            <!-- Entry 29 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">What Philosophy Is Good For</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://jessylin.com/2019/11/17/what-philosophy-is-good-for/?curius=574" target="_blank">An essay</a> by Jessy Lin on the similarities between mathematics and philosophy. Philosophy helps make everyday concepts more rigorous.</p>
-                </div>
-            </li>
-            <!-- Entry 28 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Language-Specific Neurons: The Key to Multilingual Capabilities in LLMs</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2402.16438" target="_blank">A paper</a> by Tang et al. (2024) propose language activation probability entropy to identify language neurons and demonstrate the effects of ablating those neurons.</p>
-                </div>
-            </li>
-            <!-- Entry 27 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Emergent Abilities of LLMs under Continued Pretraining for Language Adaptation</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2506.00288" target="_blank">A paper</a> by Elhady et al. (2025) demonstrate that when adapting a model to a new language using continued pre-training including English in the training data does not improve the performance, but it does contribute to the embergence of the downstream capabilities in the target language (likely due to the distribution shift).</p>
-                </div>
-            </li>
-            <!-- Entry 26 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">The Way of Code</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://www.thewayofcode.com/" target="_blank">On vibe coding</a> by Anthropic with the words based on Rick Rubin.</p>
-                </div>
-            </li>
-            <!-- Entry 25 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Unveiling Language-Specific Features in Large Language Models</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2505.05111" target="_blank">A paper</a> by Deng et al. (2025) introduce a new metric to assess the monolinguality of features obtained from SAEs. They further use these features to enhance steering vectors, which allows for full control over the generation language.</p>
-                </div>
-            </li>
-            <!-- Entry 24 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">YaRN: Efficient Context Window Extension of LLMs</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2309.00071" target="_blank">A paper</a> by Peng et al. (2023) proposes an effective way of mathematically stretching existing position encodings to handle longer sequences (instead of training the whole model). It requires only a small fraction of original training data (10x) and training steps (2.5x) than previous methods.</p>
-                </div>
-            </li>
-            <!-- Entry 23 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Language Models Solve Math with a Bag of Heuristics</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2410.21272" target="_blank">A paper</a> by Nikankin et al. (2024) discovers a sparse set of neurons that implement simple heuristics, which identify an input pattern and outputs the appropriate answer.</p>
-                </div>
-            </li>
-            <!-- Entry 22 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Good vs Great Animations</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://emilkowal.ski/ui/good-vs-great-animations" target="_blank">A "guide"</a> by Emil Kowalski on how to make your websites stand out with great animations.</p>
-                </div>
-            </li>
-            <!-- Entry 21 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">70% Size, 100% Accuracy: Lossless LLM Compression</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2504.11651" target="_blank">A paper</a> by Zhang et al. (2025) introduces DFloat11 that compresses any BFloat16 model to 70% of its size while keeping 100% performance on any task.</p>
-                </div>
-            </li>
-            <!-- Entry 20 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">DCAD-2000: Data Cleaning as Anomaly Detection</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2502.11546" target="_blank">A paper</a> by Shen et al. (2025) compiles a new dataset for 2282 languages. They get various statistical features (landuage identification score, word repetition, perplexity score, and special character ratio) from each document to assess quality and then use anomoly detection (language-agnostic) methods to identify and remove outliers that deviate from typical document quality metrics.</p>
-                </div>
-            </li>
-            <!-- Entry 19 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Intro to RLHF and Post-Training</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://rlhfbook.com/c/04-optimization.html" target="_blank">A book</a> by Nathan Lambert on the reinforcement learning from human feedback and post-training in the context of language models.</p>
-                </div>
-            </li>
-            <!-- Entry 18 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Latents</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://sander.ai/2025/04/15/latents.html" target="_blank">A blog post</a> by Sander Dieleman on the latent representations learned through representation learning and reconstruction. "Three main aspects to consider when designing latent spaces are capacity (how many bits of information are encoded in the latents), curation (which bits from the input signals are retained) and shape (how this information is presented)".</p>
-                </div>
-            </li>
-            <!-- Entry 17 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">The Second Half</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://ysymyth.github.io/The-Second-Half/?utm_source=tldrnewsletter" target="_blank">Shunyu Yao</a> argues that we now have the proper RL priors (language pre-training) and RL environment (language reasoning), and as a consequence we can use basic RL algorithms for building strong AI. He argues that it is "the second half" for AI currently, where we should be focusing on developing novel evaluations that will reflect real world utility.</p>
-                </div>
-            </li>
-            <!-- Entry 16 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">When Is Multilinguality a Curse?</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://aclanthology.org/2024.emnlp-main.236.pdf" target="_blank">Chang et al. (2025)</a> show that adding multilingual data, as dataset sizes increase, starts to hurt performance both for low-resource and high-resource languages and suggest that more targeted models can be more beneficial. Related languages can help low-resource languages only if syntactically similar.</p>
-                </div>
-            </li>
-            <!-- Entry 15 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Does BERT Rediscover the Classical NLP Pipeline?</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://aclanthology.org/P19-1452.pdf" target="_blank">Niu et al. (2022)</a> introduce a novel probe method, GridLoc, and show that layer-depth is not the best way to explain the inner workings of BERT.</p>
-                </div>
-            </li>
-            <!-- Entry 14 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">BERT Rediscovers the Classical NLP Pipeline</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://aclanthology.org/P19-1452.pdf" target="_blank">Tenney et al. (2019)</a> show that BERT represents the steps of the classical NLP pipeline; layers responsible for each step appear to be in the expected order (POS tagging, parsing, NER, semantic roles, coreference).</p>
-                </div>
-            </li>
-            <!-- Entry 13 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">The BELEBELE Benchmark</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2308.16884" target="_blank">Bandarkar et al. (2024)</a> build a multilingual multiple-choice machine reading comprehension dataset for 122 language variants based on FLORES-200.</p>
-                </div>
-            </li>
-            <!-- Entry 12 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">SliceGPT: Compress Large Language Models by Deleting Rows and Columns</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2401.15024" target="_blank">Ashkboos et al. (2024)</a> introduce a novel post-training sparcification method that applies orthogonal transformations to transformer layers (which leave the model unchanged) and then "slice off" lest important rows and columns.</p>
-                </div>
-            </li>
-            <!-- Entry 11 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">SuperBPE: Space Travel for Language Models</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2503.13423" target="_blank">Liu et al. (2025)</a> introduce SuperBPE that learns both subwords and superwords, which uses up to 33% less tokens than a regular BPE tokenizer and provides a better performance on 30 downstream tasks. SuperBPE captures comon multi-word expressions that function as a single unit.</p>
-                </div>
-            </li>
-            <!-- Entry 10 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Compression Laws for Large Language Models</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2504.04342" target="_blank">Sengupta et al. (2025)</a> show that "the test cross-entropy loss increases quadratically with the compression ratio, whereas performance on downstream tasks declines only linearly." They apply calibration-free and calibration-based structured prunning to Qwen and Llama ranging from 0.5B to 14B.</p>
-                </div>
-            </li>
-            <!-- Entry 9 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Transformer Models without Positional Encodings Still Learn Positional Information</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2203.16634" target="_blank">Haviv et al. (2022)</a> show that decoder-only LMs without posititional encoding still seem to learn the positional information (possbily from causal attention). This does not hold for decoder-only models.</p>
-                </div>
-            </li>
-            <!-- Entry 8 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Transformer Feed-Forward Layers Are Key-Value Memories</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2012.14913" target="_blank">Geva et al. (2021)</a> demonstrate that MLP layers resemble key-value memories, where keys detect specific input patterns and values provide a distribution over possible next words that commonly follow the detected pattern.</p>
-                </div>
-            </li>
-            <!-- Entry 7 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Interpreting Reasoning Features in Large Language Models via Sparse Autoencoders</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2503.18878" target="_blank">Galichin et al. (2025)</a> use SAEs to find the features responsible for "reasoning" in the distilled Deepseek-R1-based Llama model. They show that implifying these features makes the thinking process longer and improves performance on reasoning related tasks.</p>
-                </div>
-            </li>
-            <!-- Entry 6 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">From System 1 to System 2: A Survey of Reasoning Large Language Models</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2502.17419" target="_blank">Li et al. (2025)</a> talk about reasoning and non-reasoning models as System 1 (fast decision making) and System 2 (logical reasoning with more accurate judgements) immitators. </p>
-                </div>
-            </li>
-            <!-- Entry 5 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Language-specific Neurons Do Not Facilitate Cross-Lingual Transfer</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2503.17456" target="_blank">Mondal et al. (2025)</a> identify language-specific neurons and perform test-time interventions on those neurons (fine-tuning only language-specific neurons and other variations). They demonstrate that this approach is not effective in cross-lingual knowledge transfer on XNLI and XQuAD. Finally, they hypothesize that language-specific neurons lack independence due to their polysemantic nature.</p>
-                </div>
-            </li>
-            <!-- Entry 3 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">How to Test Generation Capabilities of LLMs?</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank">lm_evaluation_harness package</a> by EleutherAI. 60 standard academic benchmarks and all HuggingFace models supported.</p>
-                </div>
-            </li>
-            <!-- Entry 3 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">How do Large Language Models Handle Multilingualism?</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2402.18815" target="_blank">A paper by Zhao et al. (2024)</a> hypothesizes that mutilingual models go through three stages when prompted with non-English queries - (1) LLMs understand a prompt by converting linguistic features into a unified representation, (2) they reason in English (with self-attention) and incorporate multilingual knowledge to get factual information (with feed-forward networks), and (3) generate responses in the language of the initial prompt. They further propose Parallel Language-specific Neuron Detection that, unlike other methods, works with unlabeled data and then fine-tune language-specific neurons on the target language.</p>
-                </div>
-            </li>
-            <!-- Entry 2 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">Do Multilingual LLMs Think in English?</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://arxiv.org/pdf/2502.15603" target="_blank">A paper by Schut et al. (2025)</a> suggests that LLMs make decision concerning semantically-loaded words in the intermediate layers in English whereas other types of words are routed through non-English language representations.</p>
-                </div>
-            </li>
-            <!-- Entry 1 -->
-            <li class="reading-entry" onclick="toggleEntry(this)">
-                <span class="reading-title">The Right Philosophy for Our Times</span>
-                <span class="expand-button">+</span>
-                <div class="reading-content">
-                    <p><a href="https://medium.com/curious/the-right-philosophy-for-our-times-356b723b6ae4" target="_blank">An essay (by Adam Dhalla) on transcendentalism</a>, a philosophical movement placing an emphasis on self-reliance and individuality. Nurturing these elements can "build mental resilience at the individual level of our society and increase the strength of our network".</p>
-                </div>
-            </li>
-        </ul>
+        <div class="loading" id="loading">Loading reading list...</div>
+        <ul class="reading-list" id="readingList" style="display: none;"></ul>
         <div class="no-results" id="noResults" style="display: none;">
             No entries found matching your search.
         </div>
     </div>
 
-
     <script>
+        let allEntries = [];
+
+        // Load reading list from JSON
+        async function loadReadingList() {
+            try {
+                const response = await fetch('data/reading.json');
+                const data = await response.json();
+                allEntries = data;
+                renderReadingList(data);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('readingList').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading reading list:', error);
+                document.getElementById('loading').textContent = 'Error loading reading list. Please refresh the page.';
+            }
+        }
+
+        // Render reading list entries
+        function renderReadingList(entries) {
+            const readingList = document.getElementById('readingList');
+            readingList.innerHTML = '';
+            
+            entries.forEach(entry => {
+                const li = document.createElement('li');
+                li.className = 'reading-entry';
+                li.onclick = function() { toggleEntry(this); };
+                
+                li.innerHTML = `
+                    <span class="reading-title">${entry.title}</span>
+                    <span class="expand-button">+</span>
+                    <div class="reading-content">
+                        <p><a href="${entry.url}" target="_blank">${entry.linkText}</a> ${entry.description}</p>
+                    </div>
+                `;
+                
+                readingList.appendChild(li);
+            });
+        }
+
         function toggleEntry(entry) {
             const content = entry.querySelector('.reading-content');
             const button = entry.querySelector('.expand-button');
@@ -307,13 +96,13 @@
 
         // Search functionality
         const searchInput = document.getElementById('searchInput');
-        const readingList = document.getElementById('readingList');
         const resultsInfo = document.getElementById('resultsInfo');
         const noResults = document.getElementById('noResults');
-        const entries = readingList.querySelectorAll('.reading-entry');
 
         searchInput.addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase().trim();
+            const readingList = document.getElementById('readingList');
+            const entries = readingList.querySelectorAll('.reading-entry');
             let visibleCount = 0;
             
             entries.forEach(entry => {
@@ -338,7 +127,9 @@
                 noResults.style.display = visibleCount === 0 ? 'block' : 'none';
             }
         });
-    </script>
 
+        // Load the reading list when page loads
+        loadReadingList();
+    </script>
 </body>
 </html>
