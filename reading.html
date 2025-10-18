@@ -27,7 +27,15 @@
     <div class="content">
         <h2>reading</h2> 
 
-        <ul class="reading-list">
+        <div class="search-container">
+            <input type="text" 
+                   class="search-box" 
+                   id="searchInput" 
+                   placeholder="Search titles and descriptions...">
+            <div class="search-results-info" id="resultsInfo"></div>
+        </div>
+
+        <ul class="reading-list" id="readingList">
             <!-- Entry 31 -->
             <li class="reading-entry" onclick="toggleEntry(this)">
                 <span class="reading-title">Language Models Model Language</span>
@@ -277,7 +285,60 @@
                 </div>
             </li>
         </ul>
+        <div class="no-results" id="noResults" style="display: none;">
+            No entries found matching your search.
+        </div>
     </div>
+
+
+    <script>
+        function toggleEntry(entry) {
+            const content = entry.querySelector('.reading-content');
+            const button = entry.querySelector('.expand-button');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                button.textContent = '+';
+            } else {
+                content.classList.add('expanded');
+                button.textContent = '−';
+            }
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const readingList = document.getElementById('readingList');
+        const resultsInfo = document.getElementById('resultsInfo');
+        const noResults = document.getElementById('noResults');
+        const entries = readingList.querySelectorAll('.reading-entry');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+            
+            entries.forEach(entry => {
+                const title = entry.querySelector('.reading-title').textContent.toLowerCase();
+                const content = entry.querySelector('.reading-content').textContent.toLowerCase();
+                const matches = title.includes(searchTerm) || content.includes(searchTerm);
+                
+                if (matches || searchTerm === '') {
+                    entry.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    entry.classList.add('hidden');
+                }
+            });
+
+            // Update results info
+            if (searchTerm === '') {
+                resultsInfo.textContent = '';
+                noResults.style.display = 'none';
+            } else {
+                resultsInfo.textContent = `Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''}`;
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -98,6 +98,10 @@ footer {
     border: 1px solid #ddd;
 }
 
+.reading-entry.hidden {
+        display: none;
+    }
+
 .reading-title {
     flex-grow: 1;
     font-size: 18px;
@@ -121,27 +125,60 @@ footer {
     margin-top: 10px;
 }
 
-.footer-counter {
-    margin-top: 40px;
-    padding: 15px 0;
-    font-size: 0.9em;
-    color: #888;
-    border-top: 1px solid #eee;
-}
+.reading-content.expanded {
+        display: block;
+    }
 
-.view-count {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    background: #fefcf0;
-    border: 1px solid #e0e0e0;
-    font-weight: 600;
-}
-
-.view-count-number {
+.reading-content a {
     color: #555;
-    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: rgba(0,0,0,0.04);
+    padding: 0 2px;
+    border-radius: 2px;
 }
+
+.reading-content a:hover {
+    color: #333;
+    background-color: rgba(0,0,0,0.08);
+}
+
+.search-container {
+    margin: 20px 0 30px 0;
+}
+
+.search-box {
+    width: calc(100% - 32px);
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fefcf0;
+    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.search-box::placeholder {
+    color: #999;
+}
+
+.search-results-info {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 16px;
+        }
 
 /* Magnet lines styles */
 
