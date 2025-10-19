@@ -1,5 +1,11 @@
 [
   {
+    "title": "AI Interview Handbook",
+    "url": "https://aiinterviewhandbook.com/",
+    "linkText": "Problem bank",
+    "description": "and interview tips for AI interviews."
+  },
+  {
     "title": "The Super Weight in Large Language Models",
     "url": "https://arxiv.org/abs/2411.07191",
     "linkText": "A paper",
