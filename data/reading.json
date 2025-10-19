@@ -1,5 +1,11 @@
 [
   {
+    "title": "The Super Weight in Large Language Models",
+    "url": "https://arxiv.org/abs/2411.07191",
+    "linkText": "A paper",
+    "description": "by Yu et al. 2025, demonstrating that they are a few weights inside of language models that are responsible for creating super activations (much higher magnitude as compared to all the others) - ablating these weights leads to drastic performance degradation."
+  },
+  {
     "title": "Language Models Model Language",
     "url": "https://arxiv.org/pdf/2510.12766",
     "linkText": "An opinion paper",
