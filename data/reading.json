@@ -1,5 +1,11 @@
 [
   {
+    "title": "Post-training 101",
+    "url": "https://tokens-for-thoughts.notion.site/post-training-101",
+    "linkText": "A hitchhiker's guide",
+    "description": "into LLM post-training by Han Fang and Karthik Abinav Sankararaman."
+  },
+  {
     "title": "AI Interview Handbook",
     "url": "https://aiinterviewhandbook.com/",
     "linkText": "Problem bank",
