@@ -1,5 +1,11 @@
 [
   {
+    "title": "Refusal in Language Models Is Mediated by a Single Direction",
+    "url": "https://arxiv.org/pdf/2406.11717",
+    "linkText": "A paper",
+    "description": "by Arditi et al. 2024 demonstrates that there is a single dimension in the residual stream of most popular LLMs such that removing this direction resolves in models not refusing harmful instructions."
+  },
+  {
     "title": "Post-training 101",
     "url": "https://tokens-for-thoughts.notion.site/post-training-101",
     "linkText": "A hitchhiker's guide",
