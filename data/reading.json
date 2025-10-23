@@ -1,5 +1,11 @@
 [
   {
+    "title": "The Art of Asking: Multilingual Prompt Optimization for Synthetic Data",
+    "url": "https://arxiv.org/pdf/2510.19806",
+    "linkText": "A paper",
+    "description": "by Mora et al. 2025 introducing a framework for designing better multilingual synthetic data by applying various transformations to make the existing data more natural, culturally adapted, and difficult."
+  },
+  {
     "title": "Refusal in Language Models Is Mediated by a Single Direction",
     "url": "https://arxiv.org/pdf/2406.11717",
     "linkText": "A paper",
