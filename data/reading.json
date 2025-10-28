@@ -1,5 +1,11 @@
 [
   {
+    "title": "Atlas: Adaptive Transfer Scaling Laws for Multilingual Pre-training and Fine-tuning",
+    "url": "https://arxiv.org/pdf/2510.22037",
+    "linkText": "A paper",
+    "description": "by Longre et al. 2025, introducing adaptive transfer scaling laws for monolingual and multilingual pre-training."
+  },
+  {
     "title": "The Art of Asking: Multilingual Prompt Optimization for Synthetic Data",
     "url": "https://arxiv.org/pdf/2510.19806",
     "linkText": "A paper",
