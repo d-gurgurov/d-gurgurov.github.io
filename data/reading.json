@@ -1,5 +1,11 @@
 [
   {
+    "title": "Understanding Reasoning in Thinking Language Models via Steering Vectors",
+    "url": "https://arxiv.org/pdf/2506.18167",
+    "linkText": "A paper",
+    "description": "by Venhoff et al. 2025 on controlling the behaviour of reasoning traces (expressing uncertainty, backtracking, generating examples for hypothesis validation)."
+  },
+  {
     "title": "Atlas: Adaptive Transfer Scaling Laws for Multilingual Pre-training and Fine-tuning",
     "url": "https://arxiv.org/pdf/2510.22037",
     "linkText": "A paper",
