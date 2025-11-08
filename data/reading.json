@@ -1,5 +1,11 @@
 [
   {
+    "title": "The Smol Training Playbook",
+    "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook#training-compass-why--what--how",
+    "linkText": "A blog post",
+    "description": "by HuggingFace on how they trained their 3B Smol model from scratch. "
+  },
+  {
     "title": "Understanding Reasoning in Thinking Language Models via Steering Vectors",
     "url": "https://arxiv.org/pdf/2506.18167",
     "linkText": "A paper",
