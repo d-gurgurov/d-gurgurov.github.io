@@ -1,5 +1,11 @@
 [
   {
+    "title": "Are Sparse Autoencoders Useful? A Case Study in Sparse Probing",
+    "url": "https://arxiv.org/pdf/2502.16681",
+    "linkText": "A paper",
+    "description": "by Kantamneni et al. 2025 demonstrating that SAE probes underperform to the baseline logistic regression probes.'"
+  },
+  {
     "title": "The Smol Training Playbook",
     "url": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook#training-compass-why--what--how",
     "linkText": "A blog post",
