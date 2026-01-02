@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual NLP Benchmarks Guide - Daniil Gurgurov</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext&display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/imgs/icon.ico" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Daniil Gurgurov</a>
+            <div>
+                <a href="../writing.html">writing</a>
+                <a href="../index.html">about</a>
+                <a href="../reading.html">reading</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Side Navigation Bars -->
+    <div class="section-nav">
+        <div class="nav-bar active" data-section="Introduction" data-target="introduction"></div>
+        <div class="nav-bar" data-section="Meta-Benchmarks" data-target="meta-benchmarks"></div>
+        <div class="nav-bar" data-section="NLU Benchmarks" data-target="nlu"></div>
+        <div class="nav-bar" data-section="Question Answering" data-target="qa"></div>
+        <div class="nav-bar" data-section="Machine Translation" data-target="mt"></div>
+        <div class="nav-bar" data-section="Sequence Labeling" data-target="sequence"></div>
+        <div class="nav-bar" data-section="Reasoning" data-target="reasoning"></div>
+        <div class="nav-bar" data-section="Text Classification" data-target="classification"></div>
+        <div class="nav-bar" data-section="Retrieval & Similarity" data-target="retrieval"></div>
+        <div class="nav-bar" data-section="Knowledge & MMLU" data-target="knowledge"></div>
+        <div class="nav-bar" data-section="Speech & Multimodal" data-target="speech"></div>
+        <div class="nav-bar" data-section="Language-Specific" data-target="language-specific"></div>
+        <div class="nav-bar" data-section="Conclusion" data-target="conclusion"></div>
+    </div>
+
+    <div class="content">
+        <div class="article-content">
+            <h1>Multilingual NLP Benchmarks</h1>
+            <p class="article-subtitle">A comprehensive collection of multilingual benchmarks for evaluating language models, covering both generative and discriminative tasks across dozens of languages.</p>
+
+            <hr>
+
+            <!-- Introduction -->
+            <section class="article-section" id="introduction">
+                <h2>Introduction</h2>
+                <p>The field of multilingual NLP has experienced explosive growth, particularly with the rise of LLMs. As models like mBERT, XLM-R, LLaMA, Qwen, and Gemini claim multilingual capabilities, robust evaluation benchmarks become essential for measuring progress and identifying gaps.</p>
+                <p>This comprehensive guide attempts to index the major multilingual benchmarks available for both <strong>discriminative tasks</strong> (classification, tagging) and <strong>generative tasks</strong> (question answering, summarization, translation). Each entry includes paper references, dataset links, and key characteristics.</p>
+                
+                <h3>Why Multilingual Benchmarks Matter</h3>
+                <p>According to recent research analyzing over 2,000 multilingual benchmarks published between 2021-2024, English still dominates evaluation despite significant investments in multilingual evaluation.<sup><a href="#ref1" id="cite1">[1]</a></sup> Low-resource languages remain severely underrepresented, and there's a notable gap between benchmark performance and real-world human judgments, particularly for traditional NLP tasks.</p>
+                <p>On a more practical note, having all these benchmarks archived in one place is of great value. I wish I had a resource like this when I first started working on multilingual NLP, it would have saved countless hours of scattered searching. Multilingual evaluation is at the heart of building better multilingual models, and seeing all these benchmarks together offers a chance to reflect on what we have, identify the gaps that remain, and plot a path forward.</p>
+            
+            </section>
+
+            <!-- Meta-Benchmarks -->
+            <section class="article-section" id="meta-benchmarks">
+                <h2>Meta-Benchmarks and Evaluation Suites</h2>
+                <p>These comprehensive benchmarks combine multiple tasks to provide holistic evaluation of multilingual models.</p>
+
+                <h3>XTREME</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Hu et al. - "XTREME: A Massively Multilingual Multi-task Benchmark for Evaluating Cross-lingual Generalization"</td></tr>
+                    <tr><th>Conference</th><td>ICML 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2003.11080">2003.11080</a></td></tr>
+                    <tr><th>Languages</th><td>40 typologically diverse languages</td></tr>
+                    <tr><th>Tasks</th><td>9 tasks across 4 categories: Classification (XNLI, PAWS-X), Structured Prediction (POS, NER), QA (XQuAD, MLQA, TyDiQA), Retrieval (Tatoeba, BUCC)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/google/xtreme">huggingface.co/datasets/google/xtreme</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>The first major comprehensive benchmark for evaluating cross-lingual transfer. Uses zero-shot transfer from English for evaluation.</td></tr>
+                </table>
+
+                <h3>XTREME-R</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Ruder et al. - "XTREME-R: Towards More Challenging and Nuanced Multilingual Evaluation"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2021</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2104.07412">2104.07412</a></td></tr>
+                    <tr><th>Languages</th><td>50 typologically diverse languages</td></tr>
+                    <tr><th>Tasks</th><td>10 tasks including XCOPA for commonsense reasoning, improved retrieval tasks</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://sites.research.google/xtreme">sites.research.google/xtreme</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative + Some Generative</td></tr>
+                    <tr><th>Description</th><td>An improved version of XTREME with more challenging tasks and better language coverage.</td></tr>
+                </table>
+
+                <h3>XGLUE</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Liang et al. - "XGLUE: A New Benchmark Dataset for Cross-lingual Pre-training, Understanding and Generation"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2004.01401">2004.01401</a></td></tr>
+                    <tr><th>Languages</th><td>19 languages</td></tr>
+                    <tr><th>Tasks</th><td>11 tasks covering NLU and NLG: NER, POS, NC, MLQA, XNLI, PAWS-X, QADSM, WPR, QAM, QG, NTG</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/microsoft/xglue">huggingface.co/datasets/microsoft/xglue</a></td></tr>
+                    <tr><th>Type</th><td>Both Discriminative and Generative</td></tr>
+                    <tr><th>Description</th><td>Distinguished from XTREME by including both understanding and generation tasks, plus real-world scenarios from Bing.</td></tr>
+                </table>
+
+                <h3>MEGA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Ahuja et al. - "MEGA: Multilingual Evaluation of Generative AI"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2023</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2303.12528">2303.12528</a></td></tr>
+                    <tr><th>Languages</th><td>70 languages</td></tr>
+                    <tr><th>Tasks</th><td>16 tasks including QA (XQuAD, MLQA, TyDiQA, IndicQA), Sequence Labeling (WikiANN NER, UDPOS), NLG (XL-Sum), RAI (Jigsaw, Wino-MT)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/microsoft/Multilingual-Evaluation-of-Generative-AI-MEGA">github.com/microsoft/MEGA</a></td></tr>
+                    <tr><th>Type</th><td>Both</td></tr>
+                    <tr><th>Description</th><td>Specifically designed for evaluating generative AI models in multilingual settings.</td></tr>
+                </table>
+
+                <h3>P-MMEval</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Zhang et al. - "P-MMEval: A Parallel Multilingual Multitask Benchmark for Consistent Evaluation of LLMs"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2025</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2411.09116">2411.09116</a></td></tr>
+                    <tr><th>Languages</th><td>10 languages (English, Chinese, Arabic, Spanish, Japanese, Korean, Thai, French, Portuguese, Vietnamese)</td></tr>
+                    <tr><th>Tasks</th><td>Code generation, knowledge comprehension, mathematical reasoning, logical reasoning, instruction following</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/Qwen/P-MMEval">huggingface.co/datasets/Qwen/P-MMEval</a></td></tr>
+                    <tr><th>Type</th><td>Both</td></tr>
+                    <tr><th>Description</th><td>Ensures consistent language coverage across all tasks with parallel data.</td></tr>
+                </table>
+            </section>
+
+            <!-- NLU Benchmarks -->
+            <section class="article-section" id="nlu">
+                <h2>Natural Language Understanding Benchmarks</h2>
+
+                <h3>XNLI</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Conneau et al. - "XNLI: Evaluating Cross-lingual Sentence Representations"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2018</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1809.05053">1809.05053</a></td></tr>
+                    <tr><th>Languages</th><td>15 languages (French, Spanish, German, Greek, Bulgarian, Russian, Turkish, Arabic, Vietnamese, Thai, Chinese, Hindi, Swahili, Urdu + English)</td></tr>
+                    <tr><th>Task</th><td>Natural Language Inference (entailment, contradiction, neutral)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/facebook/xnli">huggingface.co/datasets/facebook/xnli</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Crowd-sourced extension of MultiNLI to 14 additional languages. Professional translations ensure quality. Also serves as a 15-way parallel corpus. 5,000 test pairs, 2,500 dev pairs per language (112.5k total annotated pairs).</td></tr>
+                </table>
+
+                <h3>PAWS-X</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Yang et al. - "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2019</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1908.11828">1908.11828</a></td></tr>
+                    <tr><th>Languages</th><td>7 languages (English, German, Spanish, French, Japanese, Korean, Chinese)</td></tr>
+                    <tr><th>Task</th><td>Paraphrase identification (binary classification)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/google-research-datasets/paws-x">huggingface.co/datasets/google-research-datasets/paws-x</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Adversarial paraphrase detection requiring models to understand word order and syntax, not just lexical overlap. 49,401 training pairs + 2,000 dev/test per language.</td></tr>
+                </table>
+
+                <h3>Belebele</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Bandarkar et al. - "The Belebele Benchmark: A Parallel Reading Comprehension Dataset in 122 Language Variants"</td></tr>
+                    <tr><th>Conference</th><td>ACL 2024</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2308.16884">2308.16884</a></td></tr>
+                    <tr><th>Languages</th><td>122 language variants</td></tr>
+                    <tr><th>Task</th><td>Multiple-choice machine reading comprehension</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/facebook/belebele">huggingface.co/datasets/facebook/belebele</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Based on FLORES-200, with forced annotator alignment ensuring equivalent difficulty across languages. The most extensive parallel reading comprehension benchmark. 900 questions per language (4 multiple-choice answers each).</td></tr>
+                </table>
+            </section>
+
+            <!-- Question Answering -->
+            <section class="article-section" id="qa">
+                <h2>Question Answering Benchmarks</h2>
+
+                <h3>MLQA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Lewis et al. - "MLQA: Evaluating Cross-lingual Extractive Question Answering"</td></tr>
+                    <tr><th>Conference</th><td>ACL 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1910.07475">1910.07475</a></td></tr>
+                    <tr><th>Languages</th><td>7 languages (English, Arabic, German, Spanish, Hindi, Vietnamese, Chinese)</td></tr>
+                    <tr><th>Task</th><td>Extractive Question Answering</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/facebook/mlqa">huggingface.co/datasets/facebook/mlqa</a></td></tr>
+                    <tr><th>Type</th><td>Generative (span extraction)</td></tr>
+                    <tr><th>Description</th><td>Highly parallel dataset allowing cross-lingual QA evaluation. QA instances parallel between 4 languages on average. 5K+ extractive QA instances per language (12K in English).</td></tr>
+                </table>
+
+                <h3>XQuAD</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Artetxe et al. - "On the Cross-lingual Transferability of Monolingual Representations"</td></tr>
+                    <tr><th>Conference</th><td>ACL 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1910.11856">1910.11856</a></td></tr>
+                    <tr><th>Languages</th><td>11 languages (10 + English)</td></tr>
+                    <tr><th>Task</th><td>Extractive Question Answering</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/google/xquad">huggingface.co/datasets/google/xquad</a></td></tr>
+                    <tr><th>Type</th><td>Generative (span extraction)</td></tr>
+                    <tr><th>Description</th><td>Professional human translations of SQuAD v1.1 subset. Good for evaluating zero-shot cross-lingual transfer. 240 paragraphs, 1,190 question-answer pairs.</td></tr>
+                </table>
+
+                <h3>TyDi QA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Clark et al. - "TyDi QA: A Benchmark for Information-Seeking Question Answering in Typologically Diverse Languages"</td></tr>
+                    <tr><th>Journal</th><td>TACL 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2003.05002">2003.05002</a></td></tr>
+                    <tr><th>Languages</th><td>11 typologically diverse languages (Arabic, Bengali, English, Finnish, Indonesian, Japanese, Kiswahili, Korean, Russian, Telugu, Thai)</td></tr>
+                    <tr><th>Task</th><td>Information-seeking QA</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/google-research-datasets/tydiqa">github.com/google-research-datasets/tydiqa</a></td></tr>
+                    <tr><th>Type</th><td>Generative</td></tr>
+                    <tr><th>Description</th><td>Questions written by native speakers who don't know the answer, avoiding priming effects. No translation used—data collected directly in each language. 204K question-answer pairs.</td></tr>
+                </table>
+
+                <h3>MKQA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Longpre et al. - "MKQA: A Linguistically Diverse Benchmark for Multilingual Open Domain Question Answering"</td></tr>
+                    <tr><th>Journal</th><td>TACL 2021</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2003.05002">2003.05002</a></td></tr>
+                    <tr><th>Languages</th><td>26 languages</td></tr>
+                    <tr><th>Task</th><td>Open-domain QA</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/apple/ml-mkqa">github.com/apple/ml-mkqa</a></td></tr>
+                    <tr><th>Type</th><td>Generative</td></tr>
+                    <tr><th>Description</th><td>Evaluates multilingual ODQA systems with parallel questions aligned across languages.</td></tr>
+                </table>
+            </section>
+
+            <!-- Machine Translation -->
+            <section class="article-section" id="mt">
+                <h2>Machine Translation Benchmarks</h2>
+
+                <h3>FLORES-101 / FLORES-200 / FLORES+</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Goyal et al. - "The FLORES-101 Evaluation Benchmark for Low-Resource and Multilingual Machine Translation"</td></tr>
+                    <tr><th>Journal</th><td>TACL 2022</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2106.03193">2106.03193</a></td></tr>
+                    <tr><th>Languages</th><td>101 languages (FLORES-101), expanded to 200+ (FLORES-200/FLORES+)</td></tr>
+                    <tr><th>Task</th><td>Machine Translation</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/facebook/flores">huggingface.co/datasets/facebook/flores</a></td></tr>
+                    <tr><th>Type</th><td>Generative</td></tr>
+                    <tr><th>Description</th><td>High-quality professional translations covering diverse topics. Enables many-to-many evaluation. The standard benchmark for multilingual MT, especially low-resource languages. 3,001 sentences from English Wikipedia.</td></tr>
+                </table>
+
+                <h3>WMT Shared Tasks</h3>
+                <table class="benchmark-table">
+                    <tr><th>Organization</th><td>Workshop on Machine Translation (annual)</td></tr>
+                    <tr><th>Languages</th><td>Varies by year (typically 15-30 language pairs)</td></tr>
+                    <tr><th>Task</th><td>Machine Translation</td></tr>
+                    <tr><th>Website</th><td><a href="https://statmt.org/">statmt.org</a></td></tr>
+                    <tr><th>Type</th><td>Generative</td></tr>
+                    <tr><th>Description</th><td>Annual shared tasks with human evaluation. The gold standard for MT evaluation.</td></tr>
+                </table>
+
+                <h3>Tatoeba</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Artetxe & Schwenk - "Massively Multilingual Sentence Embeddings for Zero-Shot Cross-Lingual Transfer and Beyond"</td></tr>
+                    <tr><th>Journal</th><td>TACL 2019</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1812.10464">1812.10464</a></td></tr>
+                    <tr><th>Languages</th><td>112+ languages</td></tr>
+                    <tr><th>Task</th><td>Sentence retrieval / Translation</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://tatoeba.org/">tatoeba.org</a></td></tr>
+                    <tr><th>Type</th><td>Both</td></tr>
+                    <tr><th>Description</th><td>Community-supported parallel sentence collection. Used for evaluating sentence embeddings and translation models. 1,000 sentences per language.</td></tr>
+                </table>
+            </section>
+
+            <!-- Sequence Labeling -->
+            <section class="article-section" id="sequence">
+                <h2>Sequence Labeling Benchmarks</h2>
+
+                <h3>WikiANN / PAN-X</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Pan et al. - "Cross-lingual Name Tagging and Linking for 282 Languages"</td></tr>
+                    <tr><th>Conference</th><td>ACL 2017</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://aclanthology.org/P17-1178">P17-1178</a></td></tr>
+                    <tr><th>Languages</th><td>282 languages (176 in processed version)</td></tr>
+                    <tr><th>Task</th><td>Named Entity Recognition (PER, LOC, ORG)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/wikiann">huggingface.co/datasets/wikiann</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Automatically annotated from Wikipedia using cross-lingual links. While broad in coverage, automatic annotation introduces quality issues for some languages.</td></tr>
+                </table>
+
+                <h3>Universal NER (UNER)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Mayhew et al. - "Universal NER: A Gold-Standard Multilingual Named Entity Recognition Benchmark"</td></tr>
+                    <tr><th>Conference</th><td>NAACL 2024</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2311.09122">2311.09122</a></td></tr>
+                    <tr><th>Languages</th><td>13+ languages</td></tr>
+                    <tr><th>Task</th><td>Named Entity Recognition</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://www.universalner.org/">universalner.org</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Gold-standard NER annotations on Universal Dependencies treebanks. Addresses quality issues of WikiANN with native speaker annotations.</td></tr>
+                </table>
+
+                <h3>Universal Dependencies (UD)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Nivre et al. - "Universal Dependencies v2: An Evergrowing Multilingual Treebank Collection"</td></tr>
+                    <tr><th>Conference</th><td>LREC 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2004.10643">2004.10643</a></td></tr>
+                    <tr><th>Languages</th><td>104+ languages (v2.7: 183 treebanks)</td></tr>
+                    <tr><th>Tasks</th><td>POS Tagging, Morphological Analysis, Dependency Parsing</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://universaldependencies.org/">universaldependencies.org</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>The most comprehensive multilingual treebank collection. Provides cross-linguistically consistent annotation for morphology and syntax.</td></tr>
+                </table>
+
+                <h3>CoNLL Shared Tasks (NER)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Sang & De Meulder - "Language-Independent Named Entity Recognition"</td></tr>
+                    <tr><th>Conference</th><td>CNLL at NAACL 2003</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/cs/0306050">0306050</a></td></tr>
+                    <tr><th>Languages</th><td>English, German, Spanish, Dutch</td></tr>
+                    <tr><th>Task</th><td>Named Entity Recognition</td></tr>
+                    <tr><th>Dataset</th><td><a href="http://lcg-www.uia.ac.be/conll2003/ner/">lcg-www.uia.ac.be/conll2003/ner</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Classic NER benchmarks still widely used. High-quality human annotations.</td></tr>
+                </table>
+            </section>
+
+            <!-- Reasoning -->
+            <section class="article-section" id="reasoning">
+                <h2>Reasoning Benchmarks</h2>
+
+                <h3>XCOPA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Ponti et al. - "XCOPA: A Multilingual Dataset for Causal Commonsense Reasoning"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/cs/0306050">0306050</a></td></tr>
+                    <tr><th>Languages</th><td>11 languages (Estonian, Indonesian, Italian, Quechua, Swahili, Tamil, Thai, Turkish, Vietnamese, Chinese + Haitian Creole)</td></tr>
+                    <tr><th>Task</th><td>Causal commonsense reasoning</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/cambridgeltl/xcopa">huggingface.co/datasets/cambridgeltl/xcopa</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Tests ability to determine causal relationships. Includes resource-poor languages like Quechua and Haitian Creole. 100 validation + 500 test examples per language.</td></tr>
+                </table>
+
+                <h3>MGSM</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Shi et al. - "Language Models are Multilingual Chain-of-Thought Reasoners"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2022</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2210.03057">2210.03057</a></td></tr>
+                    <tr><th>Languages</th><td>10 languages (Bengali, Chinese, French, German, Japanese, Russian, Spanish, Swahili, Telugu, Thai)</td></tr>
+                    <tr><th>Task</th><td>Mathematical reasoning (grade-school level)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/juletxara/mgsm">huggingface.co/datasets/juletxara/mgsm</a></td></tr>
+                    <tr><th>Type</th><td>Generative</td></tr>
+                    <tr><th>Description</th><td>Manual translations of GSM8K problems. Evaluates chain-of-thought reasoning across languages. 250 problems per language.</td></tr>
+                </table>
+
+                <h3>XL-WiC</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Raganato et al. - "XL-WiC: A Multilingual Benchmark for Evaluating Semantic Contextualization"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2020</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2010.06478">2010.06478</a></td></tr>
+                    <tr><th>Languages</th><td>12 languages</td></tr>
+                    <tr><th>Task</th><td>Word sense disambiguation</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/pasinit/xlwic">huggingface.co/datasets/pasinit/xlwic</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Determines if a word has the same sense in two different sentences across languages.</td></tr>
+                </table>
+            </section>
+
+            <!-- Text Classification -->
+            <section class="article-section" id="classification">
+                <h2>Text Classification Benchmarks</h2>
+
+                <h3>SIB-200</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Adelani et al. - "SIB-200: A Simple, Inclusive, and Big Evaluation Dataset for Topic Classification in 200+ Languages and Dialects"</td></tr>
+                    <tr><th>Conference</th><td>EACL 2024</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2309.07445">2309.07445</a></td></tr>
+                    <tr><th>Languages</th><td>205 languages and dialects</td></tr>
+                    <tr><th>Task</th><td>Topic classification (7 categories)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/dadelani/sib-200">github.com/dadelani/sib-200</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Based on FLORES-200. First publicly available NLU dataset for many languages. Shows large performance gaps between high-resource and low-resource languages.</td></tr>
+                </table>
+
+                <h3>Taxi1500</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Ma et al. (2023) - "Taxi1500: A Multilingual Dataset for Text Classification in 1500 Languages"</td></tr>
+                    <tr><th>Conference</th><td>NAACL 2025</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2305.08487">2305.08487</a></td></tr>
+                    <tr><th>Languages</th><td>1,500+ languages</td></tr>
+                    <tr><th>Task</th><td>Topic classification</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/cisnlp/Taxi1500">github.com/cisnlp/Taxi1500</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Uses Parallel Bible Corpus. Largest language coverage but biased to religious domain.</td></tr>
+                </table>
+
+                <h3>MMS Benchmark</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Augustyniak et al. - "Massively Multilingual Corpus of Sentiment Datasets and Multi-faceted Sentiment Classification Benchmark"</td></tr>
+                    <tr><th>Conference</th><td>NeurIPS 2023 Datasets and Benchmarks</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2306.07902">2306.07902</a></td></tr>
+                    <tr><th>Languages</th><td>27 languages (6 language families)</td></tr>
+                    <tr><th>Task</th><td>Sentiment classification</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/Brand24-AI/mms_benchmark">github.com/Brand24-AI/mms_benchmark</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Most extensive open multilingual sentiment corpus. Datasets queryable by linguistic and functional features.</td></tr>
+                </table>
+
+                <h3>XLM-T</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Barbieri et al. - "XLM-T: Multilingual Language Models in Twitter for Sentiment Analysis and Beyond"</td></tr>
+                    <tr><th>Conference</th><td>LREC 2022</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2104.12250">2104.12250</a></td></tr>
+                    <tr><th>Languages</th><td>8 languages (Arabic, English, French, German, Hindi, Italian, Portuguese, Spanish)</td></tr>
+                    <tr><th>Task</th><td>Twitter sentiment analysis</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/cardiffnlp/xlm-t">github.com/cardiffnlp/xlm-t</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Unified benchmark for cross-lingual Twitter sentiment analysis.</td></tr>
+                </table>
+            </section>
+
+            <!-- Retrieval & Similarity -->
+            <section class="article-section" id="retrieval">
+                <h2>Sentence Retrieval and Similarity</h2>
+
+                <h3>BUCC</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Zweigenbaum et al. - "Spotting Parallel Sentences in Comparable Corpora"</td></tr>
+                    <tr><th>Conference</th><td>Wokshop on Building and Using Comparable Corpora at ACL 2017</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://aclanthology.org/W17-2512">W17-2512</a></td></tr>
+                    <tr><th>Languages</th><td>5 language pairs with English</td></tr>
+                    <tr><th>Task</th><td>Parallel sentence identification</td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Shared task for spotting parallel sentences in comparable corpora.</td></tr>
+                </table>
+
+                <h3>STS (Semantic Textual Similarity)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Cer et al. - "Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation"</td></tr>
+                    <tr><th>Conference</th><td>SemEval 2017</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/1708.00055">1708.00055</a></td></tr>
+                    <tr><th>Languages</th><td>Various (SemEval tasks)</td></tr>
+                    <tr><th>Task</th><td>Sentence similarity scoring</td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Various SemEval shared tasks with multilingual extensions.</td></tr>
+                </table>
+            </section>
+
+            <!-- Knowledge & MMLU -->
+            <section class="article-section" id="knowledge">
+                <h2>Knowledge and MMLU-Style Benchmarks</h2>
+
+                <h3>MMLU (Original English)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Hendrycks et al. - "Measuring Massive Multitask Language Understanding"</td></tr>
+                    <tr><th>Conference</th><td>ICLR 2021</td></tr>
+                    <tr><th>Languages</th><td>English only (foundation for multilingual versions)</td></tr>
+                    <tr><th>Task</th><td>Multiple-choice knowledge questions</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/hendrycks/test">github.com/hendrycks/test</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>The standard for evaluating knowledge and reasoning. Foundation for many multilingual adaptations. 15,908 questions across 57 subjects.</td></tr>
+                </table>
+
+                <h3>MMMLU (OpenAI)</h3>
+                <table class="benchmark-table">
+                    <tr><th>Languages</th><td>Multiple languages</td></tr>
+                    <tr><th>Languages</th><td>15 languages: English, Arabic, Bengali, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese, Swahili, Yoruba, Simplified Chinese.</td></tr>
+                    <tr><th>Task</th><td>Knowledge comprehension</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/openai/MMMLU">huggingface.co/datasets/openai/MMMLU</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>OpenAI's official multilingual version of MMLU.</td></tr>
+                </table>
+
+                <h3>MMLU-ProX</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Xuan et al. - "MMLU-ProX: A Multilingual Benchmark for Advanced Large Language Model Evaluation"</td></tr>
+                    <tr><th>Conference</th><td>EMNLP 2025</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2503.10497">2503.10497</a></td></tr>
+                    <tr><th>Languages</th><td>29 languages</td></tr>
+                    <tr><th>Task</th><td>Advanced reasoning with chain-of-thought</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://mmluprox.github.io/">mmluprox.github.io</a></td></tr>
+                    <tr><th>Type</th><td>Both</td></tr>
+                    <tr><th>Description</th><td>Built on MMLU-Pro with expert-verified translations. Shows up to 24.3% performance gap between high and low-resource languages. 11,829 questions per language (658 in lite version).</td></tr>
+                </table>
+
+                <h3>Global-MMLU</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Singh et al. - "Global MMLU: Understanding and Addressing Cultural and Linguistic Biases"</td></tr>
+                    <tr><th>Conference</th><td>ACL 2025</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2412.03304">2412.03304</a></td></tr>
+                    <tr><th>Languages</th><td>42+ languages</td></tr>
+                    <tr><th>Task</th><td>Knowledge comprehension</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/CohereLabs/Global-MMLU">huggingface.co/datasets/CohereLabs/Global-MMLU</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Addresses cultural biases in multilingual evaluation.</td></tr>
+                </table>
+
+                <h3>Include</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Romanou et al. - "INCLUDE: Evaluating Multilingual Language Understanding with Regional Knowledge"</td></tr>
+                    <tr><th>Conference</th><td>ICLR 2024</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/">2411.19799</a></td></tr>
+                    <tr><th>Languages</th><td>44 languages</td></tr>
+                    <tr><th>Task</th><td>Knowledge and reasoning</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/CohereLabs/include-base-44">huggingface.co/datasets/CohereLabs/include-base-44</a></td></tr>
+                    <tr><th>Type</th><td>Discriminative</td></tr>
+                    <tr><th>Description</th><td>Constructed from local exam sources in target languages, not translations. 197,243 multiple-choice QA pairs.</td></tr>
+                </table>
+
+            </section>
+
+            <!-- Speech & Multimodal -->
+            <section class="article-section" id="speech">
+                <h2>Speech and Multimodal Benchmarks</h2>
+
+                <h3>FLEURS</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Conneau et al. - "FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech"</td></tr>
+                    <tr><th>Conference</th><td>IEEE 2023</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2205.12446">2205.12446</a></td></tr>
+                    <tr><th>Languages</th><td>102 languages</td></tr>
+                    <tr><th>Task</th><td>ASR, Speech Translation, Language ID</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/google/fleurs">huggingface.co/datasets/google/fleurs</a></td></tr>
+                    <tr><th>Type</th><td>Speech</td></tr>
+                    <tr><th>Description</th><td>Speech version of FLORES for evaluating multilingual speech models.</td></tr>
+                </table>
+
+                <h3>Fleurs-SLU</h3>
+                <table class="benchmark-table">
+                    <tr><th>Paper</th><td>Shmidt et al. - "Fleurs-SLU: A Massively Multilingual Benchmark for Spoken Language Understanding"</td></tr>
+                    <tr><th>Conference</th><td>COLM 2025</td></tr>
+                    <tr><th>arXiv</th><td><a href="https://arxiv.org/abs/2501.06117">2501.06117</a></td></tr>
+                    <tr><th>Languages</th><td>100+ languages</td></tr>
+                    <tr><th>Tasks</th><td>Topic classification (102 langs), QA on spoken paragraphs (92 langs)</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/WueNLP/sib-fleurs">huggingface.co/datasets/WueNLP/sib-fleurs</a></td></tr>
+                    <tr><th>Type</th><td>Speech + NLU</td></tr>
+                    <tr><th>Description</th><td>Combines Fleurs with SIB-200 and Belebele for spoken language understanding.</td></tr>
+                </table>
+
+            </section>
+
+            <!-- Language-Specific -->
+            <section class="article-section" id="language-specific">
+                <h2>Language-Specific Benchmarks</h2>
+                <p>Many languages now have their own dedicated evaluation suites, modeled after GLUE/SuperGLUE.</p>
+
+                <h3>🇪🇸🇫🇷 Basque - BasqueGLUE</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>LREC 2022</td></tr>
+                    <tr><th>Tasks</th><td>NER, Intent Classification, Slot Filling, Topic Classification, Sentiment Analysis, Stance Detection, QA/NLI, WiC, Coreference</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/orai-nlp/basqueGLUE">huggingface.co/datasets/orai-nlp/basqueGLUE</a></td></tr>
+                </table>
+
+                <h3>🇧🇬 Bulgarian - bgGLUE</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>ACL 2023</td></tr>
+                    <tr><th>Tasks</th><td>NER, POS Tagging, Sentiment, Check-Worthiness, Humor Detection, NLI, Multi-Choice QA, Factuality</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/bgglue/bgglue">huggingface.co/datasets/bgglue/bgglue</a></td></tr>
+                </table>
+
+                <h3>🇩🇪 German - SuperGLEBer</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>NAACL 2024</td></tr>
+                    <tr><th>Tasks</th><td>NER, Document Classification, STS, QA</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/lgienapp/superGLEBer">huggingface.co/datasets/lgienapp/superGLEBer</a></td></tr>
+                </table>
+
+                <h3>🇭🇺 Hungarian - HuLU</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>LREC 2024</td></tr>
+                    <tr><th>Tasks</th><td>CoPA, RTE, SST, WNLI, CommitmentBank, ReCoRD QA</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/NYTK/HuCoPA">huggingface.co/datasets/NYTK/HuCoPA</a></td></tr>
+                </table>
+
+                <h3>🇮🇹 Italian - UINAUIL</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>ACL 2023 Demo</td></tr>
+                    <tr><th>Tasks</th><td>Textual Entailment, Event Detection, Factuality, Sentiment, Irony, Hate Speech</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/RiTA-nlp/UINAUIL">huggingface.co/datasets/RiTA-nlp/UINAUIL</a></td></tr>
+                </table>
+
+                <h3>🇰🇷 Korean - KMMLU</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>NAACL 2025</td></tr>
+                    <tr><th>Tasks</th><td>Multi-choice QA across 45 subjects</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/HAERAE-HUB/KMMLU">huggingface.co/datasets/HAERAE-HUB/KMMLU</a></td></tr>
+                </table>
+
+                <h3>🇳🇴 Norwegian - NorBench</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>NAACL 2025</td></tr>
+                    <tr><th>Tasks</th><td>POS, Lemmatization, Parsing, NER, Sentiment, Acceptability, QA, MT, Bias Detection</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/ltgoslo/norbench">github.com/ltgoslo/norbench</a></td></tr>
+                </table>
+
+                <h3>🇵🇱 Polish - KLEJ & LEPISZCZE</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>ACL 2020</td></tr>
+                    <tr><th>Tasks</th><td>NER, Sentence Relatedness, Entailment, Cyberbullying, Sentiment, QA, Paraphrase, Abusive Clauses, Political Ads, NLI, POS, Punctuation, Dialogue Acts</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://klejbenchmark.com/">klejbenchmark.com/</a></td></tr>
+                </table>
+
+                <h3>🇷🇴 Romanian - LiRo</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>NeurIPS 2021</td></tr>
+                    <tr><th>Tasks</th><td>Classification, NER, MT, Sentiment, POS, Parsing, LM, QA, STS, Debiasing</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://lirobenchmark.github.io/">lirobenchmark.github.io</a></td></tr>
+                </table>
+
+                <h3>🇷🇺 Russian - MERA</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>Dialogue 2025</td></tr>
+                    <tr><th>Tasks</th><td>21 tasks including MathLogicQA, MultiQ, ruMMLU, ruHumanEval, ruEthics</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://mera.a-ai.ru/en">mera.a-ai.ru/en</a></td></tr>
+                </table>
+
+                <h3>🇸🇪 Swedish - Superlim</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>EMNLP 2023</td></tr>
+                    <tr><th>Tasks</th><td>Multiple Swedish NLU tasks including SweNLI, SweWiC, SweWinograd</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/AI-Sweden/SuperLim">huggingface.co/datasets/AI-Sweden/SuperLim</a></td></tr>
+                </table>
+
+                <h3>🇻🇳 Vietnamese - ViGLUE</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>NAACL 2024</td></tr>
+                    <tr><th>Tasks</th><td>MNLI, QNLI, RTE, SST2, MRPC, QQP, CoLA adaptations</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/datasets/tmnam20/ViGLUE">huggingface.co/datasets/tmnam20/ViGLUE</a></td></tr>
+                </table>
+
+                <h3>🇳🇱 Dutch - DUMB</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>EMNLP 2023</td></tr>
+                    <tr><th>Tasks</th><td>POS, NER, WSD, Pronoun Resolution, Causal Reasoning, NLI, Sentiment, Classification, QA</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/wietsedv/dumb">github.com/wietsedv/dumb</a></td></tr>
+                </table>
+
+                <h3>🇩🇰 Danish - Semantic Reasoning Benchmark</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>LREC 2024</td></tr>
+                    <tr><th>Tasks</th><td>Inference, Entailment, Synonymy, Similarity, Relatedness, WiC</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://github.com/kuhumcst/danish-semantic-reasoning-benchmark">github.com/kuhumcst/danish-semantic-reasoning-benchmark</a></td></tr>
+                </table>
+
+                <h3>🇪🇸 Catalan - The Catalan Language CLUB</h3>
+                <table class="benchmark-table">
+                    <tr><th>Conference</th><td>ACL 2021</td></tr>
+                    <tr><th>Tasks</th><td>NER, POS, NLI, Classification, QA, STS</td></tr>
+                    <tr><th>Dataset</th><td><a href="https://huggingface.co/BSC-LT">huggingface.co/BSC-LT</a></td></tr>
+                </table>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="article-section" id="conclusion">
+                <h2>Conclusion</h2>
+                <p>This guide has covered the major multilingual benchmarks available as of late 2025. Several key takeaways are:</p>
+                
+                <p><strong>1. Coverage is improving but uneven:</strong> While benchmarks like FLORES-200 and SIB-200 cover 200+ languages, most benchmarks focus on 10-50 languages, with English, Chinese, Spanish, French, and German being most represented.</p>
+                
+                <p><strong>2. Task diversity:</strong> The field has moved beyond simple classification to include reasoning (XCOPA, MGSM), knowledge evaluation (MMLU variants), and complex QA (TyDi QA).</p>
+                
+                <p><strong>3. The low-resource gap:</strong> Performance on low-resource languages consistently lags behind high-resource languages, highlighting the need for continued investment in underrepresented languages.</p>
+
+                <p class="last-updated"><em>Last updated: January 2025</em></p>
+                <p><em>Have a benchmark to add? This list is not exhaustive; the multilingual NLP community continues to create new evaluation resources. Consider contributing to this list through GitHub.</em></p>
+            </section>
+
+            <section class="article-section" id="references">
+                <h2>References</h2>
+                <ol class="references-list">
+                    <li id="ref1"><a href="#cite1">^</a> Wu, M., Wang, W., Liu, S., Yin, H., Wang, X., Zhao, Y., Lyu, C., Wang, L., Luo, W., & Zhang, K. (2025). "The Bitter Lesson Learned from 2,000+ Multilingual Benchmarks." <a href="https://arxiv.org/abs/2504.15521">arXiv:2504.15521</a></li>
+                </ol>
+            </section>
+
+            <section class="article-section" id="citation">
+                <h2>Citation</h2>
+                <div class="bibtex-box">
+                    <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+                        <pre><code>
+@online{gurgurov2025multilingual,
+    title={Multilingual NLP Benchmarks Landscape},
+    author={Gurgurov, Daniil},
+    year={2026},
+    month={January},
+    url={https://d-gurgurov.github.io/writing/multilingual-benchmarking.html}
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <a href="../writing.html" class="back-link">← Back to writing</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Get all navigation bars and sections
+        const navBars = document.querySelectorAll('.nav-bar');
+        const sections = document.querySelectorAll('.article-section');
+
+        // Click to scroll to section
+        navBars.forEach(bar => {
+            bar.addEventListener('click', () => {
+                const targetId = bar.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update active bar on scroll
+        function updateActiveBar() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navBars.forEach(bar => {
+                bar.classList.remove('active');
+                if (bar.getAttribute('data-target') === currentSection) {
+                    bar.classList.add('active');
+                }
+            });
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveBar);
+        
+        // Initial check
+        updateActiveBar();
+
+        function copyBibtex() {
+            const code = document.querySelector(".bibtex-box code").innerText;
+            navigator.clipboard.writeText(code).catch(err => {
+                console.error("Copy failed:", err);
+            });
+        }
+
+    // Make all article sections collapsible
+    document.querySelectorAll('.article-section').forEach((section, index) => {
+        const h2 = section.querySelector('h2');
+        const content = Array.from(section.children).slice(1); // everything after h2
+
+        const isIntro = index === 0;
+        const isLastThree = index >= sections.length - 3;
+
+        if (!isIntro && !isLastThree) {
+            // collapse everything except intro and last 3
+            content.forEach(el => el.style.display = 'none');
+        } else {
+            section.classList.add('open'); // mark intro + last 3 as open
+        }
+
+        // Click handler
+        h2.addEventListener('click', () => {
+            const isOpen = section.classList.contains('open');
+            
+            if (isOpen) {
+                content.forEach(el => {
+                    el.style.display = 'none';
+                });
+                section.classList.remove('open');
+            } else {
+                content.forEach(el => {
+                    el.style.display = 'block';
+                });
+                section.classList.add('open');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

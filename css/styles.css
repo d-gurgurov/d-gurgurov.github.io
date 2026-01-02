@@ -1,8 +1,9 @@
+/* I - main styles */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fefcf0; /* Light background */
+    background-color: #fefcf0;
     line-height: 1.6;
 }
 
@@ -80,7 +81,7 @@ footer {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* Reading list styles */
+/* II - reading styles */
 .reading-list {
     list-style: none;
     padding: 0;
@@ -180,35 +181,6 @@ footer {
             font-size: 16px;
         }
 
-/* Magnet lines styles */
-
-.magnetLines-container {
-            display: grid;
-            justify-items: center;
-            align-items: center;
-            margin: 2rem auto;
-        }
-
-.magnetLines-container span {
-    display: block;
-    transform-origin: center;
-    will-change: transform;
-    transform: rotate(var(--rotate));
-    transition: transform 0.1s ease-out;
-}
-
-@media (max-width: 768px) {
-    .magnetLines-container {
-        width: 80vmin !important;
-        height: 80vmin !important;
-    }
-    
-    .magnetLines-container span {
-        width: 1.2vmin !important;
-        height: 4vmin !important;
-    }
-}
-
 /* Game of life styles*/
 .game-of-life-container {
     display: flex;
@@ -274,4 +246,254 @@ footer {
     font-size: 12px;
     color: #666;
     text-align: center;
+}
+
+/* III - writing styles */
+.reading-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+.reading-link:hover {
+    color: #fefcf0; 
+}
+
+.reading-entry .reading-link .expand-button {
+    display: none;
+}
+
+/* Side Navigation Bars */
+.section-nav {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100;
+}
+
+.nav-bar {
+    width: 14px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-bar:hover {
+    background-color: #666;
+    width: 10px;
+}
+
+.nav-bar.active {
+    background-color: #333;
+    width: 6px;
+}
+
+/* Tooltip */
+.nav-bar::after {
+    content: attr(data-section);
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.nav-bar:hover::after,
+.nav-bar:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Article Content */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.article-content h1 {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.article-subtitle {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.article-section {
+    margin-bottom: 50px;
+    scroll-margin-top: 80px;
+}
+
+/* Make the h2 the clickable toggle handle */
+.article-section > h2 {
+    margin: 0 0 0 0;                 /* keeps your original spacing */
+    border-bottom: 2px solid #eee;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #fefcf8;         /* subtle background so it feels like a card header */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    user-select: none;
+}
+
+/* Hover feedback – makes it obvious it's clickable */
+.article-section > h2:hover {
+    background-color: #fefcf0;
+}
+
+
+.article-section h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.article-section p {
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+/* Tables */
+.benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.benchmark-table th,
+.benchmark-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.benchmark-table th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+    width: 120px;
+}
+
+.benchmark-table td {
+    color: #444;
+}
+
+.benchmark-table a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.benchmark-table a:hover {
+    text-decoration: underline;
+}
+
+/* Lists */
+.article-section ul {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+.article-section li {
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+/* Language flags */
+.lang-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #333;
+}
+
+/* Divider */
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+}
+
+/* Last updated */
+.last-updated {
+    color: #888;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: 40px;
+}
+
+/* Hide nav on small screens */
+@media (max-width: 1000px) {
+    .section-nav {
+        display: none;
+    }
+    
+    .article-content {
+        padding: 20px;
+    }
+}
+
+sup a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 0.8em;
+}
+
+sup a:hover {
+    text-decoration: underline;
+}
+
+.references-list {
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.references-list li {
+    margin-bottom: 12px;
 }
