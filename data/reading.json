@@ -1,5 +1,13 @@
 [
   {
+    "title": "AI 2040 - Plan A",
+    "url": "https://ai-2040.com/",
+    "linkText": "A positive vision",
+    "description": "of what should happen in the next 15 years (development of AI is delayed, research is made public, and many companies around the world catch up with the frontier)..",
+    "category": "non-research",
+    "date": "2026-07-25"
+  },
+  {
     "title": "Are Sparse Autoencoders Useful? A Case Study in Sparse Probing",
     "url": "https://arxiv.org/pdf/2502.16681",
     "linkText": "A paper",
