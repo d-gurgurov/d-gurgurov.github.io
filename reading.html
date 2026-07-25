@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>daniil gurgurov</title>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext&#038;display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Favicon -->
@@ -27,11 +28,31 @@
         <h2>reading</h2>
         
         <div class="search-container">
-            <input type="text" 
-                   class="search-box" 
-                   id="searchInput" 
+            <input type="text"
+                   class="search-box"
+                   id="searchInput"
                    placeholder="Search titles and descriptions...">
             <div class="search-results-info" id="resultsInfo"></div>
+        </div>
+
+        <div class="left-rail left-rail-narrow" id="left-rail">
+            <div class="filter-container" id="filterContainer">
+                <span class="filter-box-label">filter</span>
+                <button class="filter-btn active" data-filter="all">all</button>
+                <button class="filter-btn" data-filter="research">research</button>
+                <button class="filter-btn" data-filter="non-research">non-research</button>
+            </div>
+        </div>
+
+        <div class="streak-container" id="streakContainer">
+            <div class="streak-header">
+                <span class="streak-label">reading activity</span>
+                <span class="streak-stats" id="streakStats"></span>
+            </div>
+            <div class="streak-scroll">
+                <div class="streak-months" id="streakMonths"></div>
+                <div class="streak-grid" id="streakGrid"></div>
+            </div>
         </div>
 
         <div class="loading" id="loading">Loading reading list...</div>
@@ -51,6 +72,7 @@
                 const data = await response.json();
                 allEntries = data;
                 renderReadingList(data);
+                renderStreak(data);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readingList').style.display = 'block';
             } catch (error) {
@@ -67,8 +89,9 @@
             entries.forEach(entry => {
                 const li = document.createElement('li');
                 li.className = 'reading-entry';
+                li.dataset.category = entry.category || 'non-research';
                 li.onclick = function() { toggleEntry(this); };
-                
+
                 li.innerHTML = `
                     <span class="reading-title">${entry.title}</span>
                     <span class="expand-button">+</span>
@@ -76,9 +99,107 @@
                         <p><a href="${entry.url}" target="_blank">${entry.linkText}</a> ${entry.description}</p>
                     </div>
                 `;
-                
+
                 readingList.appendChild(li);
             });
+        }
+
+        // Format a Date as a local YYYY-MM-DD key (avoids UTC-shift bugs from toISOString)
+        function dateKey(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${day}`;
+        }
+
+        // Render the reading activity streak grid, spanning December to December
+        function renderStreak(entries) {
+            const grid = document.getElementById('streakGrid');
+            const monthsRow = document.getElementById('streakMonths');
+            const statsEl = document.getElementById('streakStats');
+            const scrollEl = document.querySelector('.streak-scroll');
+            const msDay = 24 * 60 * 60 * 1000;
+
+            const byDate = {};
+            entries.forEach(entry => {
+                if (!entry.date) return;
+                if (!byDate[entry.date]) byDate[entry.date] = [];
+                byDate[entry.date].push(entry.title);
+            });
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // Range runs from the most recent December 1st through the following December 1st
+            const rangeStartYear = today.getMonth() === 11 ? today.getFullYear() : today.getFullYear() - 1;
+            const rangeStart = new Date(rangeStartYear, 11, 1);
+            const rangeEnd = new Date(rangeStartYear + 1, 11, 1);
+
+            const start = new Date(rangeStart);
+            start.setDate(start.getDate() - start.getDay());
+            const end = new Date(rangeEnd);
+            end.setDate(end.getDate() + ((6 - end.getDay()) % 7));
+
+            const totalDays = Math.round((end - start) / msDay) + 1;
+            const totalWeeks = Math.ceil(totalDays / 7);
+
+            // Size cells so the grid fills the available width, no matter how wide the box is
+            const gap = 3;
+            const available = scrollEl.clientWidth;
+            let cellSize = Math.floor((available - (totalWeeks - 1) * gap) / totalWeeks);
+            cellSize = Math.max(8, Math.min(16, cellSize));
+            scrollEl.style.setProperty('--cell-size', cellSize + 'px');
+
+            grid.innerHTML = '';
+            monthsRow.innerHTML = '';
+
+            let lastMonth = -1;
+            let activeDays = 0;
+            let cursor = new Date(start);
+
+            while (cursor <= end) {
+                if (cursor.getDay() === 0) {
+                    const label = document.createElement('span');
+                    label.className = 'streak-month-label';
+                    const midWeek = new Date(cursor.getTime() + 3 * msDay);
+                    if (midWeek.getMonth() !== lastMonth) {
+                        label.textContent = midWeek.toLocaleDateString('en-US', { month: 'short' });
+                        lastMonth = midWeek.getMonth();
+                    }
+                    monthsRow.appendChild(label);
+                }
+
+                const dateStr = dateKey(cursor);
+                const cell = document.createElement('div');
+                cell.className = 'streak-cell';
+                const niceDate = cursor.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                if (cursor > today) {
+                    cell.classList.add('future');
+                    cell.title = niceDate;
+                } else if (byDate[dateStr]) {
+                    cell.classList.add('filled');
+                    activeDays++;
+                    cell.title = `${niceDate}: ${byDate[dateStr].join(', ')}`;
+                } else {
+                    cell.title = niceDate;
+                }
+
+                grid.appendChild(cell);
+                cursor = new Date(cursor.getTime() + msDay);
+            }
+
+            let streak = 0;
+            let checkDate = new Date(today);
+            if (!byDate[dateKey(checkDate)]) {
+                checkDate = new Date(checkDate.getTime() - msDay);
+            }
+            while (byDate[dateKey(checkDate)]) {
+                streak++;
+                checkDate = new Date(checkDate.getTime() - msDay);
+            }
+
+            statsEl.textContent = `${activeDays} active days | current streak: ${streak} day${streak !== 1 ? 's' : ''}`;
         }
 
         function toggleEntry(entry) {
@@ -94,23 +215,26 @@
             }
         }
 
-        // Search functionality
+        // Search + filter functionality
         const searchInput = document.getElementById('searchInput');
         const resultsInfo = document.getElementById('resultsInfo');
         const noResults = document.getElementById('noResults');
+        const filterContainer = document.getElementById('filterContainer');
+        let activeFilter = 'all';
 
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
+        function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const readingList = document.getElementById('readingList');
             const entries = readingList.querySelectorAll('.reading-entry');
             let visibleCount = 0;
-            
+
             entries.forEach(entry => {
                 const title = entry.querySelector('.reading-title').textContent.toLowerCase();
                 const content = entry.querySelector('.reading-content').textContent.toLowerCase();
-                const matches = title.includes(searchTerm) || content.includes(searchTerm);
-                
-                if (matches || searchTerm === '') {
+                const matchesSearch = searchTerm === '' || title.includes(searchTerm) || content.includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || entry.dataset.category === activeFilter;
+
+                if (matchesSearch && matchesFilter) {
                     entry.classList.remove('hidden');
                     visibleCount++;
                 } else {
@@ -118,14 +242,34 @@
                 }
             });
 
-            // Update results info
+            // Update results info: only show the "Found ..." count for text search,
+            // not when just toggling the research / non-research filter buttons
             if (searchTerm === '') {
                 resultsInfo.textContent = '';
-                noResults.style.display = 'none';
             } else {
                 resultsInfo.textContent = `Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''}`;
-                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
             }
+            noResults.style.display = (searchTerm !== '' || activeFilter !== 'all') && visibleCount === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', applyFilters);
+
+        filterContainer.addEventListener('click', function(e) {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilter = btn.dataset.filter;
+            applyFilters();
+        });
+
+        // Keep the streak grid filling the available width on resize
+        let streakResizeTimer;
+        window.addEventListener('resize', () => {
+            if (!allEntries.length) return;
+            clearTimeout(streakResizeTimer);
+            streakResizeTimer = setTimeout(() => renderStreak(allEntries), 150);
         });
 
         // Load the reading list when page loads

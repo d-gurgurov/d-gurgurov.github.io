@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>daniil gurgurov</title>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext&#038;display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Google verify -->
@@ -29,18 +30,35 @@
 
     <div class="content">
         <div id="main-content">
-            <div class="about-section"> 
-                <h2>about</h2> 
-                
-                <p> I am a first-year PhD student at Saarland University and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank">German Research Center for AI (DFKI)</a>. My research focuses on interpretability and efficiency in multilingual language models, supervised by <a href="https://simonost.github.io/home/" target="_blank">Dr. Simon Ostermann</a> and <a href="https://www.uni-saarland.de/lehrstuhl/genabith/van-genabith/cv.html" target="_blank">Prof. Dr. Josef van Genabith</a>. 
-                    For an overview of my work, see my <a href="https://scholar.google.com/citations?user=RdtNN0kAAAAJ&hl=en" target="_blank">Google Scholar profile</a>. 
+            <div class="about-section">
+                <h2>about</h2>
+
+                <div class="left-rail" id="left-rail">
+                    <div class="fisher-icon" id="fisher-icon">
+                        <img src="assets/imgs/fisher.png" alt="A little stick-figure fisherman in a boat, the site's icon">
+                    </div>
+
+                    <div class="now-box" id="now-box">
+                        <div class="now-label">currently</div>
+                        <div class="now-row"><span class="now-key">location:</span> <a href="https://www.google.com/maps/place/Saarbr%C3%BCcken,+Germany" target="_blank">Saarbrücken, Germany</a></div>
+                        <div class="now-row"><span class="now-key">reading:</span> <a id="now-reading" href="reading.html">…</a></div>
+                        <div class="now-row"><span class="now-key">contact:</span> <a href="mailto:dgurgurov@gmail.com">dgurgurov@gmail.com</a></div>
+                    </div>
+                </div>
+
+                <p> I am a first-year PhD student at Saarland University and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank">German Research Center for AI (DFKI)</a><label for="sn-4" class="sidenote-toggle"></label><input type="checkbox" id="sn-4" class="sidenote-checkbox"><span class="sidenote">One of the largest non-profit AI research institutions in the world, with its main site in Kaiserslautern and further sites across Germany, including Saarbrücken.</span>. My research focuses on interpretability and efficiency in multilingual language models, supervised by <a href="https://simonost.github.io/home/" target="_blank">Dr. Simon Ostermann</a> and <a href="https://www.uni-saarland.de/lehrstuhl/genabith/van-genabith/cv.html" target="_blank">Prof. Dr. Josef van Genabith</a>.
+                    For an overview of my work, see my <a href="https://scholar.google.com/citations?user=RdtNN0kAAAAJ&hl=en" target="_blank">Google Scholar profile</a> or scroll further down this page. I am also contributing to the pre- and post-training of <a href="https://arxiv.org/abs/2607.09424" target="_blank">SOOFI</a>, the first German-centric open-source foundation model, focusing on multilingual reasoning data generation.
                 </p>
                 <p>
-                    I completed my Master’s degree in <a href="https://www.uni-saarland.de/en/department/lst.html" target="_blank">Language Science and Technology</a> at Saarland University, supported by the <a href="https://www.daad.de/en/" target="_blank">DAAD</a> and Erasmus+ scholarships. As part of my master's studies, I also spent a semester at the Center for Mind and Brain Sciences at the University of Trento (Italy).  
+                    Along the way, I have been fortunate to attend the <a href="https://lig-alps.imag.fr/" target="_blank">ALPS NLP School</a><label for="sn-5" class="sidenote-toggle"></label><input type="checkbox" id="sn-5" class="sidenote-checkbox"><span class="sidenote">Advanced Language Processing School, a week-long NLP school held in the French Alps, co-organized by Grenoble Alpes University and Naver Labs Europe.</span> at Grenoble University and the <a href="https://cfe.columbia.edu/content/mlss2" target="_blank">MLSS</a><label for="sn-6" class="sidenote-toggle"></label><input type="checkbox" id="sn-6" class="sidenote-checkbox"><span class="sidenote">Machine Learning Summer School, a long-running series of intensive graduate-level schools on statistical machine learning, running since 2002.</span> summer school at Columbia University, as well as spend a month as a research visitor at <a href="https://kinit.sk/" target="_blank">KInIT</a><label for="sn-7" class="sidenote-toggle"></label><input type="checkbox" id="sn-7" class="sidenote-checkbox"><span class="sidenote">Kempelen Institute of Intelligent Technologies, Slovakia's first independent private AI research institute, based in Bratislava.</span> in Slovakia. I have also had the pleasure of co-organizing two events for the NLP community: <a href="https://www.uni-saarland.de/en/department/lst/news/a-successful-33rd-tacos-in-saarbruecken-32583.html" target="_blank">TaCoS</a><label for="sn-8" class="sidenote-toggle"></label><input type="checkbox" id="sn-8" class="sidenote-checkbox"><span class="sidenote">Tagung der Computerlinguistik-Studierenden, Germany's annual student conference on computational linguistics.</span>, the 33rd Student Conference on Computational Linguistics, and the <a href="https://lt-bridge.eu/winter-school/" target="_blank">LT-Bridge Winter School</a><label for="sn-9" class="sidenote-toggle"></label><input type="checkbox" id="sn-9" class="sidenote-checkbox"><span class="sidenote">A DFKI-led project on multilingual and efficient NLP technologies, spanning chatbots, machine translation, and low-resource language processing.</span> on parameter-efficient methods for NLP.
+                </p>
+
+                <p>
+                    I completed my Master’s degree in <a href="https://www.uni-saarland.de/en/department/lst.html" target="_blank">Language Science and Technology</a> at Saarland University, supported by the <a href="https://www.daad.de/en/" target="_blank">DAAD</a><label for="sn-1" class="sidenote-toggle"></label><input type="checkbox" id="sn-1" class="sidenote-checkbox"><span class="sidenote">Deutscher Akademischer Austauschdienst, Germany's national agency for funding international student and researcher exchange.</span> and Erasmus+ scholarships. As part of my master's studies, I also spent a semester at the Center for Mind and Brain Sciences at the University of Trento (Italy).
                     During this time, I worked as a Research Assistant in the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank">Multilingual Language Technology Lab</a> at DFKI, collaborating closely with my current supervisors.
                 </p>
                 <p>
-                    Before moving to Germany, I earned my Bachelor's degree in Linguistics and Pedagogy at <a href="http://spsu.ru/" target="_blank">Shevchenko Transnistrian State University</a> (Transnistria). As part of my undergraduate studies, I completed an exchange semester at <a href="https://www.murraystate.edu/" target="_blank">Murray State University</a> (USA) through the fully funded <a href="https://www.worldlearning.org/program/global-undergraduate-exchange-program/" target="_blank">Global UGRAD</a> program.
+                    Before moving to Germany, I earned my Bachelor's degree in Linguistics and Pedagogy at <a href="http://spsu.ru/" target="_blank">Shevchenko Transnistrian State University</a> (Transnistria)<label for="sn-2" class="sidenote-toggle"></label><input type="checkbox" id="sn-2" class="sidenote-checkbox"><span class="sidenote">A breakaway territory on the eastern bank of the Dniester, formally part of Moldova but functioning as a self-governing, internationally unrecognized state since 1990.</span>. As part of my undergraduate studies, I completed an exchange semester at <a href="https://www.murraystate.edu/" target="_blank">Murray State University</a> (USA) through the fully funded <a href="https://www.worldlearning.org/program/global-undergraduate-exchange-program/" target="_blank">Global UGRAD</a><label for="sn-3" class="sidenote-toggle"></label><input type="checkbox" id="sn-3" class="sidenote-checkbox"><span class="sidenote">Global Undergraduate Exchange Program, funded by the U.S. Department of State, bringing undergraduates from underrepresented countries to study for a semester in the US.</span> program.
                 </p>
 
                 <p>
@@ -48,9 +66,103 @@
                 </p>
             </div>
 
+            <div class="research-interests-section">
+                <h2>research interests</h2>
+                <p>My research goal is to move from empirical steering methods toward a principled theory of controllable representations, using multilinguality as a lens for structure that stays invisible in English-centric analyses. I organize this around three pillars.</p>
+                <ul class="interest-list">
+                    <li><strong>Multilingual Interpretability</strong>: how LMs process so many languages at once, drawing on mechanistic interpretability and multilingual NLP.</li>
+                    <li><strong>Actionable Interpretability</strong>: how interpretability can guide model enhancement, through activation steering and controllable representations.</li>
+                    <li><strong>Multilingual Efficiency</strong>: whether we can build great multilingual models with less data, using low-resource language techniques and model compression.</li>
+                </ul>
+            </div>
+
+            <div class="story-section">
+                <h2>the story so far</h2>
+                <p class="story-intro">A rough story of what I've worked on so far during my PhD, in the order it happened.</p>
+                <ol class="story-timeline">
+                    <li>
+                        <span class="story-num">0</span>
+                        <div class="story-body">
+                            <h3>Language neurons</h3>
+                            <p>It started with finding that some neurons inside multilingual models are language-specific: they can be located and manipulated, and they naturally cluster by language family, mostly in the later layers of the network.</p>
+                            <a href="https://aclanthology.org/2025.ijcnlp-long.156.pdf" target="_blank" class="story-link">read the paper →</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">1</span>
+                        <div class="story-body">
+                            <h3>Language vectors</h3>
+                            <p>Neurons turned out to be a coarse tool. A cleaner picture emerged with vectors: language behaves like a linear direction in the representation space, and steering along it is a better way to control which language a model responds in, especially when applied in later layers.</p>
+                            <a href="https://aclanthology.org/2026.findings-acl.1086.pdf" target="_blank" class="story-link">read the paper →</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">2</span>
+                        <div class="story-body">
+                            <h3>Language scripts</h3>
+                            <p>Digging into what "language" means at the representation level, script turned out to be its own linear axis that can be manipulated, gated by a small set of language-agnostic attention heads that causally control it, again concentrated in the later layers.</p>
+                            <a href="https://arxiv.org/pdf/2605.31363" target="_blank" class="story-link">read the paper →</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">3</span>
+                        <div class="story-body">
+                            <h3>Linear embedding manipulations</h3>
+                            <p>Zooming out, these simple linear edits at the embedding level started to look like a real alternative to heavier adaptation methods (supervised fine-tuning, RL, or parameter-efficient tuning) for steering model behavior.</p>
+                            <a href="https://aclanthology.org/2026.acl-long.1377.pdf" target="_blank" class="story-link">read the paper →</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">4</span>
+                        <div class="story-body">
+                            <h3>Steering vector compositionality</h3>
+                            <p>The next question was whether these directions compose. It turns out that steering vectors can be combined linearly, as long as they are sufficiently orthogonal to each other.</p>
+                            <span class="story-link story-pending">paper coming soon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">5</span>
+                        <div class="story-body">
+                            <h3>Toward a unified model of multilingual processing</h3>
+                            <p>Putting the pieces together, a working theory is forming: models first extract language-specific features and identify the input language, then reason in a shared cross-lingual space aligned with whichever language dominates, and finally differentiate the output back into the target language. This is where I want to take the next chapters of the PhD.</p>
+                            <span class="story-link story-pending">no dedicated paper yet</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
 
         </div>
     </div>
 
+    <script>
+        fetch('data/reading.json')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.length) return;
+                const nowReading = document.getElementById('now-reading');
+                nowReading.textContent = data[0].title;
+                nowReading.href = data[0].url;
+                nowReading.target = '_blank';
+            })
+            .catch(() => {});
+
+        const fisherIcon = document.getElementById('fisher-icon');
+        if (fisherIcon) {
+            const fisherImg = fisherIcon.querySelector('img');
+            fisherIcon.addEventListener('mouseenter', () => {
+                fisherIcon.classList.add('is-hovering');
+            });
+            fisherIcon.addEventListener('mousemove', (e) => {
+                const rect = fisherIcon.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                fisherImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+            });
+            fisherIcon.addEventListener('mouseleave', () => {
+                fisherIcon.classList.remove('is-hovering');
+                fisherImg.style.transform = '';
+            });
+        }
+    </script>
 </body>
 </html>

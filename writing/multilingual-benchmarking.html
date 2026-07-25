@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multilingual NLP Benchmarks Guide - Daniil Gurgurov</title>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext&display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/imgs/icon.ico" />
 </head>
@@ -51,7 +52,7 @@
                 <p>This comprehensive guide attempts to index the major multilingual benchmarks available for both <strong>discriminative tasks</strong> (classification, tagging) and <strong>generative tasks</strong> (question answering, summarization, translation). Each entry includes paper references, dataset links, and key characteristics.</p>
                 
                 <h3>Why Multilingual Benchmarks Matter</h3>
-                <p>According to recent research analyzing over 2,000 multilingual benchmarks published between 2021-2024, English still dominates evaluation despite significant investments in multilingual evaluation.<sup><a href="#ref1" id="cite1">[1]</a></sup> Low-resource languages remain severely underrepresented, and there's a notable gap between benchmark performance and real-world human judgments, particularly for traditional NLP tasks.</p>
+                <p>According to recent research analyzing over 2,000 multilingual benchmarks published between 2021-2024, English still dominates evaluation despite significant investments in multilingual evaluation.<label for="sn-1" class="sidenote-toggle"></label><input type="checkbox" id="sn-1" class="sidenote-checkbox"><span class="sidenote">Wu et al. (2025), "The Bitter Lesson Learned from 2,000+ Multilingual Benchmarks," <a href="https://arxiv.org/abs/2504.15521">arXiv:2504.15521</a>.</span> Low-resource languages remain severely underrepresented, and there's a notable gap between benchmark performance and real-world human judgments, particularly for traditional NLP tasks.</p>
                 <p>On a more practical note, having all these benchmarks archived in one place is of great value. I wish I had a resource like this when I first started working on multilingual NLP, it would have saved countless hours of scattered searching. Multilingual evaluation is at the heart of building better multilingual models, and seeing all these benchmarks together offers a chance to reflect on what we have, identify the gaps that remain, and plot a path forward.</p>
             
             </section>
@@ -200,7 +201,7 @@
                     <tr><th>Task</th><td>Information-seeking QA</td></tr>
                     <tr><th>Dataset</th><td><a href="https://github.com/google-research-datasets/tydiqa">github.com/google-research-datasets/tydiqa</a></td></tr>
                     <tr><th>Type</th><td>Generative</td></tr>
-                    <tr><th>Description</th><td>Questions written by native speakers who don't know the answer, avoiding priming effects. No translation used—data collected directly in each language. 204K question-answer pairs.</td></tr>
+                    <tr><th>Description</th><td>Questions written by native speakers who don't know the answer, avoiding priming effects. No translation used. Data collected directly in each language. 204K question-answer pairs.</td></tr>
                 </table>
 
                 <h3>MKQA</h3>
@@ -651,7 +652,7 @@
             <section class="article-section" id="references">
                 <h2>References</h2>
                 <ol class="references-list">
-                    <li id="ref1"><a href="#cite1">^</a> Wu, M., Wang, W., Liu, S., Yin, H., Wang, X., Zhao, Y., Lyu, C., Wang, L., Luo, W., & Zhang, K. (2025). "The Bitter Lesson Learned from 2,000+ Multilingual Benchmarks." <a href="https://arxiv.org/abs/2504.15521">arXiv:2504.15521</a></li>
+                    <li id="ref1">Wu, M., Wang, W., Liu, S., Yin, H., Wang, X., Zhao, Y., Lyu, C., Wang, L., Luo, W., & Zhang, K. (2025). "The Bitter Lesson Learned from 2,000+ Multilingual Benchmarks." <a href="https://arxiv.org/abs/2504.15521">arXiv:2504.15521</a></li>
                 </ol>
             </section>
 
