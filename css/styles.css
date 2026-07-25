@@ -230,7 +230,8 @@ a.story-link:hover {
     border-bottom-color: #333;
 }
 
-.fisher-icon {
+.fisher-icon,
+.reader-icon {
     display: none;
 }
 
@@ -254,27 +255,39 @@ a.story-link:hover {
         left: calc(25% - 295px);
     }
 
-    .fisher-icon {
+    .fisher-icon,
+    .reader-icon {
         display: flex;
         justify-content: center;
         padding: 6px 0;
     }
 }
 
-.fisher-icon img {
-    width: 84px;
-    height: 84px;
+.fisher-icon img,
+.reader-icon img {
     opacity: 0.8;
     transition: transform 0.25s ease, opacity 0.3s ease;
     animation: fisher-bob 4s ease-in-out infinite;
     transform-origin: 50% 85%;
 }
 
-.fisher-icon:hover img {
+.fisher-icon img {
+    width: 84px;
+    height: 84px;
+}
+
+.reader-icon img {
+    width: 108px;
+    height: auto;
+}
+
+.fisher-icon:hover img,
+.reader-icon:hover img {
     opacity: 1;
 }
 
-.fisher-icon.is-hovering img {
+.fisher-icon.is-hovering img,
+.reader-icon.is-hovering img {
     animation-play-state: paused;
 }
 

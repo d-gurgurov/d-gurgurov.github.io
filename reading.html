@@ -36,6 +36,10 @@
         </div>
 
         <div class="left-rail left-rail-narrow" id="left-rail">
+            <div class="reader-icon" id="reader-icon">
+                <img src="assets/imgs/reader.png" alt="A little stick-figure reading a book in a boat, matching the site's fisherman icon">
+            </div>
+
             <div class="filter-container" id="filterContainer">
                 <span class="filter-box-label">filter</span>
                 <button class="filter-btn active" data-filter="all">all</button>
@@ -274,6 +278,24 @@
 
         // Load the reading list when page loads
         loadReadingList();
+
+        const readerIcon = document.getElementById('reader-icon');
+        if (readerIcon) {
+            const readerImg = readerIcon.querySelector('img');
+            readerIcon.addEventListener('mouseenter', () => {
+                readerIcon.classList.add('is-hovering');
+            });
+            readerIcon.addEventListener('mousemove', (e) => {
+                const rect = readerIcon.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                readerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+            });
+            readerIcon.addEventListener('mouseleave', () => {
+                readerIcon.classList.remove('is-hovering');
+                readerImg.style.transform = '';
+            });
+        }
     </script>
 </body>
 </html>
