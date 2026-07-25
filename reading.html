@@ -116,7 +116,7 @@
             return `${y}-${m}-${day}`;
         }
 
-        // Render the reading activity streak grid, spanning December to December
+        // Render the reading activity streak grid, from this week through next July
         function renderStreak(entries) {
             const grid = document.getElementById('streakGrid');
             const monthsRow = document.getElementById('streakMonths');
@@ -134,12 +134,11 @@
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            // Range runs from the most recent December 1st through the following December 1st
-            const rangeStartYear = today.getMonth() === 11 ? today.getFullYear() : today.getFullYear() - 1;
-            const rangeStart = new Date(rangeStartYear, 11, 1);
-            const rangeEnd = new Date(rangeStartYear + 1, 11, 1);
+            // Range runs from this week through next July 1st
+            const endYear = today.getMonth() >= 6 ? today.getFullYear() + 1 : today.getFullYear();
+            const rangeEnd = new Date(endYear, 6, 1);
 
-            const start = new Date(rangeStart);
+            const start = new Date(today);
             start.setDate(start.getDate() - start.getDay());
             const end = new Date(rangeEnd);
             end.setDate(end.getDate() + ((6 - end.getDay()) % 7));
@@ -161,11 +160,14 @@
             let activeDays = 0;
             let cursor = new Date(start);
 
+            const todayKey = dateKey(today);
+
             while (cursor <= end) {
                 if (cursor.getDay() === 0) {
                     const label = document.createElement('span');
                     label.className = 'streak-month-label';
-                    const midWeek = new Date(cursor.getTime() + 3 * msDay);
+                    const midWeek = new Date(cursor);
+                    midWeek.setDate(midWeek.getDate() + 3);
                     if (midWeek.getMonth() !== lastMonth) {
                         label.textContent = midWeek.toLocaleDateString('en-US', { month: 'short' });
                         lastMonth = midWeek.getMonth();
@@ -178,7 +180,10 @@
                 cell.className = 'streak-cell';
                 const niceDate = cursor.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-                if (cursor > today) {
+                // Compare calendar-day keys, not raw Date objects: DST transitions can
+                // drift a cursor's time-of-day away from midnight, which made
+                // `cursor > today` misclassify today's own cell as "future".
+                if (dateStr > todayKey) {
                     cell.classList.add('future');
                     cell.title = niceDate;
                 } else if (byDate[dateStr]) {
@@ -190,17 +195,17 @@
                 }
 
                 grid.appendChild(cell);
-                cursor = new Date(cursor.getTime() + msDay);
+                cursor.setDate(cursor.getDate() + 1);
             }
 
             let streak = 0;
             let checkDate = new Date(today);
             if (!byDate[dateKey(checkDate)]) {
-                checkDate = new Date(checkDate.getTime() - msDay);
+                checkDate.setDate(checkDate.getDate() - 1);
             }
             while (byDate[dateKey(checkDate)]) {
                 streak++;
-                checkDate = new Date(checkDate.getTime() - msDay);
+                checkDate.setDate(checkDate.getDate() - 1);
             }
 
             statsEl.textContent = `${activeDays} active days | current streak: ${streak} day${streak !== 1 ? 's' : ''}`;
