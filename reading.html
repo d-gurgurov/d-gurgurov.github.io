@@ -116,7 +116,7 @@
             return `${y}-${m}-${day}`;
         }
 
-        // Render the reading activity streak grid, from this week through next July
+        // Render the reading activity streak grid, from last week of July through next July
         function renderStreak(entries) {
             const grid = document.getElementById('streakGrid');
             const monthsRow = document.getElementById('streakMonths');
@@ -134,11 +134,14 @@
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            // Range runs from this week through next July 1st
+            // Range runs from the last week of July through next July 1st.
+            // Anchored to calendar dates (not "today") so the start doesn't
+            // creep forward as the year progresses past July.
             const endYear = today.getMonth() >= 6 ? today.getFullYear() + 1 : today.getFullYear();
             const rangeEnd = new Date(endYear, 6, 1);
+            const rangeStart = new Date(endYear - 1, 6, 24);
 
-            const start = new Date(today);
+            const start = new Date(rangeStart);
             start.setDate(start.getDate() - start.getDay());
             const end = new Date(rangeEnd);
             end.setDate(end.getDate() + ((6 - end.getDay()) % 7));
