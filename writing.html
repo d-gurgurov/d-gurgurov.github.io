@@ -27,7 +27,13 @@
 
     <div class="content">
         <h2>writing</h2>
-        
+
+        <div class="left-rail" id="left-rail">
+            <div class="writer-icon" id="writer-icon">
+                <img src="assets/imgs/writer.png" alt="A little stick-figure writing in a boat, matching the site's fisherman icon">
+            </div>
+        </div>
+
         <ul class="reading-list">
             <!-- writing 1 -->
             <li class="reading-entry">
@@ -37,7 +43,7 @@
             </li>
         </ul>
         
-        <p>more coming soon...</p>
+        <p class="game-of-life-intro">more coming soon... and, as a small aside, a toy to play with: <strong>Conway's Game of Life</strong><label for="sn-gol" class="sidenote-toggle"></label><input type="checkbox" id="sn-gol" class="sidenote-checkbox"><span class="sidenote">A zero-player cellular automaton: each cell lives, dies, or is born depending on how many neighbors are alive. Draw a starting pattern, hit play, and watch what unfolds.</span>, a small proof that complexity can emerge from a handful of pretty simple rules.</p>
         <div class="game-of-life-container">
             <canvas id="gameCanvas" class="game-canvas" width="300" height="200"></canvas>
             <div class="game-controls">
@@ -248,6 +254,24 @@
         
         // Start with a random pattern
         game.randomize();
+
+        const writerIcon = document.getElementById('writer-icon');
+        if (writerIcon) {
+            const writerImg = writerIcon.querySelector('img');
+            writerIcon.addEventListener('mouseenter', () => {
+                writerIcon.classList.add('is-hovering');
+            });
+            writerIcon.addEventListener('mousemove', (e) => {
+                const rect = writerIcon.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                writerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+            });
+            writerIcon.addEventListener('mouseleave', () => {
+                writerIcon.classList.remove('is-hovering');
+                writerImg.style.transform = '';
+            });
+        }
     </script>
 </body>
 </html>

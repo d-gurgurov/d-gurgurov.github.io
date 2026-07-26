@@ -231,7 +231,8 @@ a.story-link:hover {
 }
 
 .fisher-icon,
-.reader-icon {
+.reader-icon,
+.writer-icon {
     display: none;
 }
 
@@ -266,7 +267,8 @@ a.story-link:hover {
     }
 
     .fisher-icon,
-    .reader-icon {
+    .reader-icon,
+    .writer-icon {
         display: flex;
         justify-content: center;
         padding: 6px 0;
@@ -274,7 +276,8 @@ a.story-link:hover {
 }
 
 .fisher-icon img,
-.reader-icon img {
+.reader-icon img,
+.writer-icon img {
     opacity: 0.8;
     transition: transform 0.25s ease, opacity 0.3s ease;
     animation: fisher-bob 4s ease-in-out infinite;
@@ -282,22 +285,29 @@ a.story-link:hover {
 }
 
 .fisher-icon img {
-    width: 84px;
-    height: 84px;
+    width: 82px;
+    height: auto;
 }
 
 .reader-icon img {
-    width: 108px;
+    width: 92px;
+    height: auto;
+}
+
+.writer-icon img {
+    width: 92px;
     height: auto;
 }
 
 .fisher-icon:hover img,
-.reader-icon:hover img {
+.reader-icon:hover img,
+.writer-icon:hover img {
     opacity: 1;
 }
 
 .fisher-icon.is-hovering img,
-.reader-icon.is-hovering img {
+.reader-icon.is-hovering img,
+.writer-icon.is-hovering img {
     animation-play-state: paused;
 }
 
@@ -573,6 +583,11 @@ footer {
 }
 
 /* Game of life styles*/
+.game-of-life-intro {
+    position: relative;
+    counter-reset: sidenote-counter;
+}
+
 .game-of-life-container {
     display: flex;
     flex-direction: column;
