@@ -524,7 +524,7 @@ footer {
 .streak-scroll {
     --cell-size: 11px;
     overflow-x: auto;
-    padding-bottom: 2px;
+    padding: 0 4px 2px;
 }
 
 .streak-months {

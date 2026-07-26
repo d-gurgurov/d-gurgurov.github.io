@@ -180,7 +180,7 @@
 
             // Size cells so the grid fills the available width, no matter how wide the box is
             const gap = 3;
-            const available = scrollEl.clientWidth;
+            const available = scrollEl.clientWidth - 8; // account for .streak-scroll's left/right padding
             let cellSize = Math.floor((available - (totalWeeks - 1) * gap) / totalWeeks);
             cellSize = Math.max(8, Math.min(16, cellSize));
             scrollEl.style.setProperty('--cell-size', cellSize + 'px');
