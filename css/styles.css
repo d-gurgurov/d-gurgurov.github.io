@@ -255,6 +255,16 @@ a.story-link:hover {
         left: calc(25% - 295px);
     }
 
+    .right-rail {
+        position: fixed;
+        right: calc(25% - 295px);
+        top: 200px;
+        width: 170px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
     .fisher-icon,
     .reader-icon {
         display: flex;
@@ -436,6 +446,34 @@ footer {
     background-color: #007BFF;
     border-color: #007BFF;
     color: #fff;
+}
+
+.random-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fefcf0;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.random-btn:hover {
+    border-color: #007BFF;
+    color: #007BFF;
+}
+
+.reading-entry.flash {
+    animation: entry-flash 1.2s ease;
+}
+
+@keyframes entry-flash {
+    0% { background-color: #fff3cd; }
+    100% { background-color: #fefcf0; }
 }
 
 .search-results-info {

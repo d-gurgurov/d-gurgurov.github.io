@@ -40,6 +40,17 @@
                 <img src="assets/imgs/reader.png" alt="A little stick-figure reading a book in a boat, matching the site's fisherman icon">
             </div>
 
+            <div class="now-box" id="statsBox">
+                <div class="now-label">stats</div>
+                <div class="now-row"><span class="now-key">total:</span> <span id="statTotal">…</span></div>
+                <div class="now-row"><span class="now-key">research:</span> <span id="statResearch">…</span></div>
+                <div class="now-row"><span class="now-key">this month:</span> <span id="statMonth">…</span></div>
+            </div>
+
+            <button class="random-btn" id="randomBtn">Random paper</button>
+        </div>
+
+        <div class="right-rail" id="right-rail">
             <div class="filter-container" id="filterContainer">
                 <span class="filter-box-label">filter</span>
                 <button class="filter-btn active" data-filter="all">all</button>
@@ -77,6 +88,7 @@
                 allEntries = data;
                 renderReadingList(data);
                 renderStreak(data);
+                renderStats(data);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readingList').style.display = 'block';
             } catch (error) {
@@ -106,6 +118,23 @@
 
                 readingList.appendChild(li);
             });
+        }
+
+        // Populate the small stats box in the left rail
+        function renderStats(entries) {
+            const total = entries.length;
+            const research = entries.filter(e => (e.category || 'non-research') === 'research').length;
+
+            const now = new Date();
+            const thisMonth = entries.filter(e => {
+                if (!e.date) return false;
+                const d = new Date(e.date);
+                return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
+            }).length;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statResearch').textContent = `${research} / ${total - research}`;
+            document.getElementById('statMonth').textContent = thisMonth;
         }
 
         // Format a Date as a local YYYY-MM-DD key (avoids UTC-shift bugs from toISOString)
@@ -282,6 +311,31 @@
             if (!allEntries.length) return;
             clearTimeout(streakResizeTimer);
             streakResizeTimer = setTimeout(() => renderStreak(allEntries), 150);
+        });
+
+        // Jump to a random entry: clears search/filter so it's guaranteed visible,
+        // expands it, and scrolls it into view
+        const randomBtn = document.getElementById('randomBtn');
+        randomBtn.addEventListener('click', () => {
+            if (!allEntries.length) return;
+
+            searchInput.value = '';
+            activeFilter = 'all';
+            filterContainer.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.filter === 'all');
+            });
+            applyFilters();
+
+            const idx = Math.floor(Math.random() * allEntries.length);
+            const li = document.getElementById('readingList').children[idx];
+            if (!li) return;
+
+            li.querySelector('.reading-content').classList.add('expanded');
+            li.querySelector('.expand-button').textContent = '−';
+            li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            li.classList.add('flash');
+            setTimeout(() => li.classList.remove('flash'), 1200);
         });
 
         // Load the reading list when page loads
