@@ -1,5 +1,13 @@
 [
   {
+    "title": "Toward a Unified View of Language Model Parameter Dynamics",
+    "url": "https://arxiv.org/pdf/2602.02343",
+    "linkText": "A paper",
+    "description": "by Xu et al. (2026) on why steering works, proposing a unified preference-utility framework. Preference is the tendency toward a target concept, and utility is referred to coherent, task-relevant generation. When measured jointly on a shared log-odds scale, a trade-off is observed: \"stronger control increases preference while predictably reducing utility.\" This is then explained through a representation manifold perspective.",
+    "category": "research",
+    "date": "2026-07-26"
+  },
+  {
     "title": "AI 2040 - Plan A",
     "url": "https://ai-2040.com/",
     "linkText": "A positive vision",
