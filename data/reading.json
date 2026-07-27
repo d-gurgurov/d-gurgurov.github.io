@@ -1,5 +1,13 @@
 [
   {
+    "title": "Belief Dynamics Reveal the Dual Nature of ICL and Activation Steering",
+    "url": "https://arxiv.org/pdf/2511.00617",
+    "linkText": "A paper",
+    "description": "by Bigelow et al. (2026) argues that both ICL and activation steering change model behaviour by altering beliefs in latent concepts (learned during pre-training). ICL examples provide evidence about which concept is likely (updating the posterior), while activation steering injects a vector that biases the model's prior toward a concept. The resulting Bayesian model is predictive of actual LLM behaviour.",
+    "category": "research",
+    "date": "2026-07-27"
+  },
+  {
     "title": "Toward a Unified View of Language Model Parameter Dynamics",
     "url": "https://arxiv.org/pdf/2602.02343",
     "linkText": "A paper",
