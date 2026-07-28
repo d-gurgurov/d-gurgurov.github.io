@@ -1,5 +1,13 @@
 [
   {
+    "title": "Uncovering ELIZA's source code",
+    "url": "https://spectrum.ieee.org/eliza-chatbot-source-code",
+    "linkText": "An article",
+    "description": "on what ELIZA's source code can tell us: \"even simple algorithms making contextual responses about geography could generate a convincing sense of personhood and place.\" A certain persona emerges out of the interaction with a user (even with rule-based responses).",
+    "category": "non-research",
+    "date": "2026-07-28"
+  },
+  {
     "title": "Belief Dynamics Reveal the Dual Nature of ICL and Activation Steering",
     "url": "https://arxiv.org/pdf/2511.00617",
     "linkText": "A paper",
