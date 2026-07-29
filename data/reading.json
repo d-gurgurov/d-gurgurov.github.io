@@ -1,5 +1,13 @@
 [
   {
+    "title": "From Model Trainingto Model Raising",
+    "url": "https://dl.acm.org/doi/pdf/10.1145/3748645",
+    "linkText": "An opinion piece",
+    "description": "on moving from post-hoc model alignment to intrinsic, identity-based development, which should be happening more upstream in the training process. Model training -> model raising. The idea is to make the model see all data from a singular perspective (\"I\"), which would serve as a hub through which all training data goes, shaping the values early on.",
+    "category": "non-research",
+    "date": "2026-07-29"
+  },
+  {
     "title": "Uncovering ELIZA's source code",
     "url": "https://spectrum.ieee.org/eliza-chatbot-source-code",
     "linkText": "An article",
