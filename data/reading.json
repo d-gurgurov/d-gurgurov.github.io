@@ -1,6 +1,14 @@
 [
   {
-    "title": "From Model Trainingto Model Raising",
+    "title": "You Could Have Come Up With Kimi Delta Attention",
+    "url": "https://blog.doubleword.ai/you-could-have-come-up-with-kimi-delta-attention",
+    "linkText": "A blog post",
+    "description": "by Jamie Dborin walking through the DeltaNet family of linear attention algorithms and their derivations.",
+    "category": "non-research",
+    "date": "2026-07-30"
+  },
+  {
+    "title": "From Model Training to Model Raising",
     "url": "https://dl.acm.org/doi/pdf/10.1145/3748645",
     "linkText": "An opinion piece",
     "description": "on moving from post-hoc model alignment to intrinsic, identity-based development, which should be happening more upstream in the training process. Model training -> model raising. The idea is to make the model see all data from a singular perspective (\"I\"), which would serve as a hub through which all training data goes, shaping the values early on.",
