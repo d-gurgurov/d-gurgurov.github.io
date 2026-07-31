@@ -1,5 +1,13 @@
 [
   {
+    "title": "Talkie: a 13B vintage language model from 1930",
+    "url": "https://talkie-lm.com/introducing-talkie",
+    "linkText": "A blog post",
+    "description": "introducing Talkie, the first vintage language model that was pre-trained on the data coming from before 1930 with the rough aim of checking whether that knowledge would be enough to rediscover some of the important findings that came after that year.",
+    "category": "non-research",
+    "date": "2026-07-31"
+  },
+  {
     "title": "You Could Have Come Up With Kimi Delta Attention",
     "url": "https://blog.doubleword.ai/you-could-have-come-up-with-kimi-delta-attention",
     "linkText": "A blog post",
