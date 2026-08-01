@@ -1,5 +1,13 @@
 [
   {
+    "title": "Encoder Neuron Identification and Amplification for Acoustic Perception in Audio-Language Models",
+    "url": "https://arxiv.org/pdf/2607.11801",
+    "linkText": "A paper",
+    "description": "by Huang et al. (2026), demonstrating that acoustic perception of a large audio-language model can be enhanced by amplifying FFN neurons inside the audio encoder at inference time. The neurons are identified by contrasting their activations on the real audio and a noise reference.",
+    "category": "research",
+    "date": "2026-08-01"
+  },
+  {
     "title": "Talkie: a 13B vintage language model from 1930",
     "url": "https://talkie-lm.com/introducing-talkie",
     "linkText": "A blog post",
