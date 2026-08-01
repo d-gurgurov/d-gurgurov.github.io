@@ -346,16 +346,18 @@
             const readerImg = readerIcon.querySelector('img');
             readerIcon.addEventListener('mouseenter', () => {
                 readerIcon.classList.add('is-hovering');
+                readerImg.style.animation = 'none';
             });
             readerIcon.addEventListener('mousemove', (e) => {
                 const rect = readerIcon.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                readerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+                readerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.12)`;
             });
             readerIcon.addEventListener('mouseleave', () => {
                 readerIcon.classList.remove('is-hovering');
                 readerImg.style.transform = '';
+                readerImg.style.animation = '';
             });
         }
     </script>

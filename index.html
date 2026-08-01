@@ -151,16 +151,18 @@
             const fisherImg = fisherIcon.querySelector('img');
             fisherIcon.addEventListener('mouseenter', () => {
                 fisherIcon.classList.add('is-hovering');
+                fisherImg.style.animation = 'none';
             });
             fisherIcon.addEventListener('mousemove', (e) => {
                 const rect = fisherIcon.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                fisherImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+                fisherImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.12)`;
             });
             fisherIcon.addEventListener('mouseleave', () => {
                 fisherIcon.classList.remove('is-hovering');
                 fisherImg.style.transform = '';
+                fisherImg.style.animation = '';
             });
         }
     </script>

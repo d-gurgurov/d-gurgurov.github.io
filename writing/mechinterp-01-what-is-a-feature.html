@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is a Feature? - Daniil Gurgurov</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext&display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/imgs/icon.ico" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Daniil Gurgurov</a>
+            <div>
+                <a href="../writing.html">writing</a>
+                <a href="../index.html">about</a>
+                <a href="../reading.html">reading</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="article-content">
+            <h1>What Is a Feature?</h1>
+            <p class="article-subtitle">Part 1 of a short series on mechanistic interpretability<label for="sn-1" class="sidenote-toggle"></label><input type="checkbox" id="sn-1" class="sidenote-checkbox"><span class="sidenote">The term was coined by Chris Olah in the Circuits thread on Distill.pub (2020&ndash;2021), part of an effort to reverse engineer neural networks just like one might reverse engineer a computer program. Saphra and Wiegreffe (2024) later surveyed how the term is actually used and proposed a narrow technical definition: research that uncovers the causal mechanisms explaining a network's transformation from input to output at the level of intermediate representations.</span>, told through small interactive widgets.</p>
+
+            <hr>
+
+            <p>At any given point while processing text, a language model has an activation vector: a long list of numbers describing its current internal state. Certain patterns within those numbers consistently correspond to concepts like formality, gender, or whether the text is in English. Mechanistic interpretability calls one such pattern a <strong>feature</strong>: not necessarily a single neuron or a single number, but a direction in that space, one particular way of nudging thousands of numbers together. If we can identify these directions reliably, we can start to understand what a model actually represents internally, and even change its behavior by pushing along them.</p>
+
+            <p>Try it below. Click a word and watch a single feature light up: whether it's English. Alongside it is a more abstract, but still toy, version of the same idea, two directions this time, formality and warmth, where dragging the dot continuously changes how strongly each one fires.</p>
+
+            <div class="feature-demo-row">
+                <div class="feature-demo lang-feature-demo">
+                    <div class="word-chip-row" id="lang-word-row">
+                        <button class="word-chip" data-activation="0.97">hello</button>
+                        <button class="word-chip" data-activation="0.93">actually</button>
+                        <button class="word-chip" data-activation="0.04">bonjour</button>
+                        <button class="word-chip" data-activation="0.05">merci</button>
+                        <button class="word-chip" data-activation="0.05">hola</button>
+                        <button class="word-chip" data-activation="0.06">gracias</button>
+                        <button class="word-chip" data-activation="0.55">hotel</button>
+                        <button class="word-chip" data-activation="0.48">caf&eacute;</button>
+                    </div>
+                    <div class="feature-readout">
+                        <div class="feature-meter">
+                            <span class="feature-meter-label">"is this English?"</span>
+                            <div class="feature-meter-bar"><div class="feature-meter-fill" id="lang-meter"></div></div>
+                        </div>
+                    </div>
+                    <p class="feature-hint">Click a word. Loanwords like <em>hotel</em> and <em>caf&eacute;</em> are spelled the same across languages, so the feature only half-fires.</p>
+                </div>
+
+                <div class="feature-demo">
+                    <svg id="feature-svg" viewBox="0 0 320 240" width="220" height="165" role="img" aria-label="Interactive diagram of a point projected onto two feature directions">
+                        <line x1="68" y1="212" x2="252" y2="28" class="feature-axis-line"></line>
+                        <line x1="252" y1="212" x2="68" y2="28" class="feature-axis-line"></line>
+                        <text x="257" y="24" class="axis-ref-label" fill="#007BFF">formality</text>
+                        <text x="63" y="24" class="axis-ref-label" text-anchor="end" fill="#e07856">warmth</text>
+                        <circle id="feature-dot" cx="160" cy="120" r="8"></circle>
+                    </svg>
+                    <div class="feature-readout">
+                        <div class="feature-meter">
+                            <span class="feature-meter-label">formality</span>
+                            <div class="feature-meter-bar"><div class="feature-meter-fill" id="meter-a"></div></div>
+                        </div>
+                        <div class="feature-meter">
+                            <span class="feature-meter-label">warmth</span>
+                            <div class="feature-meter-bar"><div class="feature-meter-fill" id="meter-b"></div></div>
+                        </div>
+                    </div>
+                    <p class="feature-hint">Drag the dot. Each meter tracks how far the dot projects onto that direction, the same dot product from the math box below.</p>
+                </div>
+            </div>
+
+            <p>Real models, however, don't operate in a two-dimensional space. Their internal representation, called the residual stream, has thousands of dimensions instead of two<label for="sn-2" class="sidenote-toggle"></label><input type="checkbox" id="sn-2" class="sidenote-checkbox"><span class="sidenote">Elhage et al. (2021), "A Mathematical Framework for Transformer Circuits," describes the residual stream as a shared communication channel that every layer reads from and writes to.</span>. But the geometric intuition from the toy above carries over: a feature is still a direction, and how strongly a given input "has" that feature is just how much its activation vector points along it.</p>
+
+            <p>This is intentionally a loose definition; different interpretability papers formalize "feature" in slightly different ways. Olah et al.'s original framing treated neurons as the fundamental unit of a neural network, the atoms that circuits are built out of<label for="sn-3" class="sidenote-toggle"></label><input type="checkbox" id="sn-3" class="sidenote-checkbox"><span class="sidenote">Olah et al. (2020), "Zoom In: An Introduction to Circuits," proposes that features are the basic building blocks connected by circuits into a network's algorithm.</span>. At first glance, you might imagine each feature lives inside its own neuron. Unfortunately, real networks aren't that straightforward: a single neuron will often respond to several unrelated features at once, a phenomenon known as superposition<label for="sn-4" class="sidenote-toggle"></label><input type="checkbox" id="sn-4" class="sidenote-checkbox"><span class="sidenote">Elhage et al. (2022), "Toy Models of Superposition," shows that networks can represent more features than they have dimensions by tolerating some interference between them.</span>, which is a fancy term for there being more features than a model has room for.</p>
+
+            <p>The reason this framing matters is very practical. If a feature is a direction in space, you can do arithmetic with it: add it, subtract it, amplify it, and watch the model's behavior shift accordingly. That is exactly what activation steering, for instance, does in practice. Once you identify the direction, you can push on it.</p>
+
+            <div class="feature-demo dims-demo">
+                <div class="dim-row" id="dim-row"></div>
+                <div class="feature-readout">
+                    <div class="feature-meter">
+                        <span class="feature-meter-label">dimension 7: german-ness</span>
+                        <div class="feature-meter-bar"><div class="feature-meter-fill" id="dim-meter-de"></div></div>
+                    </div>
+                    <div class="feature-meter">
+                        <span class="feature-meter-label">dimension 15: formality</span>
+                        <div class="feature-meter-bar"><div class="feature-meter-fill" id="dim-meter-formal"></div></div>
+                    </div>
+                </div>
+                <p class="dims-sample" id="dims-sample">"hey, what's up?"</p>
+                <p class="feature-hint">Drag the two highlighted bars above. The other eighteen are just there for scale.</p>
+            </div>
+
+            <p>Each bar above is one coordinate of a twenty-dimensional activation vector. Dragging one moves the activation vector along that one axis of the space, exactly like the arrows in the widget earlier, just with eighteen more axes lying around. Real language models work the same way: they just have thousands of coordinates instead of twenty. Only two of these particular ones happen to mean something on their own; drag them and watch a sample sentence shift language and register. The other eighteen stand in for the many dimensions that exist in a real model but aren't relevant to this example: some would encode entirely different concepts, some would only mean something in combination with a few others, and quite a few would resist a clean explanation at all.</p>
+
+            <div class="math-box">
+                <div class="math-box-label">the actual math</div>
+                <div class="math-line"><strong>activation vector:</strong> h &isin; &#8477;<sup>d</sup> (the residual stream at some layer, d in the thousands)</div>
+                <div class="math-line"><strong>a feature:</strong> a unit direction v &isin; &#8477;<sup>d</sup> pointing toward more of some concept</div>
+                <div class="math-line"><strong>activation strength:</strong> a = h &middot; v (the length of h's shadow cast onto v: positive when h points toward v, negative when it points away, zero when the two are unrelated)</div>
+                <div class="math-line"><strong>many features at once:</strong> a model tracks directions v<sub>1</sub>, &hellip;, v<sub>m</sub>, each with its own strength a<sub>i</sub> = h &middot; v<sub>i</sub></div>
+                <div class="math-line"><strong>steering:</strong> h&prime; = h + &alpha;v (push the activation vector along v by strength &alpha; to shift the model's behavior)</div>
+            </div>
+
+            <section class="article-section" id="references">
+                <h2>References</h2>
+                <ol class="references-list">
+                    <li>Olah, C., Cammarata, N., Schubert, L., Goh, G., Petrov, M., &amp; Carter, S. (2020). "Zoom In: An Introduction to Circuits." Distill. <a href="https://distill.pub/2020/circuits/zoom-in/" target="_blank">distill.pub/2020/circuits/zoom-in</a></li>
+                    <li>Elhage, N., Nanda, N., Olsson, C., et al. (2021). "A Mathematical Framework for Transformer Circuits." Transformer Circuits Thread. <a href="https://transformer-circuits.pub/2021/framework/index.html" target="_blank">transformer-circuits.pub/2021/framework</a></li>
+                    <li>Elhage, N., Hume, T., Olsson, C., et al. (2022). "Toy Models of Superposition." Transformer Circuits Thread. <a href="https://transformer-circuits.pub/2022/toy_model/index.html" target="_blank">transformer-circuits.pub/2022/toy_model</a></li>
+                    <li>Templeton, A., Conerly, T., Marcus, J., et al. (2024). "Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet." Transformer Circuits Thread. <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html" target="_blank">transformer-circuits.pub/2024/scaling-monosemanticity</a></li>
+                    <li>Saphra, N., &amp; Wiegreffe, S. (2024). "Mechanistic?" <a href="https://arxiv.org/abs/2410.09087" target="_blank">arXiv:2410.09087</a></li>
+                </ol>
+            </section>
+
+            <div class="series-nav">
+                <span class="series-nav-prev"><a href="mechinterp-00-transformers.html">&larr; Previous: Transformers, briefly</a></span>
+                <span class="series-nav-next"><a href="mechinterp-02-neurons-vs-directions.html">Next: Neurons vs. directions &rarr;</a></span>
+            </div>
+
+            <a href="../writing.html" class="back-link">← Back to writing</a>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const svg = document.getElementById('feature-svg');
+            const dot = document.getElementById('feature-dot');
+            const meterA = document.getElementById('meter-a');
+            const meterB = document.getElementById('meter-b');
+            if (!svg || !dot) return;
+
+            const center = { x: 160, y: 120 };
+            // unit vectors for the formality and warmth directions, 90 degrees apart
+            const dirFormality = { x: Math.SQRT1_2, y: -Math.SQRT1_2 };
+            const dirWarmth = { x: -Math.SQRT1_2, y: -Math.SQRT1_2 };
+            const maxProj = 130;
+
+            function clamp(v, min, max) {
+                return Math.max(min, Math.min(max, v));
+            }
+
+            function updateMeters(x, y) {
+                const dx = x - center.x;
+                const dy = y - center.y;
+                const projFormality = dx * dirFormality.x + dy * dirFormality.y;
+                const projWarmth = dx * dirWarmth.x + dy * dirWarmth.y;
+                const activA = clamp(projFormality / maxProj, 0, 1);
+                const activB = clamp(projWarmth / maxProj, 0, 1);
+                meterA.style.width = (activA * 100).toFixed(0) + '%';
+                meterB.style.width = (activB * 100).toFixed(0) + '%';
+            }
+
+            function toSvgPoint(evt) {
+                const pt = svg.createSVGPoint();
+                pt.x = evt.clientX;
+                pt.y = evt.clientY;
+                return pt.matrixTransform(svg.getScreenCTM().inverse());
+            }
+
+            let dragging = false;
+
+            dot.addEventListener('pointerdown', (e) => {
+                dragging = true;
+                dot.setPointerCapture(e.pointerId);
+            });
+
+            dot.addEventListener('pointermove', (e) => {
+                if (!dragging) return;
+                const p = toSvgPoint(e);
+                const x = clamp(p.x, 0, 320);
+                const y = clamp(p.y, 0, 240);
+                dot.setAttribute('cx', x);
+                dot.setAttribute('cy', y);
+                updateMeters(x, y);
+            });
+
+            dot.addEventListener('pointerup', () => {
+                dragging = false;
+            });
+
+            updateMeters(160, 120);
+        })();
+
+        (function () {
+            const chips = document.querySelectorAll('#lang-word-row .word-chip');
+            const meter = document.getElementById('lang-meter');
+            if (!chips.length || !meter) return;
+
+            function select(chip) {
+                chips.forEach((c) => c.classList.remove('active'));
+                chip.classList.add('active');
+                const val = parseFloat(chip.dataset.activation);
+                meter.style.width = (val * 100).toFixed(0) + '%';
+            }
+
+            chips.forEach((chip) => {
+                chip.addEventListener('click', () => select(chip));
+            });
+
+            select(chips[0]);
+        })();
+
+        (function () {
+            const row = document.getElementById('dim-row');
+            const meterDe = document.getElementById('dim-meter-de');
+            const meterFormal = document.getElementById('dim-meter-formal');
+            const sample = document.getElementById('dims-sample');
+            if (!row) return;
+
+            const TOTAL = 20;
+            const DE_INDEX = 6;
+            const FORMAL_INDEX = 14;
+
+            // Fixed, plausible-looking heights for the eighteen "noise" dimensions;
+            // the two active ones start at a neutral 35%.
+            const values = [22, 55, 38, 70, 15, 45, 35, 60, 30, 48, 65, 20, 40, 58, 35, 25, 50, 35, 62, 42];
+
+            const sentences = {
+                'en-casual': '"hey, what\'s up?"',
+                'en-formal': '"Good afternoon. How are you?"',
+                'de-casual': '"hey, was geht?"',
+                'de-formal': '"Guten Tag. Wie geht es Ihnen?"',
+            };
+
+            function clamp(v, min, max) {
+                return Math.max(min, Math.min(max, v));
+            }
+
+            function updateReadout() {
+                meterDe.style.width = values[DE_INDEX] + '%';
+                meterFormal.style.width = values[FORMAL_INDEX] + '%';
+
+                const lang = values[DE_INDEX] >= 50 ? 'de' : 'en';
+                const register = values[FORMAL_INDEX] >= 50 ? 'formal' : 'casual';
+                sample.textContent = sentences[lang + '-' + register];
+            }
+
+            for (let i = 0; i < TOTAL; i++) {
+                const track = document.createElement('div');
+                track.className = 'dim-track';
+
+                const fill = document.createElement('div');
+                fill.className = 'dim-fill';
+                fill.style.height = values[i] + '%';
+                track.appendChild(fill);
+
+                if (i === DE_INDEX || i === FORMAL_INDEX) {
+                    track.classList.add('dim-active', i === DE_INDEX ? 'dim-de' : 'dim-formal');
+
+                    let dragging = false;
+                    const setFromEvent = (clientY) => {
+                        const rect = track.getBoundingClientRect();
+                        const pct = clamp(1 - (clientY - rect.top) / rect.height, 0, 1) * 100;
+                        values[i] = Math.round(pct);
+                        fill.style.height = values[i] + '%';
+                        updateReadout();
+                    };
+
+                    track.addEventListener('pointerdown', (e) => {
+                        dragging = true;
+                        track.setPointerCapture(e.pointerId);
+                        setFromEvent(e.clientY);
+                    });
+                    track.addEventListener('pointermove', (e) => {
+                        if (!dragging) return;
+                        setFromEvent(e.clientY);
+                    });
+                    track.addEventListener('pointerup', () => {
+                        dragging = false;
+                    });
+                }
+
+                row.appendChild(track);
+            }
+
+            updateReadout();
+        })();
+    </script>
+</body>
+</html>

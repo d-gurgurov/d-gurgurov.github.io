@@ -37,6 +37,11 @@
         <ul class="reading-list">
             <!-- writing 1 -->
             <li class="reading-entry">
+                <a href="writing/mechinterp-01-what-is-a-feature.html" class="reading-link">
+                    <span class="reading-title">Mech Interp, Part 1: What Is a Feature?</span>
+                </a>
+            </li>
+            <li class="reading-entry">
                 <a href="writing/multilingual-benchmarking.html" class="reading-link">
                     <span class="reading-title">Multilingual Benchmarking Landscape</span>
                 </a>
@@ -260,16 +265,18 @@
             const writerImg = writerIcon.querySelector('img');
             writerIcon.addEventListener('mouseenter', () => {
                 writerIcon.classList.add('is-hovering');
+                writerImg.style.animation = 'none';
             });
             writerIcon.addEventListener('mousemove', (e) => {
                 const rect = writerIcon.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                writerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.06)`;
+                writerImg.style.transform = `rotate(${(x * 14).toFixed(2)}deg) translate(${(x * 8).toFixed(1)}px, ${(y * 8 - 4).toFixed(1)}px) scale(1.12)`;
             });
             writerIcon.addEventListener('mouseleave', () => {
                 writerIcon.classList.remove('is-hovering');
                 writerImg.style.transform = '';
+                writerImg.style.animation = '';
             });
         }
     </script>
