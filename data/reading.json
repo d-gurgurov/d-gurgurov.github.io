@@ -1,5 +1,13 @@
 [
   {
+    "title": "Algorithms Behind Elevators",
+    "url": "https://john.fun/elevators",
+    "linkText": "A fun article",
+    "description": "on why elevators sometimes take longer than you might expect, covering some of the basics behind their algorithms (with some nice visualizations).",
+    "category": "non-research",
+    "date": "2026-08-02"
+  },
+  {
     "title": "Encoder Neuron Identification and Amplification for Acoustic Perception in Audio-Language Models",
     "url": "https://arxiv.org/pdf/2607.11801",
     "linkText": "A paper",
