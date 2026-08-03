@@ -1,5 +1,13 @@
 [
   {
+    "title": "(Some of) The Models, They Just Don't Want to Learn",
+    "url": "https://blog.tilderesearch.com/blog/one-layer-deeper",
+    "linkText": "A blog post",
+    "description": "on sequential transformers, arguing that \"depth unlocks computational capacity that is much harder to obtain with width\". Can we adapt the amount of latent computation to the difficulty of the input?",
+    "category": "non-research",
+    "date": "2026-08-03"
+  },
+  {
     "title": "Algorithms Behind Elevators",
     "url": "https://john.fun/elevators",
     "linkText": "A fun article",
