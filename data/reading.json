@@ -1,5 +1,13 @@
 [
   {
+    "title": "LLMs reward expertise",
+    "url": "https://www.seangoedecke.com/llms-reward-expertise/",
+    "linkText": "A blog post",
+    "description": "on how domain knowledge makes one better at using LLMs.",
+    "category": "non-research",
+    "date": "2026-08-08"
+  },
+  {
     "title": "(Some of) The Models, They Just Don't Want to Learn",
     "url": "https://blog.tilderesearch.com/blog/one-layer-deeper",
     "linkText": "A blog post",
