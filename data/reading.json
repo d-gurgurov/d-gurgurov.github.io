@@ -1,5 +1,13 @@
 [
   {
+    "title": "Monitor the frontier",
+    "url": "Stories touching a frontier lab, newest first.\n\nhttps://dash.mts.now/",
+    "linkText": "A website",
+    "description": "that monitors news stories related to frontier labs, job openings, model performance, etc.",
+    "category": "non-research",
+    "date": "2026-08-10"
+  },
+  {
     "title": "LLMs reward expertise",
     "url": "https://www.seangoedecke.com/llms-reward-expertise/",
     "linkText": "A blog post",
