@@ -1,5 +1,13 @@
 [
   {
+    "title": "Stealing Reasoning Traces from Proprietary LLM APIs",
+    "url": "https://stolen-thoughts.com/",
+    "linkText": "A paper,",
+    "description": "demonstrating that reasoning traces of proprietary models can be receovered from their encrypted chain-of-thought blocks. They do it by injecting these blocks into a weaker model from the same provider.",
+    "category": "research",
+    "date": "2026-08-15"
+  },
+  {
     "title": "Monitor the frontier",
     "url": "Stories touching a frontier lab, newest first.\n\nhttps://dash.mts.now/",
     "linkText": "A website",
