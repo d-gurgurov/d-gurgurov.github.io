@@ -1,5 +1,13 @@
 [
   {
+    "title": "Contextual Linear Activation Steering of LMs",
+    "url": "https://arxiv.org/pdf/2604.24693",
+    "linkText": "A paper",
+    "description": "by Hsu et al. 2026, introducing a method that dynamically adapts steering strengths through sensing vectors.",
+    "category": "research",
+    "date": "2026-08-17"
+  },
+  {
     "title": "Stealing Reasoning Traces from Proprietary LLM APIs",
     "url": "https://stolen-thoughts.com/",
     "linkText": "A paper,",
