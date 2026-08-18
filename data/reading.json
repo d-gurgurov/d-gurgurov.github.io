@@ -1,5 +1,13 @@
 [
   {
+    "title": "No Days Off",
+    "url": "https://nodaysoff.run/",
+    "linkText": "A page",
+    "description": "by Adrien Friggeri, where they track their running progress. Cool visuals and statistics!",
+    "category": "non-research",
+    "date": "2026-08-18"
+  },
+  {
     "title": "Contextual Linear Activation Steering of LMs",
     "url": "https://arxiv.org/pdf/2604.24693",
     "linkText": "A paper",
