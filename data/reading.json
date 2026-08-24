@@ -1,5 +1,13 @@
 [
   {
+    "title": "There is No Theoretical Curse of Multilinguality For Embedding Space Structure",
+    "url": "https://arxiv.org/pdf/2608.17088",
+    "linkText": "A paper",
+    "description": "by Bafna et al. 2026, formalizing the state of \"perfect multilinguality\" in embedding spaces and proving that dimensionality required for perfect multilinguality grows logarithmically in the number of languages. The final conclusion is that there is no theoretical curse of multilinguality for embedding space structure.",
+    "category": "research",
+    "date": "2026-08-24"
+  },
+  {
     "title": "No Days Off",
     "url": "https://nodaysoff.run/",
     "linkText": "A page",
