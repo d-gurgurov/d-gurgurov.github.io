@@ -1,5 +1,13 @@
 [
   {
+    "title": "Self-Distillation Enables Continual Learning",
+    "url": "https://arxiv.org/pdf/2601.19897",
+    "linkText": "A paper",
+    "description": "by Shenfeld et al. 2026, introducing Self-Distillation Fine-Tuning (SDFT), a method that uses a demonstration-conditioned model as its own teacher, which provides on-policy learning signals and preserves prior capabilities while acquiring new skills.",
+    "category": "research",
+    "date": "2026-09-07"
+  },
+  {
     "title": "There is No Theoretical Curse of Multilinguality For Embedding Space Structure",
     "url": "https://arxiv.org/pdf/2608.17088",
     "linkText": "A paper",
