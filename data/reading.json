@@ -1,5 +1,13 @@
 [
   {
+    "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/618c95f4557c15b253fb0e6f548ea0c0-Paper-Conference.pdf",
+    "linkText": "A paper",
+    "description": "by Shenfeld et al. 2026, demonstrating emperically and theoretically that among many solutions for a new task, on-policy methods (RL, etc.) are biased towards solutions that are closer to the original model in KL divergence.",
+    "category": "research",
+    "date": "2026-09-09"
+  },
+  {
     "title": "Self-Distillation Enables Continual Learning",
     "url": "https://arxiv.org/pdf/2601.19897",
     "linkText": "A paper",
