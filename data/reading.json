@@ -1,5 +1,13 @@
 [
   {
+    "title": "Last Translation Benchmark",
+    "url": "https://last-translation-benchmark.vilda.net/",
+    "linkText": "A project",
+    "description": "by Zouhar et al. 2026 which is collecting examples that break the state-of-the-art machine translation models. (They are still accepting contributions for all sorts of languages!)",
+    "category": "research",
+    "date": "2026-09-12"
+  },
+  {
     "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
     "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/618c95f4557c15b253fb0e6f548ea0c0-Paper-Conference.pdf",
     "linkText": "A paper",
