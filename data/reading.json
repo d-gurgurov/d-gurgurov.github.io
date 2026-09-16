@@ -1,5 +1,13 @@
 [
   {
+    "title": "Data Mixing as the Pillar of Generalization for In-Language Reasoning",
+    "url": "https://arxiv.org/pdf/2609.10445",
+    "linkText": "A paper",
+    "description": "by Mofakhami et al. 2026, finding that in-language reasoning capability can be transferred across languages through data mixing without requiring reasoning supervision in every target language. This indicates that reasoning might be a language-agnostic behaviour.",
+    "category": "research",
+    "date": "2026-09-16"
+  },
+  {
     "title": "Last Translation Benchmark",
     "url": "https://last-translation-benchmark.vilda.net/",
     "linkText": "A project",
