@@ -1,5 +1,13 @@
 [
   {
+    "title": "Some Tokens Behave like Magnets: Revealing Linguistic Organization in the Layers of Language Models",
+    "url": "https://arxiv.org/pdf/2609.05743",
+    "linkText": "A paper",
+    "description": "by Liu et al. 2026, finding a new structure in the embedding space of LMs that they call magnetic vectors. These vectors \"organize the surrounding tokens by attracting or repelling them\". They then find that function words act as repelling tokens in early layers, shortening the surrounding vectors that point similarly to them, and later on some meaning-carrying words become strong attractors, elongating the surrounding vectors.",
+    "category": "research",
+    "date": "2026-09-17"
+  },
+  {
     "title": "Data Mixing as the Pillar of Generalization for In-Language Reasoning",
     "url": "https://arxiv.org/pdf/2609.10445",
     "linkText": "A paper",
