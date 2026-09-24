@@ -1,5 +1,13 @@
 [
   {
+    "title": "Cascade Distillation for Ministral 3",
+    "url": "https://arxiv.org/pdf/2601.08584",
+    "linkText": "A paper",
+    "description": "by Liu et al. 2026, introducing Ministral 3 derived with cascade distillation, which involves an iterative pruning (of layers, hidden dimensions, and FFN dimensions) and continued training with knowledge distillation (all initiated from a larger teacher model).",
+    "category": "research",
+    "date": "2026-09-24"
+  },
+  {
     "title": "Some Tokens Behave like Magnets: Revealing Linguistic Organization in the Layers of Language Models",
     "url": "https://arxiv.org/pdf/2609.05743",
     "linkText": "A paper",
