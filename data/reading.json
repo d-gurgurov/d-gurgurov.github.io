@@ -1,5 +1,13 @@
 [
   {
+    "title": "Is the Jacobian Space a Global Workspace?",
+    "url": "https://philpapers.org/archive/CHAITJ-2.pdf",
+    "linkText": "A paper",
+    "description": "by David J. Chalmers, arguing that connection of the J-Space (proposed by Anthropic earlier this year to access internal thoughts of language models) to the global workspace and access consciousness theories might have been overstated. For context, access consciousness is availability of a mental state for report, reasoning, and action, and it is grounded by the global workspace theory, where the global workspace acts as a processin hub that integrates information from unconscious modules, which is then used for internal reasoning and report.",
+    "category": "research",
+    "date": "2026-09-25"
+  },
+  {
     "title": "Cascade Distillation for Ministral 3",
     "url": "https://arxiv.org/pdf/2601.08584",
     "linkText": "A paper",
