@@ -1,5 +1,13 @@
 [
   {
+    "title": "What will our economic future look like?",
+    "url": "https://www.anthropic.com/institute/econ-scenarios",
+    "linkText": "A blog post",
+    "description": "by the Antrhopic's Economics team, showcasing the model they built of how AI might affects future jobs, economic growth, and unemployment in the US. (Average salaries rise, but outside of knowledge work..).",
+    "category": "non-research",
+    "date": "2026-09-26"
+  },
+  {
     "title": "Is the Jacobian Space a Global Workspace?",
     "url": "https://philpapers.org/archive/CHAITJ-2.pdf",
     "linkText": "A paper",
