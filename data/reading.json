@@ -1,5 +1,13 @@
 [
   {
+    "title": "Neolabs",
+    "url": "https://neolabs.fyi/",
+    "linkText": "A website",
+    "description": "with an interactive list of industry-level (neo)labs, which are defined as AI-focused companies founded by researchers, professors or post-economin founders, all with interesting stats.",
+    "category": "non-research",
+    "date": "2026-09-27"
+  },
+  {
     "title": "What will our economic future look like?",
     "url": "https://www.anthropic.com/institute/econ-scenarios",
     "linkText": "A blog post",
