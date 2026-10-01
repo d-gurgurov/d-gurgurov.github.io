@@ -1,5 +1,13 @@
 [
   {
+    "title": "Contrastive Language Models",
+    "url": "https://contrastive-lm.notion.site/",
+    "linkText": "A paper",
+    "description": "by Kwok et al. 2026, introducing a new class of system one models trained with contrastive learning that connects states and actions. This enables zero-shot action classification. There are a state encoder and an action encoder; both map their inputs into a shared embedding space, then the state-action score is computed as the cosine similarity between their embeddings. The encoders are trained with the InfoNCE (Noise-Contrastive Estimation) loss, which is a multi-class cross-entropy loss that teaches a model to identify a true matching positive sample among many unrelated negative samples.",
+    "category": "research",
+    "date": "2026-10-01"
+  },
+  {
     "title": "Neolabs",
     "url": "https://neolabs.fyi/",
     "linkText": "A website",
