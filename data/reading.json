@@ -1,5 +1,13 @@
 [
   {
+    "title": "Dust: Pretraining Transformers Without Backpropagation",
+    "url": "https://qlabs.sh/research/dust",
+    "linkText": "A paper",
+    "description": "by Dahal et al. 2026, introducing the zeroth-order method for pretraining LLMs, which is competitive with backpropogation. It \"pertubs activations, rewards each perturbation by how much it lowers the loss, and averages the reward-weighted perturbations over a population to estimate the gradient.\"",
+    "category": "research",
+    "date": "2026-10-06"
+  },
+  {
     "title": "Contrastive Language Models",
     "url": "https://contrastive-lm.notion.site/",
     "linkText": "A paper",
