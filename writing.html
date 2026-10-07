@@ -278,6 +278,35 @@
                 writerImg.style.transform = '';
                 writerImg.style.animation = '';
             });
+
+            let writerDragging = false;
+            let writerGrabOffsetX = 0;
+            let writerGrabOffsetY = 0;
+
+            writerIcon.addEventListener('pointerdown', (e) => {
+                const rect = writerIcon.getBoundingClientRect();
+                writerGrabOffsetX = e.clientX - rect.left;
+                writerGrabOffsetY = e.clientY - rect.top;
+                writerIcon.style.position = 'fixed';
+                writerIcon.style.left = rect.left + 'px';
+                writerIcon.style.top = rect.top + 'px';
+                writerIcon.style.margin = '0';
+                writerDragging = true;
+                writerIcon.classList.add('is-dragging');
+                writerIcon.setPointerCapture(e.pointerId);
+                e.preventDefault();
+            });
+
+            writerIcon.addEventListener('pointermove', (e) => {
+                if (!writerDragging) return;
+                writerIcon.style.left = (e.clientX - writerGrabOffsetX) + 'px';
+                writerIcon.style.top = (e.clientY - writerGrabOffsetY) + 'px';
+            });
+
+            writerIcon.addEventListener('pointerup', () => {
+                writerDragging = false;
+                writerIcon.classList.remove('is-dragging');
+            });
         }
     </script>
 </body>
