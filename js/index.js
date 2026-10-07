@@ -1122,3 +1122,211 @@ function initComposeWidget(widget) {
     render();
 }
 
+document.querySelectorAll('.subnet-widget').forEach(initSubnetWidget);
+
+function initSubnetWidget(widget) {
+    const svg = widget.querySelector('.subnet-svg');
+    if (!svg) return;
+
+    const NS = 'http://www.w3.org/2000/svg';
+
+    function el(tag, attrs) {
+        const e = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach((k) => e.setAttribute(k, attrs[k]));
+        return e;
+    }
+
+    const edgesLayer = widget.querySelector('.subnet-edges');
+    const nodesLayer = widget.querySelector('.subnet-nodes');
+
+    function seededJitter(seed) {
+        const x = Math.sin(seed * 12.9898) * 43758.5453;
+        return x - Math.floor(x);
+    }
+
+    // Four abstract layers, deliberately denser than one real FFN slice would be, so the
+    // sparse highlighted pathway has an actual dense network to stand out against.
+    const COL_X = [25, 145, 255, 375];
+    const COL_SIZES = [7, 13, 13, 7];
+    const Y_TOP = 26;
+    const Y_BOTTOM = 182;
+
+    function columnYs(count, seedBase) {
+        const span = Y_BOTTOM - Y_TOP;
+        const ys = [];
+        for (let i = 0; i < count; i++) {
+            const base = Y_TOP + (span * i) / (count - 1);
+            const jitter = (seededJitter(seedBase + i * 3.7) - 0.5) * (span / count) * 0.5;
+            ys.push(base + jitter);
+        }
+        return ys;
+    }
+
+    const colYs = [
+        columnYs(COL_SIZES[0], 1.1),
+        columnYs(COL_SIZES[1], 4.4),
+        columnYs(COL_SIZES[2], 8.8),
+        columnYs(COL_SIZES[3], 13.3)
+    ];
+
+    // The two middle layers each carry a couple of LAPE-identified language neurons;
+    // together they form the sparse pathway that gets fine-tuned.
+    const LANG_IDX_COL2 = [2, 8];
+    const LANG_IDX_COL3 = [4, 10];
+
+    function pickTargets(count, total, seedBase) {
+        const picked = new Set();
+        let i = 0;
+        while (picked.size < count) {
+            picked.add(Math.floor(seededJitter(seedBase + i * 5.3) * total));
+            i++;
+        }
+        return Array.from(picked);
+    }
+
+    function edge(x1, y1, x2, y2) {
+        return el('line', { x1, y1, x2, y2, class: 'subnet-edge' });
+    }
+
+    // Sparse pathway: every col-1 node feeds the language neurons in col 2, those connect
+    // to the language neurons in col 3, which fan out to every col-4 node.
+    const sparseEdges = [];
+    colYs[0].forEach((y1) => {
+        LANG_IDX_COL2.forEach((ni) => sparseEdges.push(edge(COL_X[0], y1, COL_X[1], colYs[1][ni])));
+    });
+    LANG_IDX_COL2.forEach((ai) => {
+        LANG_IDX_COL3.forEach((bi) => sparseEdges.push(edge(COL_X[1], colYs[1][ai], COL_X[2], colYs[2][bi])));
+    });
+    LANG_IDX_COL3.forEach((ni) => {
+        colYs[3].forEach((y2) => sparseEdges.push(edge(COL_X[2], colYs[2][ni], COL_X[3], y2)));
+    });
+    sparseEdges.forEach((e) => edgesLayer.appendChild(e));
+
+    // Dense background: everything else, a handful of pseudo-random connections per node
+    // per hop, standing in for the much larger set of weights nothing in particular touches.
+    const bgEdges = [];
+    colYs[0].forEach((y1, i) => {
+        pickTargets(3, COL_SIZES[1], i * 1.7 + 20).forEach((ti) => {
+            bgEdges.push(edge(COL_X[0], y1, COL_X[1], colYs[1][ti]));
+        });
+    });
+    colYs[1].forEach((y1, i) => {
+        if (LANG_IDX_COL2.includes(i)) return;
+        pickTargets(2, COL_SIZES[2], i * 2.3 + 40).forEach((ti) => {
+            bgEdges.push(edge(COL_X[1], y1, COL_X[2], colYs[2][ti]));
+        });
+    });
+    colYs[2].forEach((y1, i) => {
+        if (LANG_IDX_COL3.includes(i)) return;
+        pickTargets(3, COL_SIZES[3], i * 1.9 + 60).forEach((ti) => {
+            bgEdges.push(edge(COL_X[2], y1, COL_X[3], colYs[3][ti]));
+        });
+    });
+    bgEdges.forEach((e) => edgesLayer.appendChild(e));
+
+    function makeNode(x, y, r) {
+        const n = el('circle', { cx: x, cy: y, r, class: 'subnet-node' });
+        nodesLayer.appendChild(n);
+        return n;
+    }
+
+    colYs[0].forEach((y) => makeNode(COL_X[0], y, 4));
+    colYs[3].forEach((y) => makeNode(COL_X[3], y, 4));
+    const col2Nodes = colYs[1].map((y, i) => makeNode(COL_X[1], y, LANG_IDX_COL2.includes(i) ? 5.5 : 3.5));
+    const col3Nodes = colYs[2].map((y, i) => makeNode(COL_X[2], y, LANG_IDX_COL3.includes(i) ? 5.5 : 3.5));
+    const neuronNodes = col2Nodes.concat(col3Nodes);
+    const LANG_NEURON_IDX = LANG_IDX_COL2.concat(LANG_IDX_COL3.map((i) => i + col2Nodes.length));
+
+    const STATES = {
+        baseline: {
+            label: 'before fine-tuning',
+            params: '0% of parameters updated',
+            paramsClass: '',
+            scores: { lang: 42, general: 94 },
+            caption: 'LAPE has already flagged three neurons (ringed) as language-associated, but no weights have been touched yet. The target language starts weak; general knowledge is fully intact.'
+        },
+        ours: {
+            label: 'sparse subnetwork (ours)',
+            params: '0.6% of parameters updated',
+            paramsClass: 'good',
+            scores: { lang: 86, general: 91 },
+            caption: 'Fine-tuning only the weights touching those three language neurons improves the target language performance while leaving the rest of the network almost untouched: minimal degradation on general knowledge.'
+        },
+        full: {
+            label: 'full fine-tuning',
+            params: '100% of parameters updated',
+            paramsClass: 'bad',
+            scores: { lang: 61, general: 68 },
+            caption: "Full fine-tuning updates every weight instead of just the subnetwork. With the little data available for this language, that mostly means overfitting: the model does worse on the target language than the sparse subnetwork does, while also forgetting more elsewhere."
+        }
+    };
+
+    function renderBars(scores) {
+        const container = widget.querySelector('.subnet-bars');
+        container.innerHTML = '';
+        [['target language', scores.lang], ['general knowledge', scores.general]].forEach(([label, pct]) => {
+            const row = document.createElement('div');
+            row.className = 'feature-meter-label';
+            const labelLine = document.createElement('div');
+            labelLine.textContent = `${label}: ${pct}`;
+            row.appendChild(labelLine);
+            const bar = document.createElement('div');
+            bar.className = 'feature-meter-bar';
+            const fill = document.createElement('div');
+            fill.className = 'feature-meter-fill';
+            fill.style.width = pct + '%';
+            bar.appendChild(fill);
+            row.appendChild(bar);
+            container.appendChild(row);
+        });
+    }
+
+    function render(stateKey) {
+        const state = STATES[stateKey];
+        const isOurs = stateKey === 'ours';
+        const isFull = stateKey === 'full';
+        const trainedSparse = isOurs || isFull;
+
+        widget.querySelectorAll('.adapt-mode-btn').forEach((b) => {
+            b.classList.toggle('active', b.dataset.subnetState === stateKey);
+        });
+
+        sparseEdges.forEach((edge) => {
+            edge.setAttribute('stroke', trainedSparse ? '#007BFF' : '#ccc');
+            edge.setAttribute('stroke-width', trainedSparse ? '1.6' : '1');
+            edge.setAttribute('stroke-opacity', trainedSparse ? '0.85' : '0.5');
+        });
+        bgEdges.forEach((edge) => {
+            edge.setAttribute('stroke', isFull ? '#e07856' : '#ccc');
+            edge.setAttribute('stroke-width', isFull ? '1.6' : '1');
+            edge.setAttribute('stroke-opacity', isFull ? '0.85' : '0.5');
+        });
+
+        neuronNodes.forEach((node, i) => {
+            const isLang = LANG_NEURON_IDX.includes(i);
+            if (isLang) {
+                node.setAttribute('fill', trainedSparse ? '#007BFF' : '#ddd');
+                node.setAttribute('stroke', '#007BFF');
+                node.setAttribute('stroke-width', '1.6');
+                node.setAttribute('fill-opacity', '1');
+            } else {
+                node.setAttribute('fill', isFull ? '#e07856' : '#ddd');
+                node.setAttribute('stroke', 'none');
+                node.setAttribute('fill-opacity', isFull ? '0.9' : '0.8');
+            }
+        });
+
+        widget.querySelector('.subnet-caption').textContent = state.caption;
+        renderBars(state.scores);
+        const readout = widget.querySelector('.subnet-readout');
+        readout.textContent = state.params;
+        readout.className = 'separation-readout subnet-readout' + (state.paramsClass ? ' ' + state.paramsClass : '');
+    }
+
+    widget.querySelectorAll('.adapt-mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => render(btn.dataset.subnetState));
+    });
+
+    render('baseline');
+}
+

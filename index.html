@@ -149,6 +149,37 @@
                     <li>
                         <span class="story-num">1</span>
                         <div class="story-body">
+                            <h3>Language subnetworks</h3>
+                            <p>A framework for improving performance in underrepresented languages by fine-tuning only a sparse, LAPE-identified subnetwork of language-associated neurons, instead of the whole model. <strong>(!)</strong> Updating just 0.2-1% of parameters consistently beats full fine-tuning, FFN-only tuning, LoRA, IA³, and random-subset baselines, without catastrophic forgetting.</p>
+                            <a href="https://arxiv.org/abs/2510.13580" target="_blank" class="story-link">read the paper →</a>
+
+                            <div class="axis-demo subnet-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <svg class="adapt-svg subnet-svg" viewBox="0 0 400 195" role="img" aria-label="Interactive diagram of a sparse language-associated subnetwork being fine-tuned, compared against full fine-tuning">
+                                        <text x="200" y="14" text-anchor="middle" class="axis-ref-label">sparse language subnetwork within a dense network</text>
+                                        <g class="subnet-edges"></g>
+                                        <g class="subnet-nodes"></g>
+                                    </svg>
+
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn active" data-subnet-state="baseline">before fine-tuning</button>
+                                        <button type="button" class="adapt-mode-btn" data-subnet-state="ours">sparse subnetwork (ours)</button>
+                                        <button type="button" class="adapt-mode-btn" data-subnet-state="full">full fine-tuning</button>
+                                    </div>
+
+                                    <div class="neurons-bars subnet-bars"></div>
+                                    <p class="separation-readout subnet-readout"></p>
+                                    <p class="adapt-caption subnet-caption"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">2</span>
+                        <div class="story-body">
                             <h3>Language vectors</h3>
                             <p>CLaS-Bench, a benchmark for evaluating language forcing in LMs across 32 languages. Methods evaluated: DiffMean vectors, MLP neurons, PCA subspaces, LDA vectors, SAEs, and probes. <strong>(!)</strong> Simple DiffMean vectors tend to outperform all the other approaches and prompting. <strong>(?)</strong> Language identity as a linear direction in representation space?</p>
                             <a href="https://aclanthology.org/2026.findings-acl.1086/" target="_blank" class="story-link">read the paper →</a>
@@ -244,7 +275,7 @@
                         </div>
                     </li>
                     <li>
-                        <span class="story-num">2</span>
+                        <span class="story-num">3</span>
                         <div class="story-body">
                             <h3>Language scripts</h3>
                             <p>Script also seems to be on a linear axis and is gated by a small set of language-agnostic attention heads that causally control it, all concentrated in later layers. <strong>(!)</strong> Script-mediating attention heads generalize cross-lingually; identified on Hindi, they causally influence script choice in Russian, Japanese, etc.</p>
@@ -297,7 +328,7 @@
                         </div>
                     </li>
                     <li>
-                        <span class="story-num">3</span>
+                        <span class="story-num">4</span>
                         <div class="story-body">
                             <h3>Linear embedding manipulations</h3>
                             <p>Position: simple linear edits at the activation level look like a solid alternative to "heavier" adaptation methods (fine-tuning, RL, or PEFT) for steering model behavior. <strong>(!)</strong> We provide a set of functional criteria for adaptation methods and argue that steering should be viewed as a form of model adaptation.</p>
@@ -355,7 +386,7 @@
                         </div>
                     </li>
                     <li>
-                        <span class="story-num">4</span>
+                        <span class="story-num">5</span>
                         <div class="story-body">
                             <h3>Steering vector compositionality</h3>
                             <p>Steering vectors can be combined in a linear fashion, as long as they are sufficiently orthogonal to each other and injected at the appropriate layers. We experiment with composing three attributes: language identity, jailbreak behavior, and conciseness. <strong>(!)</strong> The first step towards simple compositional steering.</p>
@@ -403,7 +434,7 @@
                         </div>
                     </li>
                     <li>
-                        <span class="story-num">5</span>
+                        <span class="story-num">6</span>
                         <div class="story-body">
                             <h3>Toward a unified model of multilingual processing</h3>
                             <p>A working theory: models extract language-specific features and identify the input language, then reason in a shared cross-lingual space, then differentiate the output back into the target language. <strong>(!)</strong> The ultimate, somewhat ambitious, goal of the PhD.</p>

@@ -1600,6 +1600,15 @@ footer {
     touch-action: none;
 }
 
+/* Language subnetworks widget (story timeline) */
+.subnet-node {
+    transition: fill 0.4s ease, fill-opacity 0.4s ease, stroke 0.4s ease;
+}
+
+.subnet-edge {
+    transition: stroke 0.4s ease, stroke-opacity 0.4s ease, stroke-width 0.4s ease;
+}
+
 .method-title {
     font-family: var(--font-sans);
     font-size: 11px;
