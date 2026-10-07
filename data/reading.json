@@ -1,5 +1,13 @@
 [
   {
+    "title": "Ownership in AI-Assisted Everyday Tasks",
+    "url": "https://arxiv.org/pdf/2609.20658",
+    "linkText": "A paper",
+    "description": "by Wei et al. 2026 on the sense of ownership in the age of AI; they ask participants to talk about two recently accomplised tasks: \"one that felt like their own and that did not\". Ownership seems to depend on collaboration (not just merely approving AI's suggestions) and on whether one owns the vision (but not execution).",
+    "category": "research",
+    "date": "2026-10-07"
+  },
+  {
     "title": "Dust: Pretraining Transformers Without Backpropagation",
     "url": "https://qlabs.sh/research/dust",
     "linkText": "A paper",
