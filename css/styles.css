@@ -284,18 +284,41 @@ a.story-link:hover {
     transform-origin: 50% 85%;
 }
 
+.fisher-icon,
+.reader-icon,
+.writer-icon {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    z-index: 50;
+}
+
+.fisher-icon.is-dragging,
+.reader-icon.is-dragging,
+.writer-icon.is-dragging {
+    cursor: grabbing;
+    z-index: 999;
+}
+
+.fisher-icon img,
+.reader-icon img,
+.writer-icon img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
 .fisher-icon img {
-    width: 82px;
+    width: 100px;
     height: auto;
 }
 
 .reader-icon img {
-    width: 92px;
+    width: 110px;
     height: auto;
 }
 
 .writer-icon img {
-    width: 92px;
+    width: 110px;
     height: auto;
 }
 
@@ -1132,13 +1155,13 @@ footer {
     fill: #e07856;
 }
 
-#axis-handle {
+#word-axis-handle {
     fill: #333;
     cursor: grab;
     touch-action: none;
 }
 
-#axis-handle:active {
+#word-axis-handle:active {
     cursor: grabbing;
 }
 
@@ -1301,6 +1324,350 @@ footer {
     fill: #fefcf8;
     stroke: #333;
     stroke-width: 2;
+}
+
+/* Shared story-timeline widget scaffolding (toolbar + collapsible body) */
+.widget-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.widget-toggle-btn {
+    font-family: var(--font-sans);
+    font-size: 0.75em;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.widget-toggle-btn:hover {
+    color: #333;
+    text-decoration-color: #333;
+}
+
+.widget-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.widget-body.is-hidden {
+    display: none;
+}
+
+/* Adaptation paradigms widget (story timeline) */
+.adapt-widget {
+    background-color: #fefcf8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px 16px 14px;
+    margin: 14px 0 6px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.adapt-svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+}
+
+.adapt-landscape {
+    fill: none;
+    stroke: #8fb8ea;
+    stroke-width: 1.6;
+}
+
+.adapt-landscape-2 {
+    stroke-opacity: 0.75;
+}
+
+.adapt-landscape-3 {
+    stroke-opacity: 0.45;
+}
+
+.adapt-traj-baseline {
+    fill: none;
+    stroke: #bbb;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    opacity: 0.6;
+}
+
+.adapt-mode-group {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.adapt-mode-group.active {
+    opacity: 1;
+}
+
+.adapt-traj-main {
+    fill: none;
+    stroke: #e07856;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+}
+
+.adapt-dot {
+    stroke: #fefcf8;
+    stroke-width: 1.5;
+}
+
+.adapt-dot-orig {
+    fill: #999;
+}
+
+.adapt-dot-new {
+    fill: #e07856;
+}
+
+.adapt-dot-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    fill: #999;
+}
+
+.adapt-dot-label-new {
+    fill: #a34d29;
+}
+
+.adapt-vector-line {
+    stroke: #007BFF;
+    stroke-width: 2.2;
+}
+
+.adapt-vector-label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    fill: #0059b3;
+}
+
+.adapt-modes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.adapt-mode-btn {
+    font-family: var(--font-sans);
+    font-size: 0.78em;
+    color: #777;
+    background-color: #f2efe4;
+    border: 1px solid #e3ded0;
+    border-radius: 14px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.adapt-mode-btn:hover {
+    color: #333;
+    background-color: #e8e4d6;
+}
+
+.adapt-mode-btn.active {
+    color: #fefcf8;
+    background-color: #333;
+    border-color: #333;
+}
+
+.adapt-caption {
+    font-family: var(--font-sans);
+    font-size: 0.82em;
+    color: #777;
+    text-align: center;
+    margin: 0;
+    min-height: 2.6em;
+    max-width: 380px;
+}
+
+/* Language neurons widget (story timeline) */
+.neuron-dot {
+    transition: fill 0.3s ease, fill-opacity 0.3s ease, r 0.3s ease, stroke 0.3s ease;
+}
+
+.neurons-col-label {
+    transition: fill 0.3s ease;
+}
+
+.neurons-bars {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.neurons-output-label {
+    margin: 4px 0 0 0;
+}
+
+.feature-meter-fill.secondary {
+    background-color: #e07856;
+}
+
+.feature-meter-fill.residual {
+    background-color: #ccc;
+}
+
+.neurons-footnote {
+    font-family: var(--font-sans);
+    font-size: 0.75em;
+    font-style: italic;
+    color: #999;
+    text-align: center;
+    margin: 0;
+    max-width: 380px;
+}
+
+/* Steering-method comparison widget (story timeline) */
+.method-grid {
+    gap: 8px;
+}
+
+.method-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 10px 6px;
+}
+
+.method-btn span {
+    text-align: center;
+}
+
+.method-icon {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: #999;
+    stroke-width: 1.5;
+    transition: stroke 0.2s ease;
+}
+
+.adapt-mode-btn.active .method-icon {
+    stroke: #333;
+}
+
+.method-icon-strong {
+    stroke: #007BFF;
+    stroke-width: 2.5;
+}
+
+.method-icon-fill {
+    fill: #e07856;
+    stroke: none;
+}
+
+.point-a-faint {
+    fill: #007BFF;
+    fill-opacity: 0.25;
+    stroke: #007BFF;
+    stroke-width: 1;
+}
+
+.point-b-faint {
+    fill: #e07856;
+    fill-opacity: 0.25;
+    stroke: #e07856;
+    stroke-width: 1;
+}
+
+.method-svg {
+    max-width: 400px;
+}
+
+.method-scatter-dot {
+    fill-opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+.method-cloud {
+    touch-action: none;
+}
+
+.method-title {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    fill: #666;
+}
+
+.method-label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    fill: #333;
+}
+
+.method-draw {
+    transition: stroke-dashoffset 0.7s ease;
+}
+
+.method-pop {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    transform: scale(0.3);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.method-pop.is-in {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Script-steering widget (story timeline) */
+.script-panel {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.script-panel.active {
+    display: flex;
+}
+
+.script-word-display {
+    font-family: var(--font-serif);
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    min-height: 1.4em;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.script-word-display.is-swapping {
+    opacity: 0;
+    transform: scale(0.92);
+}
+
+.script-name-label {
+    font-family: var(--font-sans);
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin-top: -4px;
+}
+
+.script-head-cell {
+    transition: fill 0.4s ease, fill-opacity 0.4s ease;
 }
 
 /* Attention widget */

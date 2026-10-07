@@ -359,6 +359,35 @@
                 readerImg.style.transform = '';
                 readerImg.style.animation = '';
             });
+
+            let readerDragging = false;
+            let readerGrabOffsetX = 0;
+            let readerGrabOffsetY = 0;
+
+            readerIcon.addEventListener('pointerdown', (e) => {
+                const rect = readerIcon.getBoundingClientRect();
+                readerGrabOffsetX = e.clientX - rect.left;
+                readerGrabOffsetY = e.clientY - rect.top;
+                readerIcon.style.position = 'fixed';
+                readerIcon.style.left = rect.left + 'px';
+                readerIcon.style.top = rect.top + 'px';
+                readerIcon.style.margin = '0';
+                readerDragging = true;
+                readerIcon.classList.add('is-dragging');
+                readerIcon.setPointerCapture(e.pointerId);
+                e.preventDefault();
+            });
+
+            readerIcon.addEventListener('pointermove', (e) => {
+                if (!readerDragging) return;
+                readerIcon.style.left = (e.clientX - readerGrabOffsetX) + 'px';
+                readerIcon.style.top = (e.clientY - readerGrabOffsetY) + 'px';
+            });
+
+            readerIcon.addEventListener('pointerup', () => {
+                readerDragging = false;
+                readerIcon.classList.remove('is-dragging');
+            });
         }
     </script>
 </body>
