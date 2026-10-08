@@ -190,6 +190,7 @@ a.story-link:hover {
     border-radius: 8px;
     padding: 14px 16px;
     margin: 0 0 28px 0;
+    max-width: 260px;
     font-family: var(--font-sans);
     font-size: 0.85em;
     color: #666;
