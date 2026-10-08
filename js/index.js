@@ -203,6 +203,13 @@ document.querySelectorAll('.widget-toolbar').forEach((toolbar) => {
     });
 });
 
+document.querySelectorAll('.snapshots-gallery').forEach((gallery) => {
+    const empty = gallery.nextElementSibling;
+    if (empty && empty.classList.contains('snapshots-empty')) {
+        empty.style.display = gallery.querySelector('img') ? 'none' : '';
+    }
+});
+
 document.querySelectorAll('.lang-neurons-widget').forEach(initLangNeuronsWidget);
 
 function initLangNeuronsWidget(widget) {

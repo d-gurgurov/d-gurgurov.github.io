@@ -230,6 +230,58 @@ a.story-link:hover {
     border-bottom-color: #333;
 }
 
+.now-box .widget-toolbar {
+    margin-bottom: -2px;
+}
+
+.now-box .widget-body {
+    align-items: stretch;
+    gap: 8px;
+}
+
+.widget-toolbar.snapshots-toolbar {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.snapshots-label {
+    margin-bottom: 0;
+}
+
+.snapshots-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.snapshots-item {
+    margin: 0;
+}
+
+.snapshots-gallery img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.snapshots-caption {
+    font-family: var(--font-sans);
+    font-size: 0.75em;
+    font-style: italic;
+    color: #aaa;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.snapshots-empty {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #bbb;
+    text-align: center;
+    margin: 20px 0;
+}
+
 .fisher-icon,
 .reader-icon,
 .writer-icon {
