@@ -1,5 +1,13 @@
 [
   {
+    "title": "NoveltyBench: Evaluating Language Models for Humanlike Diversity",
+    "url": "https://arxiv.org/pdf/2504.05228",
+    "linkText": "A paper",
+    "description": "by Zhang et al. 2025, introducing a benchmark for measuring generation diversity in LLMs through distinctiveness and utility, and finding that larger models tend to be less diverse and as users demand more diverse generations, models become less useful.",
+    "category": "research",
+    "date": "2026-10-15"
+  },
+  {
     "title": "Beautiful Evidence",
     "url": "https://www.edwardtufte.com/books/",
     "linkText": "A webpate",
