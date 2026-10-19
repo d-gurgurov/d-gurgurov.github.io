@@ -1,5 +1,13 @@
 [
   {
+    "title": "Invertible Latent Transformations for Controlling LLM Behavior",
+    "url": "https://arxiv.org/pdf/2606.08454",
+    "linkText": "A paper",
+    "description": "by Nguyen et al. 2026, proposing, instead of searching for a better steering vector in the original space, to learn an invertible neural network that maps that space into another space where the classes are easier to control linearly.",
+    "category": "research",
+    "date": "2026-10-19"
+  },
+  {
     "title": "NoveltyBench: Evaluating Language Models for Humanlike Diversity",
     "url": "https://arxiv.org/pdf/2504.05228",
     "linkText": "A paper",
