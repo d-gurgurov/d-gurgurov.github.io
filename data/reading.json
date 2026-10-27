@@ -1,5 +1,13 @@
 [
   {
+    "title": "Interpretability by alphaXiv",
+    "url": "https://www.alphaxiv.org/trends/interpretability",
+    "linkText": "An essay",
+    "description": "by alphaXiv (Rehaan Ahmad) on the history of interpretability. An interesting point: \"There is a gap between explaining a behaviour postmortem and predciting what the model will do next.\"",
+    "category": "research",
+    "date": "2026-10-27"
+  },
+  {
     "title": "Invertible Latent Transformations for Controlling LLM Behavior",
     "url": "https://arxiv.org/pdf/2606.08454",
     "linkText": "A paper",
