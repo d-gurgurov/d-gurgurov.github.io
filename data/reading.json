@@ -1,5 +1,13 @@
 [
   {
+    "title": "Compression Represents Intelligence Linearly",
+    "url": "https://arxiv.org/pdf/2404.09937",
+    "linkText": "A paper",
+    "description": "By Huang et al. 2024, where the authors examine the relationship between compression and intelligence in the context of LLMs. They treat downstream performance as a surrogate for the notion of \"intelligence\", and show that it almost linearly correlates with their compression ability.",
+    "category": "research",
+    "date": "2026-11-05"
+  },
+  {
     "title": "Interpretability by alphaXiv",
     "url": "https://www.alphaxiv.org/trends/interpretability",
     "linkText": "An essay",
