@@ -1,5 +1,13 @@
 [
   {
+    "title": "LLMs can natively read & write weights",
+    "url": "https://rikiyat.github.io/blog/weight-space-programming/",
+    "linkText": "A blog post",
+    "description": "by Takehi et al. 2026, where they show that GPT-6 Astra is able to read and write weights by hand for smaller models (!) It can tell what the smaller model was trained to do and can identify the issues in their weights and fix those manually.",
+    "category": "research",
+    "date": "2026-11-06"
+  },
+  {
     "title": "Compression Represents Intelligence Linearly",
     "url": "https://arxiv.org/pdf/2404.09937",
     "linkText": "A paper",
