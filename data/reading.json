@@ -1,5 +1,13 @@
 [
   {
+    "title": "The Dual-Route Model of Induction",
+    "url": "https://arxiv.org/pdf/2504.03022",
+    "linkText": "A paper",
+    "description": "by Feucht et al. 2025, where the authors show the existence of concept-level induction heads, which perform semantic copying as opposed to token-level heads that do verbatim copying.",
+    "category": "research",
+    "date": "2026-11-09"
+  },
+  {
     "title": "LLMs can natively read & write weights",
     "url": "https://rikiyat.github.io/blog/weight-space-programming/",
     "linkText": "A blog post",
