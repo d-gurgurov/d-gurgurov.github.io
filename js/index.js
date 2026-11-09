@@ -1129,6 +1129,239 @@ function initComposeWidget(widget) {
     render();
 }
 
+document.querySelectorAll('.gates-widget').forEach(initGatesWidget);
+
+function initGatesWidget(widget) {
+    const lanesGroup = widget.querySelector('.gates-lanes');
+    if (!lanesGroup) return;
+
+    const NS = 'http://www.w3.org/2000/svg';
+
+    function el(tag, attrs) {
+        const e = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach((k) => e.setAttribute(k, attrs[k]));
+        return e;
+    }
+
+    function text(attrs, content) {
+        const e = el('text', attrs);
+        e.textContent = content;
+        return e;
+    }
+
+    function seededJitter(seed) {
+        const x = Math.sin(seed * 12.9898) * 43758.5453;
+        return x - Math.floor(x);
+    }
+
+    function bump(l, center, width) {
+        return Math.exp(-Math.pow((l - center) / width, 2));
+    }
+
+    const N_LAYERS = 28;
+    const X0 = 50;
+    const X1 = 430;
+    const STEP = (X1 - X0) / N_LAYERS;
+    const BAR_W = STEP * 0.66;
+    const HALF = 40;
+    // Constant strength used by CAA, and the anchor alpha* the gates are regularized toward.
+    const ANCHOR = 0.45;
+
+    const LANES = {
+        lang: { zero: 54, color: '#007BFF', label: 'α de' },
+        cot: { zero: 144, color: '#e07856', label: 'α CoT' }
+    };
+
+    const bars = { lang: [], cot: [] };
+
+    Object.keys(LANES).forEach((key) => {
+        const lane = LANES[key];
+        lanesGroup.appendChild(el('line', {
+            x1: X0 - 4, y1: lane.zero, x2: X1, y2: lane.zero, stroke: '#ccc', 'stroke-width': 1
+        }));
+        lanesGroup.appendChild(el('line', {
+            x1: X0 - 4, y1: lane.zero - ANCHOR * HALF, x2: X1, y2: lane.zero - ANCHOR * HALF, class: 'axis-ref-line'
+        }));
+        const label = text({ x: X0 - 10, y: lane.zero + 4, 'text-anchor': 'end', class: 'method-label' }, lane.label);
+        label.style.fill = lane.color;
+        lanesGroup.appendChild(label);
+        lanesGroup.appendChild(text({ x: X1, y: lane.zero - ANCHOR * HALF - 4, 'text-anchor': 'end', class: 'axis-ref-label' }, 'α*'));
+
+        for (let l = 0; l < N_LAYERS; l++) {
+            const cx = X0 + STEP * (l + 0.5);
+            const rect = el('rect', {
+                x: cx - BAR_W / 2, y: lane.zero - HALF, width: BAR_W, height: HALF,
+                rx: 1.5, fill: lane.color, class: 'gates-bar'
+            });
+            rect.style.transformOrigin = `${cx}px ${lane.zero}px`;
+            lanesGroup.appendChild(rect);
+            bars[key].push(rect);
+        }
+    });
+
+    lanesGroup.appendChild(text({ x: X0, y: 196, class: 'axis-ref-label' }, 'layer 0'));
+    lanesGroup.appendChild(text({ x: X1, y: 196, 'text-anchor': 'end', class: 'axis-ref-label' }, 'layer 27'));
+    lanesGroup.appendChild(text({ x: (X0 + X1) / 2, y: 196, 'text-anchor': 'middle', class: 'axis-ref-label' }, 'gate strength per layer, for the selected token'));
+
+    // Illustrative gate profiles shaped after the paper's analysis: independent gates fire at different
+    // depths/tokens and mostly agree in sign; jointly trained gates co-activate more, especially in
+    // later layers, and often with opposite signs (coactivation 0.08 -> 0.46, sign agreement 0.71 -> 0.39).
+    const PROFILES = {
+        caa: () => ({ lang: ANCHOR, cot: ANCHOR }),
+        independent: (l, role) => {
+            const lang = {
+                start: 0.9 * bump(l, 8, 5) + 0.3 * bump(l, 20, 4),
+                content: 0.55 * bump(l, 9, 5) + 0.12,
+                struct: 0.2 * bump(l, 9, 5),
+                leak: 0.08
+            }[role];
+            const cot = {
+                start: 0.4 * bump(l, 16, 5),
+                content: 0.1 * bump(l, 17, 6),
+                struct: 0.85 * bump(l, 17, 5),
+                leak: 0.9 * bump(l, 18, 5) + 0.2
+            }[role];
+            return { lang, cot };
+        },
+        joint: (l, role) => {
+            const lang = {
+                start: 0.9 * bump(l, 8, 5) + 0.55 * bump(l, 22, 3),
+                content: 0.6 * bump(l, 9, 5) + 0.5 * bump(l, 22, 3),
+                struct: 0.45 * bump(l, 9, 5) + 0.6 * bump(l, 21, 3)
+            }[role];
+            const cot = {
+                start: 0.5 * bump(l, 15, 5) - 0.4 * bump(l, 23, 3),
+                content: 0.35 * bump(l, 15, 5) - 0.45 * bump(l, 22, 3),
+                struct: 0.8 * bump(l, 16, 5) - 0.55 * bump(l, 23, 3)
+            }[role];
+            return { lang, cot };
+        }
+    };
+
+    function tok(word, role) {
+        return { word, role };
+    }
+
+    const MODES = {
+        caa: {
+            tokens: ['Schritt', 'Schritt', '1:', 'Eis', 'Wasser', 'Eis,', 'Schritt', 'Dichte', 'Dichte', 'Dichte', '…']
+                .map((w) => tok(w, 'content')),
+            caption: 'Constant steering (CAA): one hand-tuned strength α*, added at every layer and every token no matter what the model is already doing. Two such pushes stacked in the same residual stream overshoot, and the output degenerates.'
+        },
+        independent: {
+            tokens: [
+                tok('Eis', 'start'), tok('schwimmt,', 'content'), tok('weil', 'content'), tok('es', 'content'),
+                tok('weniger', 'content'), tok('dicht', 'content'), tok('ist.', 'content'),
+                tok('Step', 'leak'), tok('by', 'leak'), tok('step:', 'leak'),
+                tok('density', 'leak'), tok('is', 'leak'), tok('lower.', 'leak')
+            ],
+            caption: 'Contextual gates (CLAS), each trained on its own: a gate reads the hidden state and decides how hard to push, per layer and per token. But neither gate saw the other\'s intervention during training, so once composed they collide, and the reasoning drifts back into English.'
+        },
+        joint: {
+            tokens: [
+                tok('Schritt', 'start'), tok('1:', 'struct'), tok('Gefrierendes', 'content'), tok('Wasser', 'content'),
+                tok('bildet', 'content'), tok('ein', 'content'), tok('offenes', 'content'), tok('Gitter.', 'content'),
+                tok('Schritt', 'struct'), tok('2:', 'struct'), tok('Eis', 'content'), tok('ist', 'content'),
+                tok('daher', 'struct'), tok('weniger', 'content'), tok('dicht.', 'content'),
+                tok('Also', 'struct'), tok('schwimmt', 'content'), tok('es.', 'content')
+            ],
+            caption: 'Joint gates (Joint-CLAS): same fixed directions, but both gates are trained together with both interventions active. Rather than avoiding each other, they fire together more often, frequently with opposite signs in later layers, coordinating how much of each push survives.'
+        }
+    };
+
+    // Harmonic mean of task scores + relevance, averaged over 9 models and 126 language-behaviour pairs (Table 1).
+    const SCORES = [
+        { key: 'prompting', label: 'prompting', pct: 72.4 },
+        { key: 'caa', label: 'constant (CAA)', pct: 49.6 },
+        { key: 'independent', label: 'independent gates', pct: 64.8 },
+        { key: 'joint', label: 'joint gates', pct: 82.5 }
+    ];
+
+    const tokensEl = widget.querySelector('.gates-tokens');
+    let mode = 'joint';
+    let tokenIndex = 0;
+    let autoplay = null;
+
+    function renderBars() {
+        const container = widget.querySelector('.gates-bars');
+        container.innerHTML = '';
+        const header = document.createElement('div');
+        header.className = 'feature-count-label';
+        header.textContent = 'composition score (avg. over 9 models):';
+        container.appendChild(header);
+        SCORES.forEach(({ key, label, pct }) => {
+            const row = document.createElement('div');
+            row.className = 'feature-meter-label';
+            const labelLine = document.createElement('div');
+            labelLine.textContent = `${label}: ${pct}`;
+            row.appendChild(labelLine);
+            const bar = document.createElement('div');
+            bar.className = 'feature-meter-bar';
+            const fill = document.createElement('div');
+            fill.className = 'feature-meter-fill' + (key === mode ? '' : ' residual');
+            fill.style.width = pct + '%';
+            bar.appendChild(fill);
+            row.appendChild(bar);
+            container.appendChild(row);
+        });
+    }
+
+    function renderGates() {
+        const role = MODES[mode].tokens[tokenIndex].role;
+        for (let l = 0; l < N_LAYERS; l++) {
+            const v = PROFILES[mode](l, role);
+            ['lang', 'cot'].forEach((key, k) => {
+                const noise = mode === 'caa' ? 0 : (seededJitter(tokenIndex * 97 + l * 7 + k * 1301) - 0.5) * 0.14;
+                const value = Math.max(-1, Math.min(1, v[key] + noise));
+                bars[key][l].style.transform = `scaleY(${value.toFixed(3)})`;
+            });
+        }
+        tokensEl.querySelectorAll('.gates-token').forEach((b, i) => b.classList.toggle('active', i === tokenIndex));
+    }
+
+    function selectToken(i) {
+        tokenIndex = i;
+        renderGates();
+    }
+
+    function stopAutoplay() {
+        if (autoplay) clearInterval(autoplay);
+        autoplay = null;
+    }
+
+    function renderMode() {
+        widget.querySelectorAll('[data-gates-mode]').forEach((b) => b.classList.toggle('active', b.dataset.gatesMode === mode));
+        tokensEl.innerHTML = '';
+        MODES[mode].tokens.forEach((t, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'gates-token';
+            b.textContent = t.word;
+            b.addEventListener('mouseenter', () => { stopAutoplay(); selectToken(i); });
+            b.addEventListener('click', () => { stopAutoplay(); selectToken(i); });
+            tokensEl.appendChild(b);
+        });
+        tokenIndex = Math.min(tokenIndex, MODES[mode].tokens.length - 1);
+        widget.querySelector('.gates-caption').textContent = MODES[mode].caption;
+        renderBars();
+        renderGates();
+    }
+
+    widget.querySelectorAll('[data-gates-mode]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            mode = btn.dataset.gatesMode;
+            renderMode();
+        });
+    });
+
+    renderMode();
+
+    // Step through the generated tokens until the reader takes over, so the gates visibly react to context.
+    autoplay = setInterval(() => {
+        selectToken((tokenIndex + 1) % MODES[mode].tokens.length);
+    }, 1100);
+}
+
 document.querySelectorAll('.subnet-widget').forEach(initSubnetWidget);
 
 function initSubnetWidget(widget) {

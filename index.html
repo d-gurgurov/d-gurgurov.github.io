@@ -98,14 +98,14 @@
 
             <div class="story-section" id="the-story-so-far">
                 <h2>the story so far</h2>
-                <p class="story-intro">A story of what I've worked on so far during my PhD, in the order it happened.</p>
+                <p class="story-intro">A short story of what I've worked on so far during my PhD.</p>
                 <ol class="story-timeline">
                     <li>
                         <span class="story-num">0</span>
                         <div class="story-body">
                             <h3>Language neurons</h3>
                             <p>A large-scale study of language-specific neurons across 21 languages and 4 base models, investigating the influence of activating and deactivating language neurons on language fidelity and downstream task performance (QA, MT, MC, and NLI). <strong>(!)</strong> Progressive neuron deactivation reveals internal language "fallback" mechanisms.</p>
-                            <a href="https://aclanthology.org/2025.ijcnlp-long.156/" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://aclanthology.org/2025.ijcnlp-long.156/" target="_blank" class="story-link">read the paper</a>
 
                             <div class="axis-demo lang-neurons-widget">
                                 <div class="widget-toolbar">
@@ -168,7 +168,7 @@
                         <div class="story-body">
                             <h3>Language subnetworks</h3>
                             <p>A framework for improving performance in underrepresented languages by fine-tuning only a sparse, LAPE-identified subnetwork of language-associated neurons, instead of the whole model. <strong>(!)</strong> Updating just 0.2-1% of parameters consistently beats full fine-tuning, FFN-only tuning, LoRA, IA³, and random-subset baselines, without catastrophic forgetting.</p>
-                            <a href="https://arxiv.org/abs/2510.13580" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://arxiv.org/abs/2510.13580" target="_blank" class="story-link">read the paper</a>
 
                             <div class="axis-demo subnet-widget">
                                 <div class="widget-toolbar">
@@ -199,7 +199,7 @@
                         <div class="story-body">
                             <h3>Language vectors</h3>
                             <p>CLaS-Bench, a benchmark for evaluating language forcing in LMs across 32 languages. Methods evaluated: DiffMean vectors, MLP neurons, PCA subspaces, LDA vectors, SAEs, and probes. <strong>(!)</strong> Simple DiffMean vectors tend to outperform all the other approaches and prompting. <strong>(?)</strong> Language identity as a linear direction in representation space?</p>
-                            <a href="https://aclanthology.org/2026.findings-acl.1086/" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://aclanthology.org/2026.findings-acl.1086/" target="_blank" class="story-link">read the paper</a>
 
                             <div class="axis-demo method-widget">
                                 <div class="widget-toolbar">
@@ -296,7 +296,7 @@
                         <div class="story-body">
                             <h3>Language scripts</h3>
                             <p>Script also seems to be on a linear axis and is gated by a small set of language-agnostic attention heads that causally control it, all concentrated in later layers. <strong>(!)</strong> Script-mediating attention heads generalize cross-lingually; identified on Hindi, they causally influence script choice in Russian, Japanese, etc.</p>
-                            <a href="https://arxiv.org/pdf/2605.31363" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://aclanthology.org/2026.blackboxnlp-1.49/" target="_blank" class="story-link">read the paper</a>
 
                             <div class="axis-demo script-widget">
                                 <div class="widget-toolbar">
@@ -349,7 +349,7 @@
                         <div class="story-body">
                             <h3>Linear embedding manipulations</h3>
                             <p>Position: simple linear edits at the activation level look like a solid alternative to "heavier" adaptation methods (fine-tuning, RL, or PEFT) for steering model behavior. <strong>(!)</strong> We provide a set of functional criteria for adaptation methods and argue that steering should be viewed as a form of model adaptation.</p>
-                            <a href="https://aclanthology.org/2026.acl-long.1377/" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://aclanthology.org/2026.acl-long.1377/" target="_blank" class="story-link">read the paper</a>
 
                             <div class="adapt-widget">
                                 <div class="widget-toolbar">
@@ -407,7 +407,7 @@
                         <div class="story-body">
                             <h3>Steering vector compositionality</h3>
                             <p>Steering vectors can be combined in a linear fashion, as long as they are sufficiently orthogonal to each other and injected at the appropriate layers. We experiment with composing three attributes: language identity, jailbreak behavior, and conciseness. <strong>(!)</strong> The first step towards simple compositional steering.</p>
-                            <a href="https://arxiv.org/pdf/2609.08410" target="_blank" class="story-link">read the paper →</a>
+                            <a href="https://aclanthology.org/2026.blackboxnlp-1.38/" target="_blank" class="story-link">read the paper</a>
 
                             <div class="axis-demo compose-widget">
                                 <div class="widget-toolbar">
@@ -452,6 +452,38 @@
                     </li>
                     <li>
                         <span class="story-num">6</span>
+                        <div class="story-body">
+                            <h3>Compositional gated steering</h3>
+                            <p>Constant-strength vectors interfere with each other when stacked, so we keep the steering directions fixed and instead jointly train small gates that read the hidden state and decide how hard to push along each direction, at every layer and token. Across 9 models, 9 languages, and 14 behaviours, this beats constant steering, four strong baselines, and prompting, while preserving more general knowledge. <strong>(!)</strong> Jointly trained gates do not learn to avoid each other; they co-adapt, firing together more often and frequently with opposite signs.</p>
+                            <a href="https://arxiv.org/abs/2610.24906" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo gates-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn" data-gates-mode="caa">constant (CAA)</button>
+                                        <button type="button" class="adapt-mode-btn" data-gates-mode="independent">independent gates</button>
+                                        <button type="button" class="adapt-mode-btn active" data-gates-mode="joint">joint gates</button>
+                                    </div>
+
+                                    <p class="feature-count-label gates-prompt">prompt (es): "¿Por qué flota el hielo en el agua?" → steer to <span class="gates-key-lang">German</span> + <span class="gates-key-cot">chain-of-thought</span></p>
+
+                                    <svg class="adapt-svg gates-svg" viewBox="0 0 440 202" role="img" aria-label="Interactive per-layer gate strengths for a German steering direction and a chain-of-thought steering direction, for each generated token, under constant, independently gated, and jointly gated steering">
+                                        <g class="gates-lanes"></g>
+                                    </svg>
+
+                                    <div class="gates-tokens"></div>
+                                    <p class="adapt-caption gates-caption"></p>
+
+                                    <div class="neurons-bars gates-bars"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="story-num">7</span>
                         <div class="story-body">
                             <h3>Toward a unified model of multilingual processing</h3>
                             <p>A working theory: models extract language-specific features and identify the input language, then reason in a shared cross-lingual space, then differentiate the output back into the target language. <strong>(!)</strong> The ultimate, somewhat ambitious, goal of the PhD.</p>

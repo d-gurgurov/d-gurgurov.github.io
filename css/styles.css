@@ -2137,3 +2137,53 @@ sup a:hover {
 .references-list li {
     margin-bottom: 12px;
 }
+
+/* Compositional gated steering widget (story timeline) */
+.gates-key-lang {
+    color: #007BFF;
+    font-weight: 600;
+}
+
+.gates-key-cot {
+    color: #e07856;
+    font-weight: 600;
+}
+
+.gates-prompt {
+    margin: 0;
+    text-align: center;
+}
+
+.gates-bar {
+    transition: transform 0.35s ease;
+}
+
+.gates-tokens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    max-width: 420px;
+}
+
+.gates-token {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95em;
+    color: #555;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 1px 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gates-token:hover {
+    background-color: #f2efe4;
+}
+
+.gates-token.active {
+    color: #fefcf8;
+    background-color: #333;
+}
