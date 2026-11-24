@@ -1,5 +1,13 @@
 [
   {
+    "title": "Language Model Tokenizers Introduce Unfairness Between Languages",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/74bb24dca8334adce292883b4b651eda-Paper-Conference.pdf",
+    "linkText": "A (relatively old) paper",
+    "description": "by Petrov et al. 2023 on how tokenizers introduce unfairness across languages. They show that the same text in different languages can have very different tokenization lenghts, with difference up to 15 times. This increases the cost, latency and context size, when the models are served for some language communities.",
+    "category": "research",
+    "date": "2026-11-24"
+  },
+  {
     "title": "The Dual-Route Model of Induction",
     "url": "https://arxiv.org/pdf/2504.03022",
     "linkText": "A paper",
