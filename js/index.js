@@ -1,15 +1,16 @@
 fetch('data/reading.json')
     .then(response => response.json())
     .then(data => {
-        if (!data.length) return;
         const nowReading = document.getElementById('now-reading');
+        if (!nowReading || !data.length) return;
         nowReading.textContent = data[0].title;
         nowReading.href = data[0].url;
         nowReading.target = '_blank';
     })
     .catch(() => {});
 
-const fisherIcon = document.getElementById('fisher-icon');
+// The research page uses the writer icon with the same hover and drag behaviour.
+const fisherIcon = document.getElementById('fisher-icon') || document.getElementById('writer-icon');
 if (fisherIcon) {
     const fisherImg = fisherIcon.querySelector('img');
     fisherIcon.addEventListener('mouseenter', () => {
@@ -202,6 +203,22 @@ document.querySelectorAll('.widget-toolbar').forEach((toolbar) => {
         btn.textContent = hidden ? 'show' : 'hide';
     });
 });
+
+// Papers on the research page animate in once, as each one enters the viewport.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-revealed');
+            revealObserver.unobserve(entry.target);
+        });
+    }, { rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.story-timeline > li').forEach((item) => {
+        item.classList.add('story-reveal');
+        revealObserver.observe(item);
+    });
+}
 
 document.querySelectorAll('.snapshots-gallery').forEach((gallery) => {
     const empty = gallery.nextElementSibling;

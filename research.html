@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Daniil Gurgurov</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&#038;subset=latin,latin-ext&#038;display=swap' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/imgs/icon.ico" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Daniil Gurgurov</a>
+            <div>
+                <a href="writing.html">writing</a>
+                <a href="index.html">about</a>
+                <a href="research.html">research</a>
+                <a href="reading.html">reading</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div id="main-content">
+            <div class="left-rail" id="left-rail">
+                <div class="writer-icon" id="writer-icon">
+                    <img src="assets/imgs/writer.png" alt="A little stick-figure writing in a boat, matching the site's fisherman icon">
+                </div>
+
+                <div class="now-box section-menu" role="navigation" aria-label="Sections on this page">
+                    <div class="now-label">on this page</div>
+                    <div class="now-row section-menu-sub"><span class="now-key">0</span> <a href="#story-language-neurons">Language neurons</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">1</span> <a href="#story-language-subnetworks">Language subnetworks</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">2</span> <a href="#story-language-vectors">Language vectors</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">3</span> <a href="#story-language-scripts">Language scripts</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">4</span> <a href="#story-linear-embedding-manipulations">Linear embedding manipulations</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">5</span> <a href="#story-steering-vector-compositionality">Steering vector compositionality</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">6</span> <a href="#story-compositional-gated-steering">Compositional gated steering</a></div>
+                    <div class="now-row section-menu-sub"><span class="now-key">7</span> <a href="#story-toward-a-unified-model-of-multilingual-processing">Toward a unified model of multilingual processing</a></div>
+                </div>
+            </div>
+
+            <div class="research-interests-section">
+                <h2>research interests</h2>
+                <p>My research goal is to move from empirical steering methods toward a principled theory of controllable representations, using multilinguality as a lens for structure that stays invisible in English-centric analyses. I organize this around three pillars.</p>
+                <ul class="interest-list">
+                    <li><strong>Multilingual Interpretability</strong>: how LMs process so many languages at once, drawing on mechanistic interpretability and multilingual NLP.</li>
+                    <li><strong>Actionable Interpretability</strong>: how interpretability can guide model enhancement, through activation steering and controllable representations.</li>
+                    <li><strong>Multilingual Efficiency</strong>: whether we can build great multilingual models with less data, using low-resource language techniques and model compression.</li>
+                </ul>
+            </div>
+
+            <div class="story-section" id="the-story-so-far">
+                <h2>the story so far</h2>
+                <p class="story-intro">A short story of what I've worked on so far during my PhD.</p>
+                <ol class="story-timeline">
+                    <li id="story-language-neurons">
+                        <span class="story-num">0</span>
+                        <div class="story-body">
+                            <h3>Language neurons</h3>
+                            <p>A large-scale study of language-specific neurons across 21 languages and 4 base models, investigating the influence of activating and deactivating language neurons on language fidelity and downstream task performance (QA, MT, MC, and NLI). <strong>(!)</strong> Progressive neuron deactivation reveals internal language "fallback" mechanisms.</p>
+                            <a href="https://aclanthology.org/2025.ijcnlp-long.156/" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo lang-neurons-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn active" data-panel="activate">forced activation</button>
+                                        <button type="button" class="adapt-mode-btn" data-panel="deactivate">progressive deactivation</button>
+                                    </div>
+
+                                    <svg class="adapt-svg neurons-svg-activate" viewBox="0 0 440 170" role="img" aria-label="Interactive scatter plot of language-specific neurons across layers; click a cluster to force that language's output">
+                                        <line x1="20" y1="140" x2="420" y2="140" class="axis-ref-line"></line>
+                                        <text x="20" y="156" class="axis-ref-label">layer 0 (shallow)</text>
+                                        <text x="420" y="156" text-anchor="end" class="axis-ref-label">layer 31 (deep)</text>
+
+                                        <g class="neurons-scatter"></g>
+                                    </svg>
+
+                                    <div class="adapt-modes neurons-lang-row">
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="en">en</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="fr">fr</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="es">es</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="it">it</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="pt">pt</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="de">de</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="ru">ru</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="ar">ar</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="zh">zh</button>
+                                        <button type="button" class="adapt-mode-btn" data-force-lang="vi">vi</button>
+                                        <button type="button" class="adapt-mode-btn active" data-force-lang="th">th</button>
+                                    </div>
+
+                                    <svg class="adapt-svg neurons-svg-deactivate" viewBox="0 0 460 150" role="img" aria-label="Interactive diagram of language-specific neuron clusters, used to deactivate high-resource languages one by one">
+                                        <text x="142" y="10" text-anchor="middle" class="axis-ref-label">Spanish / Italian / Portuguese share overlapping neurons</text>
+                                        <rect x="87" y="14" width="110" height="78" rx="8" class="axis-ref-line" style="fill:none;"></rect>
+
+                                        <g class="neurons-cols"></g>
+                                    </svg>
+
+                                    <div class="adapt-modes neurons-stage-row">
+                                        <button type="button" class="adapt-mode-btn active" data-stage="0">baseline</button>
+                                        <button type="button" class="adapt-mode-btn" data-stage="1">&minus;en</button>
+                                        <button type="button" class="adapt-mode-btn" data-stage="2">&minus;en &minus;fr</button>
+                                        <button type="button" class="adapt-mode-btn" data-stage="3">&minus;es &minus;it &minus;pt</button>
+                                        <button type="button" class="adapt-mode-btn" data-stage="4">&minus;de &minus;ru &minus;ar</button>
+                                    </div>
+
+                                    <p class="feature-count-label neurons-output-label">model output distribution</p>
+                                    <div class="neurons-bars"></div>
+
+                                    <p class="adapt-caption neurons-caption"></p>
+                                    <p class="neurons-footnote">Some English, Spanish, and French responses persist at every stage: strong priors the model falls back on even with those neurons off.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-language-subnetworks">
+                        <span class="story-num">1</span>
+                        <div class="story-body">
+                            <h3>Language subnetworks</h3>
+                            <p>A framework for improving performance in underrepresented languages by fine-tuning only a sparse, LAPE-identified subnetwork of language-associated neurons, instead of the whole model. <strong>(!)</strong> Updating just 0.2-1% of parameters consistently beats full fine-tuning, FFN-only tuning, LoRA, IA³, and random-subset baselines, without catastrophic forgetting.</p>
+                            <a href="https://arxiv.org/abs/2510.13580" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo subnet-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <svg class="adapt-svg subnet-svg" viewBox="0 0 400 195" role="img" aria-label="Interactive diagram of a sparse language-associated subnetwork being fine-tuned, compared against full fine-tuning">
+                                        <text x="200" y="14" text-anchor="middle" class="axis-ref-label">sparse language subnetwork within a dense network</text>
+                                        <g class="subnet-edges"></g>
+                                        <g class="subnet-nodes"></g>
+                                    </svg>
+
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn active" data-subnet-state="baseline">before fine-tuning</button>
+                                        <button type="button" class="adapt-mode-btn" data-subnet-state="ours">sparse subnetwork (ours)</button>
+                                        <button type="button" class="adapt-mode-btn" data-subnet-state="full">full fine-tuning</button>
+                                    </div>
+
+                                    <div class="neurons-bars subnet-bars"></div>
+                                    <p class="separation-readout subnet-readout"></p>
+                                    <p class="adapt-caption subnet-caption"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-language-vectors">
+                        <span class="story-num">2</span>
+                        <div class="story-body">
+                            <h3>Language vectors</h3>
+                            <p>CLaS-Bench, a benchmark for evaluating language forcing in LMs across 32 languages. Methods evaluated: DiffMean vectors, MLP neurons, PCA subspaces, LDA vectors, SAEs, and probes. <strong>(!)</strong> Simple DiffMean vectors tend to outperform all the other approaches and prompting. <strong>(?)</strong> Language identity as a linear direction in representation space?</p>
+                            <a href="https://aclanthology.org/2026.findings-acl.1086/" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo method-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="adapt-modes method-grid">
+                                        <button type="button" class="adapt-mode-btn method-btn active" data-method="diffmean">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <line x1="8" y1="19" x2="20" y2="9"></line>
+                                                <circle cx="8" cy="19" r="3" class="point-b"></circle>
+                                                <circle cx="20" cy="9" r="3" class="point-a"></circle>
+                                            </svg>
+                                            <span>DiffMean</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="probing">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <line x1="4" y1="23" x2="24" y2="5"></line>
+                                                <circle cx="9" cy="10" r="2" class="point-a"></circle>
+                                                <circle cx="15" cy="7" r="2" class="point-a"></circle>
+                                                <circle cx="16" cy="22" r="2" class="point-b"></circle>
+                                                <circle cx="22" cy="18" r="2" class="point-b"></circle>
+                                            </svg>
+                                            <span>Probing</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="neurons">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <line x1="7" y1="4" x2="7" y2="24"></line>
+                                                <line x1="14" y1="4" x2="14" y2="24" class="method-icon-strong"></line>
+                                                <line x1="21" y1="4" x2="21" y2="24"></line>
+                                            </svg>
+                                            <span>Neurons</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="pca">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <ellipse cx="14" cy="14" rx="11" ry="5" transform="rotate(-25 14 14)"></ellipse>
+                                                <line x1="4" y1="19" x2="24" y2="9" class="method-icon-strong"></line>
+                                            </svg>
+                                            <span>PCA</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="lda">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <ellipse cx="9" cy="18" rx="5" ry="3" class="point-b-faint"></ellipse>
+                                                <ellipse cx="19" cy="9" rx="5" ry="3" class="point-a-faint"></ellipse>
+                                                <line x1="9" y1="18" x2="19" y2="9"></line>
+                                            </svg>
+                                            <span>LDA</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="sae">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <rect x="2" y="12" width="4" height="4"></rect>
+                                                <rect x="8" y="12" width="4" height="4"></rect>
+                                                <rect x="14" y="12" width="4" height="4" class="method-icon-fill"></rect>
+                                                <rect x="20" y="12" width="4" height="4"></rect>
+                                            </svg>
+                                            <span>SAE</span>
+                                        </button>
+                                        <button type="button" class="adapt-mode-btn method-btn" data-method="prompting">
+                                            <svg class="method-icon" viewBox="0 0 28 28">
+                                                <rect x="3" y="6" width="22" height="14" rx="3"></rect>
+                                                <line x1="7" y1="11" x2="19" y2="11"></line>
+                                                <line x1="7" y1="15" x2="15" y2="15"></line>
+                                            </svg>
+                                            <span>Prompting</span>
+                                        </button>
+                                    </div>
+
+                                    <svg class="adapt-svg method-svg" viewBox="0 0 400 205" role="img" aria-label="Interactive diagram of how each language-steering method derives its direction from model activations">
+                                        <defs>
+                                            <marker id="method-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M0,0 L10,5 L0,10 z" fill="#333"></path>
+                                            </marker>
+                                        </defs>
+                                        <g class="adapt-mode-group method-scatter"></g>
+                                        <g class="adapt-mode-group" data-overlay="diffmean"></g>
+                                        <g class="adapt-mode-group" data-overlay="probing"></g>
+                                        <g class="adapt-mode-group" data-overlay="neurons"></g>
+                                        <g class="adapt-mode-group" data-overlay="pca"></g>
+                                        <g class="adapt-mode-group" data-overlay="lda"></g>
+                                        <g class="adapt-mode-group" data-overlay="sae"></g>
+                                        <g class="adapt-mode-group" data-overlay="prompting"></g>
+                                    </svg>
+
+                                    <p class="adapt-caption method-caption"></p>
+
+                                    <div class="neurons-bars method-bars"></div>
+                                    <p class="separation-readout method-readout"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-language-scripts">
+                        <span class="story-num">3</span>
+                        <div class="story-body">
+                            <h3>Language scripts</h3>
+                            <p>Script also seems to be on a linear axis and is gated by a small set of language-agnostic attention heads that causally control it, all concentrated in later layers. <strong>(!)</strong> Script-mediating attention heads generalize cross-lingually; identified on Hindi, they causally influence script choice in Russian, Japanese, etc.</p>
+                            <a href="https://aclanthology.org/2026.blackboxnlp-1.49/" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo script-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn active" data-panel="vector">steering vector</button>
+                                        <button type="button" class="adapt-mode-btn" data-panel="heads">attention heads</button>
+                                    </div>
+
+                                    <div class="script-panel script-panel-vector">
+                                        <div class="adapt-modes">
+                                            <button type="button" class="adapt-mode-btn active" data-vector-lang="hindi">Hindi</button>
+                                            <button type="button" class="adapt-mode-btn" data-vector-lang="arabic">Arabic</button>
+                                        </div>
+                                        <div class="script-word-display script-word-vector"></div>
+                                        <div class="script-name-label script-name-vector"></div>
+                                        <div class="adapt-modes">
+                                            <button type="button" class="adapt-mode-btn" data-vector-toggle="1">steer script</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="script-panel script-panel-heads">
+                                        <svg class="adapt-svg script-heads-svg" viewBox="0 0 400 190" role="img" aria-label="Interactive grid of attention heads by layer, showing which heads causally gate script choice">
+                                            <text x="20" y="18" class="axis-ref-label">shallow layers</text>
+                                            <text x="380" y="18" text-anchor="end" class="axis-ref-label">deep layers</text>
+                                            <g class="script-heads-grid"></g>
+                                        </svg>
+                                        <div class="adapt-modes">
+                                            <button type="button" class="adapt-mode-btn active" data-heads-lang="hindi">Hindi</button>
+                                            <button type="button" class="adapt-mode-btn" data-heads-lang="arabic">Arabic</button>
+                                            <button type="button" class="adapt-mode-btn" data-heads-lang="russian">Russian</button>
+                                            <button type="button" class="adapt-mode-btn" data-heads-lang="japanese">Japanese</button>
+                                        </div>
+                                        <div class="script-word-display script-word-heads"></div>
+                                        <div class="script-name-label script-name-heads"></div>
+                                        <div class="adapt-modes">
+                                            <button type="button" class="adapt-mode-btn" data-heads-toggle="1">patch heads</button>
+                                        </div>
+                                    </div>
+
+                                    <p class="adapt-caption script-caption"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-linear-embedding-manipulations">
+                        <span class="story-num">4</span>
+                        <div class="story-body">
+                            <h3>Linear embedding manipulations</h3>
+                            <p>Position: simple linear edits at the activation level look like a solid alternative to "heavier" adaptation methods (fine-tuning, RL, or PEFT) for steering model behavior. <strong>(!)</strong> We provide a set of functional criteria for adaptation methods and argue that steering should be viewed as a form of model adaptation.</p>
+                            <a href="https://aclanthology.org/2026.acl-long.1377/" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="adapt-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <svg class="adapt-svg" viewBox="0 0 440 190" role="img" aria-label="Interactive diagram comparing fine-tuning, prompting, and steering as mechanisms for changing model behavior">
+                                        <defs>
+                                            <marker id="adapt-arrow-traj" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M0,0 L10,5 L0,10 z" fill="#e07856"></path>
+                                            </marker>
+                                            <marker id="adapt-arrow-vec" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M0,0 L10,5 L0,10 z" fill="#007BFF"></path>
+                                            </marker>
+                                        </defs>
+
+                                        <path class="adapt-landscape adapt-landscape-3" d=""></path>
+                                        <path class="adapt-landscape adapt-landscape-2" d=""></path>
+                                        <path class="adapt-landscape adapt-landscape-1" d=""></path>
+
+                                        <path class="adapt-traj-baseline" d=""></path>
+
+                                        <g class="adapt-mode-group" data-mode-group="finetune">
+                                            <path class="adapt-traj-main" d="" marker-end="url(#adapt-arrow-traj)"></path>
+                                        </g>
+
+                                        <g class="adapt-mode-group" data-mode-group="prompting">
+                                            <path class="adapt-traj-main" d="" marker-end="url(#adapt-arrow-traj)"></path>
+                                            <circle class="adapt-dot adapt-dot-new" r="5" cx="0" cy="0"></circle>
+                                            <text class="adapt-dot-label adapt-dot-label-new" x="0" y="0">new</text>
+                                        </g>
+
+                                        <g class="adapt-mode-group" data-mode-group="steering">
+                                            <path class="adapt-traj-main" d=""></path>
+                                            <line class="adapt-vector-line" x1="0" y1="0" x2="0" y2="0" marker-end="url(#adapt-arrow-vec)"></line>
+                                            <text class="adapt-vector-label" x="0" y="0">+v</text>
+                                            <path class="adapt-traj-main" d="" marker-end="url(#adapt-arrow-traj)"></path>
+                                        </g>
+
+                                        <circle class="adapt-dot adapt-dot-orig" r="5" cx="20" cy="100"></circle>
+                                        <text class="adapt-dot-label" x="8" y="118">orig</text>
+                                    </svg>
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn active" data-mode="finetune">fine-tuning</button>
+                                        <button type="button" class="adapt-mode-btn" data-mode="prompting">prompting</button>
+                                        <button type="button" class="adapt-mode-btn" data-mode="steering">steering</button>
+                                    </div>
+                                    <p class="adapt-caption"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-steering-vector-compositionality">
+                        <span class="story-num">5</span>
+                        <div class="story-body">
+                            <h3>Steering vector compositionality</h3>
+                            <p>Steering vectors can be combined in a linear fashion, as long as they are sufficiently orthogonal to each other and injected at the appropriate layers. We experiment with composing three attributes: language identity, jailbreak behavior, and conciseness. <strong>(!)</strong> The first step towards simple compositional steering.</p>
+                            <a href="https://aclanthology.org/2026.blackboxnlp-1.38/" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo compose-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <svg class="adapt-svg compose-svg" viewBox="0 0 440 190" role="img" aria-label="Interactive diagram of three steering vectors injected at increasing depth in a transformer, composing into one steered output">
+                                        <defs>
+                                            <marker id="compose-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M0,0 L10,5 L0,10 z" fill="#333"></path>
+                                            </marker>
+                                        </defs>
+                                        <line x1="30" y1="110" x2="410" y2="110" stroke="#333" stroke-width="2" marker-end="url(#compose-arrow)"></line>
+                                        <text x="30" y="146" class="axis-ref-label">input</text>
+                                        <text x="410" y="146" text-anchor="end" class="axis-ref-label">output</text>
+
+                                        <g class="compose-inject" data-attr="language"></g>
+                                        <g class="compose-inject" data-attr="jailbreak"></g>
+                                        <g class="compose-inject" data-attr="conciseness"></g>
+                                    </svg>
+
+                                    <p class="feature-count-label compose-prompt">prompt: "How do I pick a lock?"</p>
+                                    <p class="dims-sample compose-output"></p>
+
+                                    <div class="superposition-controls">
+                                        <label class="feature-count-label">language identity: <span class="compose-value" data-attr-value="language">70%</span></label>
+                                        <input type="range" class="compose-slider" data-attr-slider="language" min="0" max="100" step="1" value="70">
+                                    </div>
+                                    <div class="superposition-controls">
+                                        <label class="feature-count-label">jailbreak: <span class="compose-value" data-attr-value="jailbreak">55%</span></label>
+                                        <input type="range" class="compose-slider" data-attr-slider="jailbreak" min="0" max="100" step="1" value="55">
+                                    </div>
+                                    <div class="superposition-controls">
+                                        <label class="feature-count-label">conciseness: <span class="compose-value" data-attr-value="conciseness">40%</span></label>
+                                        <input type="range" class="compose-slider" data-attr-slider="conciseness" min="0" max="100" step="1" value="40">
+                                    </div>
+
+                                    <p class="adapt-caption compose-caption"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-compositional-gated-steering">
+                        <span class="story-num">6</span>
+                        <div class="story-body">
+                            <h3>Compositional gated steering</h3>
+                            <p>Constant-strength vectors interfere with each other when stacked, so we keep the steering directions fixed and instead jointly train small gates that read the hidden state and decide how hard to push along each direction, at every layer and token. Across 9 models, 9 languages, and 14 behaviours, this beats constant steering, four strong baselines, and prompting, while preserving more general knowledge. <strong>(!)</strong> Jointly trained gates do not learn to avoid each other; they co-adapt, firing together more often and frequently with opposite signs.</p>
+                            <a href="https://arxiv.org/abs/2610.24906" target="_blank" class="story-link">read the paper</a>
+
+                            <div class="axis-demo gates-widget">
+                                <div class="widget-toolbar">
+                                    <button type="button" class="widget-toggle-btn">hide</button>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="adapt-modes">
+                                        <button type="button" class="adapt-mode-btn" data-gates-mode="caa">constant (CAA)</button>
+                                        <button type="button" class="adapt-mode-btn" data-gates-mode="independent">independent gates</button>
+                                        <button type="button" class="adapt-mode-btn active" data-gates-mode="joint">joint gates</button>
+                                    </div>
+
+                                    <p class="feature-count-label gates-prompt">prompt (es): "¿Por qué flota el hielo en el agua?" → steer to <span class="gates-key-lang">German</span> + <span class="gates-key-cot">chain-of-thought</span></p>
+
+                                    <svg class="adapt-svg gates-svg" viewBox="0 0 440 202" role="img" aria-label="Interactive per-layer gate strengths for a German steering direction and a chain-of-thought steering direction, for each generated token, under constant, independently gated, and jointly gated steering">
+                                        <g class="gates-lanes"></g>
+                                    </svg>
+
+                                    <div class="gates-tokens"></div>
+                                    <p class="adapt-caption gates-caption"></p>
+
+                                    <div class="neurons-bars gates-bars"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="story-toward-a-unified-model-of-multilingual-processing">
+                        <span class="story-num">7</span>
+                        <div class="story-body">
+                            <h3>Toward a unified model of multilingual processing</h3>
+                            <p>A working theory: models extract language-specific features and identify the input language, then reason in a shared cross-lingual space, then differentiate the output back into the target language. <strong>(!)</strong> The ultimate, somewhat ambitious, goal of the PhD.</p>
+                            <span class="story-link story-pending">no dedicated paper yet</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

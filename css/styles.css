@@ -153,6 +153,34 @@ nav a:hover {
     z-index: 1;
 }
 
+/* Scroll reveal: the class is added by JS, so papers stay visible if scripts don't run.
+   Only the contents move, so the <li> keeps its position for the menu's anchor jumps. */
+.story-reveal .story-body {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.story-reveal .story-num {
+    opacity: 0;
+    transform: scale(0.4);
+    transition: opacity 0.3s ease 0.12s, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s;
+}
+
+.story-reveal.is-revealed .story-body,
+.story-reveal.is-revealed .story-num {
+    opacity: 1;
+    transform: none;
+}
+
+@media print {
+    .story-reveal .story-body,
+    .story-reveal .story-num {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .story-body h3 {
     margin: 2px 0 8px 0;
     font-family: var(--font-serif);
@@ -216,6 +244,29 @@ a.story-link:hover {
 
 .now-key {
     color: #aaa;
+}
+
+/* "On this page" menu (research page), built on the now-box styles */
+.section-menu {
+    max-width: none;
+}
+
+.section-menu-sub {
+    display: flex;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.now-box .section-menu-sub a {
+    border-bottom: none;
+}
+
+.now-box .section-menu-sub a:hover {
+    text-decoration: underline dotted;
+}
+
+.story-timeline > li {
+    scroll-margin-top: 20px;
 }
 
 .now-box a {
@@ -302,6 +353,11 @@ a.story-link:hover {
 
     .now-box {
         margin: 0;
+    }
+
+    .section-menu {
+        max-height: calc(100vh - 340px);
+        overflow-y: auto;
     }
 
     .left-rail-narrow {
@@ -879,6 +935,49 @@ footer {
         padding: 8px 12px;
         border-left: 2px solid #ddd;
         background-color: #fefcf8;
+    }
+}
+
+/* About page: notes stay hidden until their marker is hovered, focused, or clicked. */
+.about-section .sidenote-toggle {
+    cursor: help;
+}
+
+@media (min-width: 1400px) {
+    .about-section .sidenote {
+        display: inline;
+        float: none;
+        position: absolute;
+        right: -310px;
+        margin: 0;
+        z-index: 20;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.18s ease, visibility 0.18s ease;
+    }
+
+    .about-section .sidenote-toggle:hover + .sidenote-checkbox + .sidenote,
+    .about-section .sidenote-toggle:focus-visible + .sidenote-checkbox + .sidenote,
+    .about-section .sidenote-checkbox:checked + .sidenote {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 1399px) and (hover: hover) {
+    .about-section .sidenote-toggle:hover + .sidenote-checkbox:not(:checked) + .sidenote,
+    .about-section .sidenote-toggle:focus-visible + .sidenote-checkbox:not(:checked) + .sidenote {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        margin-top: 4px;
+        padding: 8px 12px;
+        background-color: #fefcf8;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     }
 }
 
