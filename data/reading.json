@@ -1,5 +1,13 @@
 [
   {
+    "title": "Quantifying Cross-Modality Memorization in VLMs",
+    "url": "https://arxiv.org/pdf/2506.05198",
+    "linkText": "A paper",
+    "description": "by Wen et al. 2025, in which they study cross-modality memorization in vision-language models. The authors find that facts learned in one modality transfer to the other, but a gap still remains. They additionally find that this holds when doing unlearning.",
+    "category": "research",
+    "date": "2026-11-25"
+  },
+  {
     "title": "Language Model Tokenizers Introduce Unfairness Between Languages",
     "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/74bb24dca8334adce292883b4b651eda-Paper-Conference.pdf",
     "linkText": "A (relatively old) paper",
