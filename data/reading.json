@@ -1,5 +1,13 @@
 [
   {
+    "title": "Latent Lattice Language Models",
+    "url": "https://shivamduggal4.github.io/latent-lattice-language-models/",
+    "linkText": "A paper",
+    "description": "by Duggal et al. 2026, in which they propose latent lattice language models that increase the number of computational states by introducing per-layer horizontal latent streams that run recurrently along time, together with the vertical residual stream that flows through depth.",
+    "category": "research",
+    "date": "2026-11-26"
+  },
+  {
     "title": "Quantifying Cross-Modality Memorization in VLMs",
     "url": "https://arxiv.org/pdf/2506.05198",
     "linkText": "A paper",
