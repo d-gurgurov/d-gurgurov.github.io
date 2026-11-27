@@ -1,5 +1,13 @@
 [
   {
+    "title": "Plato\u2019s Key",
+    "url": "https://hazyresearch.stanford.edu/blog/2026-11-25-platos-key",
+    "linkText": "A blog post",
+    "description": "by Cheng et al. 2026, in which they show that with one rotation and one global rescale it is possible to use the representations from one model within another, supporting the view of the platonic representation hypothesis, which states that models converge on a shared representation of reality.",
+    "category": "research",
+    "date": "2026-11-27"
+  },
+  {
     "title": "Latent Lattice Language Models",
     "url": "https://shivamduggal4.github.io/latent-lattice-language-models/",
     "linkText": "A paper",
