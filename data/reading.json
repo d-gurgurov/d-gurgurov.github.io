@@ -1,5 +1,13 @@
 [
   {
+    "title": "Interpretable weight-space programming builds\ntransparent transformers and brain encoding models",
+    "url": "https://arxiv.org/pdf/2611.18114",
+    "linkText": "A paper",
+    "description": "by Mehta et al. 2026, in which the authors use recently proposed weight-space programming to build (1) interpretable transformer models for a few algorithmic and language-related tasks and then (2) brain encoding models. Large models quickly build small models with high accuracy and then they mostly compress them to smaller sizes. For future work, the authors suggest that WSP can be used to explain models by approximating them with an interpretable network.",
+    "category": "research",
+    "date": "2026-11-28"
+  },
+  {
     "title": "Plato\u2019s Key",
     "url": "https://hazyresearch.stanford.edu/blog/2026-11-25-platos-key",
     "linkText": "A blog post",
